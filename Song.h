@@ -15,7 +15,7 @@ private:
 
 public:
 
-    Song(std::string artist, std::string title, float duration, int playCount);
+    Song(std::string artist, std::string title, float duration);
 
     ~Song();
 
