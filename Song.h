@@ -15,6 +15,7 @@ private:
 
 public:
 
+    //constructor, copy constructor, assignment operator, destructor
     Song(std::string artist, std::string title, float duration);
 
     ~Song();
@@ -23,6 +24,8 @@ public:
 
     Song& operator=(const Song& songToCopy);
 
+
+    //getters
     std::string getArtist();
 
     std::string getTitle();
@@ -31,7 +34,8 @@ public:
 
     int getPlayCount();
 
-    int updatePlayCount(int num);
+
+    //executables
 
 
 

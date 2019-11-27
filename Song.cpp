@@ -1,6 +1,7 @@
 //
 // Created by Matt on 11/18/2019.
 //
+#include "Song.h"
 
 Song::Song(std::string artist, std::string title, float duration){
     this.artist = artist;

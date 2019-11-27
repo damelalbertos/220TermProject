@@ -3,4 +3,4 @@ project(Term_Project)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Term_Project Library.cpp Playlist.cpp Song.cpp)
+add_executable(Term_Project SongCollection.cpp Playlist.cpp Song.cpp ArrayLib.cpp LinkedNode.cpp LinkedList.cpp ArrayList.cpp)
