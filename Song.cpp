@@ -4,24 +4,48 @@
 #include "Song.h"
 
 Song::Song(std::string artist, std::string title, float duration){
-    this.artist = artist;
-    this.title = title;
-    this.duration = duration;
-    this.playCount = 0;
+    artist = artist;
+    title = title;
+    duration = duration;
+    playCount = 0;
 }
 
-Song::~Song();
+Song::~Song(){
 
-Song::Song(const Song& songToCopy);
+}
 
-Song::Song& operator=(const Song& songToCopy);
+Song::Song(const Song& songToCopy){
+    artist = songToCopy.artist;
+    title = songToCopy.title;
+    duration = songToCopy.duration;
+    playCount = songToCopy.playCount;
+}
 
-std::string Song::getArtist();
+Song::Song& operator=(const Song& songToCopy){
 
-std::string SOng::getTitle();
+}
 
-float Song::getDuration();
+std::string Song::getArtist(){
+    return artist;
+}
 
-int Song::getPlayCount();
+std::string Song::getTitle(){
+    return title;
+}
 
-int Song::updatePlayCount(int num);
+float Song::getDuration(){
+    return duration;
+}
+
+int Song::getPlayCount(){
+    return playCount;
+}
+
+void Song::addPlayCount(int num){
+    playCount++;
+}
+
+void Song::clearPlayCount(int num){
+    playCount = 0;
+}
+

@@ -9,6 +9,7 @@ template class<T>
 class MusicCollection{
 
 private:
+
     MusicCollection(const MusicCollection& musicCollectionToCopy);
     MusicCollection& operator=(const MusicCollection& musicCollectionToCopy);
 

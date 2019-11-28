@@ -36,7 +36,9 @@ public:
 
 
     //executables
+    void addPlayCount(int num);
 
+    void clearPlayCount(int num);
 
 
 };

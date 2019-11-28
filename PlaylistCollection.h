@@ -9,7 +9,7 @@
 class PlaylistCollection : public MusicCollection{
 
 private:
-    Array* allPlaylists
+    ArrayList* allPlaylists
 
 public:
 
