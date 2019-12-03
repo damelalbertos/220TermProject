@@ -7,7 +7,9 @@ PlaylistCollection::PlaylistCollection(Array* playlists){
     allPlaylists = playlists;
 }
 
-PlaylistCollection::~PlaylistCollection();
+PlaylistCollection::~PlaylistCollection(){
+    allPlaylists.clearList();
+}
 
 PlaylistCollection::PlaylistCollection(const PlaylistCollection& playlistCollectionToCopy);
 
@@ -17,12 +19,13 @@ void PlaylistCollection::add(Playlist itemToAdd){
     allPlaylists.insertAtEnd(itemToAdd);
 }
 
-void PlaylistCollection::remove(Playlist itemToAdd){
-    allPlaylists.remove()
+void PlaylistCollection::remove(Playlist itemToRemove){
+    int indexToRemove = allPlaylists.find(itemToRemove);
+    allPlaylists.remove(indexToRemove);
 }
 
 std::string PlaylistCollection::printCollection();
 
 void PlaylistCollection::saveCollection();
 
-void PlaylsitCollection::loadCollection();
+void PlaylsitCollection::loadToCollection();
