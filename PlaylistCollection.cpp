@@ -4,7 +4,7 @@
 #include "PlaylistCollection.h"
 
 PlaylistCollection::PlaylistCollection(Array* playlists){
-    allPlatlists = playlists;
+    allPlaylists = playlists;
 }
 
 PlaylistCollection::~PlaylistCollection();
@@ -18,7 +18,7 @@ void PlaylistCollection::add(Playlist itemToAdd){
 }
 
 void PlaylistCollection::remove(Playlist itemToAdd){
-    allPlaylists.remove
+    allPlaylists.remove()
 }
 
 std::string PlaylistCollection::printCollection();
