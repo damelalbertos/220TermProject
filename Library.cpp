@@ -1,15 +1,15 @@
 //
 // Created by Matt on 11/26/2019.
 //
-#include "SongCollection.h"
+#include "Library.h"
 
-SongCollection(Array* songs);
+Library(Array* songs);
 
 ~SongCollection();
 
-SongCollection(const SongCollection& songCollectionToCopy);
+SongCollection(const Library& songCollectionToCopy);
 
-SongCollection& operator=(const SongCollection& songCollectionToCopy);
+Library& operator=(const Library& songCollectionToCopy);
 
 void add(Song itemToAdd);
 

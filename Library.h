@@ -5,20 +5,20 @@
 #ifndef PROJECT_LIBRARY_H
 #define PROJECT_LIBRARY_H
 
-class SongCollection : public MusicCollection{
+class Library : public MusicCollection{
 
 private:
     Array* allSongs
 
 public:
 
-    SongCollection(Array* songs);
+    Library(Array* songs);
 
-    ~SongCollection();
+    ~Library();
 
-    SongCollection(const SongCollection& songCollectionToCopy);
+    Library(const Library& songCollectionToCopy);
 
-    SongCollection& operator=(const SongCollection& songCollectionToCopy);
+    Library& operator=(const Library& songCollectionToCopy);
 
     void add(Song itemToAdd);
 
