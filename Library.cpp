@@ -5,9 +5,9 @@
 
 Library(Array* songs);
 
-~SongCollection();
+~Library();
 
-SongCollection(const Library& songCollectionToCopy);
+Library(const Library& songCollectionToCopy);
 
 Library& operator=(const Library& songCollectionToCopy);
 
