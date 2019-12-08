@@ -24,7 +24,9 @@ void PlaylistCollection::remove(Playlist itemToRemove){
     allPlaylists.remove(indexToRemove);
 }
 
-std::string PlaylistCollection::printCollection();
+std::string PlaylistCollection::printCollection(){
+    allPlaylists.toString();
+}
 
 void PlaylistCollection::saveCollection();
 

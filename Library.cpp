@@ -11,13 +11,22 @@ Library(const Library& songCollectionToCopy);
 
 Library& operator=(const Library& songCollectionToCopy);
 
-void add(Song itemToAdd);
+void add(Song itemToAdd){
+    allSongs.insertAtEnd(itemToAdd);
+}
 
-void remove(Song itemToAdd);
+void remove(Song itemToRemove){
+    int songIndex;
+    songIndex = allSongs.find(itemToRemove);
+    allSongs.removeValueAt(songIndex);
+}
 
-std::string printCollection();
+std::string printCollection(){
+    allSongs.toString();
+}
 
-std::string getSong();
+std::string getSong(){
+}
 
 std::string getArtist();
 
