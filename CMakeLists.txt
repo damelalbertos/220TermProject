@@ -3,4 +3,4 @@ project(Term_Project)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(Term_Project Library.cpp Playlist.cpp Song.cpp UserInterface.h UserInterface.h)
+add_executable(Term_Project Library.cpp Playlist.cpp Song.cpp UserInterface.h UserInterface.h Test/UserInterfaceTest.cpp UserInterface.cpp)

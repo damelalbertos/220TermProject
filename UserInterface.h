@@ -8,12 +8,18 @@
 
 class UserInterface {
 private:
-    int* commands;
     int playCount;
 
 public:
     //constructor
     UserInterface();
+
+    /*
+     * Reacts to command by user. Goes into another function
+     * LOGIC:
+     * if <command> call <function>
+     */
+    void reactToCommand(std::string command);
 
     /*
      * Prints out all the commands available to the user
