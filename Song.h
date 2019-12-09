@@ -5,6 +5,8 @@
 #ifndef FINAL_PROJECT_SONG_H
 #define FINAL_PROJECT_SONG_H
 
+#include<string>
+
 class Song{
 
 private:

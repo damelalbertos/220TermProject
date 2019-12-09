@@ -5,7 +5,7 @@
 
 
 //constructor
-Playlist(std::string playlistName){
+Playlist::Playlist(std::string playlistName){
     playlistName = playlistName;
     front = nullptr;
     end = nullptr;
@@ -14,27 +14,27 @@ Playlist(std::string playlistName){
 }
 
 //destructor
-~Playlist();
+Playlist::~Playlist();
 
 //copy constructor
-Playlist(const Playlist& playlistToCopy);
+Playlist::Playlist(const Playlist& playlistToCopy);
 
 //assignment operator
-Playlist& operator=(const Playlist& playlistToCopy);
+Playlist::Playlist& operator=(const Playlist& playlistToCopy);
 
-std::string getName(){
+std::string Playlist::getName(){
     return playlistName;
 }
 
-float getDuration(){
+float Playlist::getDuration(){
     return duration;
 }
 
-int getSongCount(){
+int Playlist::getSongCount(){
     return songCount;
 }
 
-void add(Song* songToAdd){
+void Playlist::add(Song* songToAdd){
     LinkedNode* newNode = new LinkedNode(songToAdd);
     if (front == nullptr){
         front = newNode;
@@ -50,7 +50,7 @@ void add(Song* songToAdd){
     }
 }
 
-void played(){
+void Playlist::played(){
     if(front == nullptr){
         throw std::out_of_range("Playlist is empty");
     }
@@ -73,20 +73,20 @@ void played(){
 }
 
 //todo
-void remove(Song songToRemove);
+void Playlist::remove(Song songToRemove);
 
 
-std::string printCollection(){
+std::string Playlist::printCollection(){
     std::string playlistAsString;
-    for(int i=0; i < songCount; i++){
-        playlistAsString += front->getItem()*.toString();
+    for(int i=0; i <= songCount; i++){
+        playlistAsString += front->getItem().toString();
         playlistAsString += "\n";
     }
     return playlistAsString;
 }
 
 //todo
-void saveCollection();
+void Playlist::saveCollection();
 
 //todo
-void loadCollection();
+void Playlist::loadCollection();

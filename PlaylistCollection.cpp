@@ -5,7 +5,7 @@
 
 //default constructor
 PlaylistCollection::PlaylistCollection(){
-    playlistArray = new Playlist [10];
+    playlistArray = new Playlist[10];
     currCapacity = 10;
     currPlaylistCount = 0;
 }
@@ -22,14 +22,14 @@ PlaylistCollection::PlaylistCollection(const PlaylistCollection& playlistCollect
 PlaylistCollection::PlaylistCollection& operator=(const PlaylistCollection& playlistCollectionToCopy);
 
 void PlaylistCollection::add(Playlist playlistToAdd){
-    if(currCapacity == currPlaylistCount && currItemCount != 0){
+    if(currCapacity == currPlaylistCount && currPlaylistCount != 0){
         doubleCapacity(currCapacity, playlistArray);
-        playlistArray[currItemCount+1]=playlistToAdd;
-        currItemCount++;
+        playlistArray[currPlaylistCount+1]=playlistToAdd;
+        currPlaylistCount++;
     }
     else{
         array[currPlaylistCount+1]=playlistToAdd;
-        currItemCount++;
+        currPlaylistCount++;
     };
 }
 
@@ -42,7 +42,7 @@ void PlaylistCollection::remove(Playlist itemToRemove){
 std::string PlaylistCollection::printCollection(){
     std::string playlistsAsString;
 
-    if (size >= 1){
+    if (currCapacity >= 1){
         for (int i = 0; i < currPlaylistCount; i++){
             playlistsAsString += std::to_string(playlistArray[i].getName);
             playlistsAsString += " : ";
@@ -55,7 +55,7 @@ std::string PlaylistCollection::printCollection(){
     else{
         playlistsAsString = "No playlists made yet";
 
-        return arrayAsString;
+        return playlistsAsString;
     }
 }
 
@@ -63,4 +63,4 @@ std::string PlaylistCollection::printCollection(){
 void PlaylistCollection::saveCollection();
 
 //todo
-void PlaylsitCollection::loadToCollection();
+void PlaylistCollection::loadToCollection();

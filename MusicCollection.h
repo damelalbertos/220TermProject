@@ -5,9 +5,10 @@
 #ifndef PROJECT_MUSICCOLLECTION_H
 #define PROJECT_MUSICCOLLECTION_H
 
+#include"string"
 
 
-template class<T>;
+template <class T>;
 class MusicCollection{
 
 private:
@@ -17,7 +18,7 @@ private:
 
 public:
 
-    MusicCollection()
+    MusicCollection();
 
     ~MusicCollection();
 

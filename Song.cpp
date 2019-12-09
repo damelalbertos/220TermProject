@@ -4,10 +4,10 @@
 #include "Song.h"
 
 Song::Song(std::string artist, std::string title, float duration){
-    artist = artist;
-    title = title;
-    duration = duration;
-    playCount = 0;
+    this->artist = artist;
+    this->title = title;
+    this->duration = duration;
+    this->playCount = 0;
 }
 
 
@@ -43,7 +43,7 @@ void Song::clearPlayCount(int num){
     playCount = 0;
 }
 
-std::string toString(){
+std::string Song::toString(){
     std::string songAsString;
     songAsString += artist;
     songAsString += title;

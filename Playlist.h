@@ -5,6 +5,12 @@
 #ifndef PROJECT_PLAYLIST_H
 #define PROJECT_PLAYLIST_H
 
+#include "MusicCollection.h"
+#include "LinkedNode.h"
+#include "Song.h"
+#include <string>
+
+
 class Playlist : Public MusicCollection{
 
 private:

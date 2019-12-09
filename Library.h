@@ -5,6 +5,8 @@
 #ifndef PROJECT_LIBRARY_H
 #define PROJECT_LIBRARY_H
 
+#include "Song.h"
+
 class Library : public PlaylistCollection{
 
 private:
