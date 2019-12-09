@@ -9,8 +9,19 @@
 class PlaylistCollection : public MusicCollection{
 
 private:
-    //arraylist so you can binary search for playlists
-    ArrayList* allPlaylists
+
+    Playlist playlistArray*;
+    int currPlaylistCount;
+    int currCapacity;
+
+    void doubleCapacity(int capacity, int* oldArray){
+        int* doubledArr = new int[capacity*2];
+        for(int i =0; i < capacity; i++){
+            doubledArr[i] = oldArray[i];
+        }
+        delete[] oldArray;
+        this->array = doubledArr;
+    }
 
 public:
     //constructor

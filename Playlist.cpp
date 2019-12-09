@@ -7,7 +7,10 @@
 //constructor
 Playlist(std::string playlistName){
     playlistName = playlistName;
-    LinkedQueue<Song>*
+    front = nullptr;
+    end = nullptr;
+    duration = 0.0;
+    songCount = 0;
 }
 
 //destructor
@@ -19,64 +22,71 @@ Playlist(const Playlist& playlistToCopy);
 //assignment operator
 Playlist& operator=(const Playlist& playlistToCopy);
 
-/**
-* gets the name of the playlist
-* @returns playlistName
-*/
-std::string getPlaylistName();
+std::string getName(){
+    return playlistName;
+}
 
-/**
-* gets the duration of a playlist
-* @returns duration
-*/
-float getDuration();
+float getDuration(){
+    return duration;
+}
 
-/**
-* gets the number of songs in a playlist
-* @returns songCount
-*/
-int getSongCount();
+int getSongCount(){
+    return songCount;
+}
 
-/**
-* gets the number of times a playlist has been played
-* @returns playlistPlaycount
-*/
-int getPlayCount();
+void add(Song* songToAdd){
+    LinkedNode* newNode = new LinkedNode(songToAdd);
+    if (front == nullptr){
+        front = newNode;
+        end = newNode;
+        duration += songToAdd*.getDuration();
+        songCount++;
+    }
+    else {
+        end->setNext(newNode);
+        end = newNode;
+        duration += songToAdd*.getDuration();
+        songCount++;
+    }
+}
 
-/**
-* adds a song to the end of the playlist queue
-* @param itemToAdd - the song you want to add
-* @post sends an error if the user does not input a proper song object
-*/
-void add(Song songToAdd);
+void played(){
+    if(front == nullptr){
+        throw std::out_of_range("Playlist is empty");
+    }
+    else if(front == end){
+        std::string songInfo = front->getItem()*.toString();
+        delete front;
+        front = nullptr;
+        end = nullptr;
+        return songInfo;
+    }
+    else{
+        std::string songInfo = front->getItem()*.toString();
+        LinkedNode* tempPtr = front->getNext();
 
-/**
-* removes a song from the beginning of the playlist queue
-* @post deletes a playlist if song count is equal to zero otherwise removes song after played
-*/
-void played();
+        delete front;
 
-/**
-* removes a song from the beginning of the playlist queue
-* @param itemToRemove - the song you want to remove
-* @post sends an error if the user does not input a proper song object, deletes playlist if the song count is equal to zero
-*/
+        front = tempPtr;
+        return songInfo;
+    }
+}
+
+//todo
 void remove(Song songToRemove);
 
-/**
-* prints the all the songs in the playlist with song with all information
-* @post sends error if list is empty
-*/
-std::string printCollection();
 
-/**
-* saves the playlist to a txt file
-* @post sends error if list is empty
-*/
+std::string printCollection(){
+    std::string playlistAsString;
+    for(int i=0; i < songCount; i++){
+        playlistAsString += front->getItem()*.toString();
+        playlistAsString += "\n";
+    }
+    return playlistAsString;
+}
+
+//todo
 void saveCollection();
 
-/**
-* loads the playlist from a txt file
-* @post sends error if the txt has incorrect data but still uplaod what is possible
-*/
+//todo
 void loadCollection();

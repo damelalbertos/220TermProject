@@ -9,7 +9,8 @@ class Playlist : Public MusicCollection{
 
 private:
     std::string playlistName;
-    LinkedQueue<Song>* songList;
+    LinkedNode* front;
+    LinkedNode* end;
     float duration;
     int songCount;
 
@@ -31,7 +32,7 @@ public:
     * gets the name of the playlist
     * @returns playlistName
     */
-    std::string getPlaylistName();
+    std::string getName();
 
     /**
     * gets the duration of a playlist
@@ -45,11 +46,6 @@ public:
     */
     int getSongCount();
 
-    /**
-    * gets the number of times a playlist has been played
-    * @returns playlistPlaycount
-    */
-    int getPlayCount();
 
     /**
     * adds a song to the end of the playlist queue
@@ -65,7 +61,7 @@ public:
     void played();
 
     /**
-    * removes a song from the beginning of the playlist queue
+    * removes a song from anywhere in the playlist
     * @param itemToRemove - the song you want to remove
     * @post sends an error if the user does not input a proper song object, deletes playlist if the song count is equal to zero
     */

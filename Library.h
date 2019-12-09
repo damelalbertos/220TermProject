@@ -8,11 +8,13 @@
 class Library : public PlaylistCollection{
 
 private:
-    Array* allSongs
+    Song array* allSongs
+    int currSongCount;
+    int currCapacity;
 
 public:
 
-    Library(Array* songs);
+    Library();
 
     ~Library();
 

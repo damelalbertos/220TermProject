@@ -32,11 +32,12 @@ public:
 
     int getPlayCount();
 
-
     //executables
     void addPlayCount(int num);
 
     void clearPlayCount(int num);
+
+    std::string toString();
 
 
 };
