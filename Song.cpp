@@ -10,9 +10,6 @@ Song::Song(std::string artist, std::string title, float duration){
     playCount = 0;
 }
 
-Song::~Song(){
-
-}
 
 Song::Song(const Song& songToCopy){
     artist = songToCopy.artist;
@@ -21,9 +18,6 @@ Song::Song(const Song& songToCopy){
     playCount = songToCopy.playCount;
 }
 
-Song::Song& operator=(const Song& songToCopy){
-
-}
 
 std::string Song::getArtist(){
     return artist;

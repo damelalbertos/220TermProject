@@ -9,15 +9,14 @@ class Playlist : Public MusicCollection{
 
 private:
     std::string playlistName;
-    LinkedQueue* songList;
+    LinkedQueue<Song>* songList;
     float duration;
     int songCount;
-    int playlistPlayCount;
 
 public:
 
     //constructor
-    Playlist(std::string playlistName, LinkedQueue* songList, float duration, int songCount);
+    Playlist(std::string playlistName);
 
     //destructor
     ~Playlist();
@@ -26,7 +25,7 @@ public:
     Playlist(const Playlist& playlistToCopy);
 
     //assignment operator
-    Platlist& operator=(const Playlist& playlistToCopy);
+    Playlist& operator=(const Playlist& playlistToCopy);
 
     /**
     * gets the name of the playlist

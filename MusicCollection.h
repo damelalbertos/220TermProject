@@ -5,7 +5,9 @@
 #ifndef PROJECT_MUSICCOLLECTION_H
 #define PROJECT_MUSICCOLLECTION_H
 
-template class<T>
+
+
+template class<T>;
 class MusicCollection{
 
 private:

@@ -15,14 +15,12 @@ private:
 
 public:
 
-    //constructor, copy constructor, assignment operator, destructor
+    //constructor, copy constructor, assignment operator
     Song(std::string artist, std::string title, float duration);
 
-    ~Song();
 
     Song(const Song& songToCopy);
 
-    Song& operator=(const Song& songToCopy);
 
 
     //getters
