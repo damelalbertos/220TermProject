@@ -9,11 +9,11 @@ template <class T>
 class LinkedNode {
 
 private:
-    T item;
+    T* item;
     LinkedNode* next;
 
 public:
-    LinkedNode(T item);
+    LinkedNode(const T& item);
     LinkedNode(const LinkedNode& nodeToCopy); //only copies item, next is set to nullptr
     T getItem();
     LinkedNode* getNext();
