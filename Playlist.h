@@ -7,11 +7,12 @@
 
 #include "MusicCollection.h"
 #include "LinkedQueue.h"
+#include "LinkedNode.h"
 #include "Song.h"
 #include <string>
 
 
-class Playlist : Public MusicCollection{
+class Playlist{
 
 private:
     std::string playlistName;
@@ -71,6 +72,9 @@ public:
     * @post sends an error if the user does not input a proper song object, deletes playlist if the song count is equal to zero
     */
     void remove(Song songToRemove);
+
+    //gets a song from the playlist
+    Song getSong(Song songToFind);
 
     /**
     * prints the all the songs in the playlist with song with all information
