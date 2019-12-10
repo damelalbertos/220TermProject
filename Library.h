@@ -6,11 +6,12 @@
 #define PROJECT_LIBRARY_H
 
 #include "Song.h"
+#include "ArrayList.h"
 
-class Library : public PlaylistCollection{
+class Library : public MusicCollection{
 
 private:
-    Song array* allSongs
+    ArrayList<Song>* allSongs;
     int currSongCount;
     int currCapacity;
 

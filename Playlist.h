@@ -6,7 +6,7 @@
 #define PROJECT_PLAYLIST_H
 
 #include "MusicCollection.h"
-#include "LinkedNode.h"
+#include "LinkedQueue.h"
 #include "Song.h"
 #include <string>
 
@@ -15,8 +15,7 @@ class Playlist : Public MusicCollection{
 
 private:
     std::string playlistName;
-    LinkedNode* front;
-    LinkedNode* end;
+    LinkedQueue* songsInPlaylist;
     float duration;
     int songCount;
 

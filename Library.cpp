@@ -5,7 +5,7 @@
 #include "Song.h"
 
 Library::Library(){
-    allSongs = new Song[10];
+    allSongs = new ArrayList<Song>(10);
     currSongCount = 0;
     currCapacity = 10;
 }

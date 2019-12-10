@@ -5,7 +5,7 @@
 
 //default constructor
 PlaylistCollection::PlaylistCollection(){
-    playlistArray = new Playlist[10];
+    playlistArray = new ArrayList<Playlist>[10];
     currCapacity = 10;
     currPlaylistCount = 0;
 }

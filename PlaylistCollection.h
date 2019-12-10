@@ -6,24 +6,17 @@
 #define PROJECT_PLAYLISTLIBRARY_H
 
 #include "Playlist.h"
+#include "ArrayList.h"
 
 
 class PlaylistCollection : public MusicCollection{
 
 private:
 
-    Playlist* playlistArray;
+    ArrayList<Playlist>* playlistArray;
     int currPlaylistCount;
     int currCapacity;
 
-    void doubleCapacity(int capacity, Playlist* oldArray){
-        int* doubledArr = new int[capacity*2];
-        for(int i =0; i < capacity; i++){
-            doubledArr[i] = oldArray[i];
-        }
-        delete[] oldArray;
-        this->playlistArray = doubledArr;
-    }
 
 public:
     //constructor

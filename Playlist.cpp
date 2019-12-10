@@ -7,8 +7,7 @@
 //constructor
 Playlist::Playlist(std::string playlistName){
     playlistName = playlistName;
-    front = nullptr;
-    end = nullptr;
+    songsInPlaylist = new LinkedQueue();
     duration = 0.0;
     songCount = 0;
 }
