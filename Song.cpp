@@ -35,7 +35,7 @@ int Song::getPlayCount(){
     return playCount;
 }
 
-void Song::addPlayCount(int num){
+void Song::addPlayCount(){
     playCount++;
 }
 

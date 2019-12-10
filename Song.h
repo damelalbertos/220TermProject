@@ -35,7 +35,7 @@ public:
     int getPlayCount();
 
     //executables
-    void addPlayCount(int num);
+    void addPlayCount();
 
     void clearPlayCount(int num);
 

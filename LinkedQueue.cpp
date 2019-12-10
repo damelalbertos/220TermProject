@@ -4,19 +4,23 @@
 #include "LinkedQueue.h"
 
 //Creates an empty queue
-LinkedQueue::LinkedQueue(){
+
+template<class T>
+LinkedQueue<T>::LinkedQueue(){
     front = nullptr;
     end = nullptr;
 }
 
 //Copy Constructor
-LinkedQueue::LinkedQueue(const LinkedQueue& queueToCopy){
+template<class T>
+LinkedQueue<T>::LinkedQueue(const LinkedQueue& queueToCopy){
     while(queueToCopy.front != queueToCopy.end || queueToCopy.front != nullptr){
         enqueue(queueToCopy.front->getItem());
     }
 }
 
-LinkedQueue& LinkedQueue::operator=(const LinkedQueue& queueToCopy){
+template<class T>
+LinkedQueue& LinkedQueue<T>::operator=(const LinkedQueue& queueToCopy){
     if(this != &queueToCopy){
         if(queueToCopy.front == nullptr){
             this->front = nullptr;
@@ -39,7 +43,8 @@ LinkedQueue& LinkedQueue::operator=(const LinkedQueue& queueToCopy){
 }
 
 //Destructor
-LinkedQueue::~LinkedQueue(){
+template<class T>
+LinkedQueue<T>::~LinkedQueue(){
     while(isEmpty()){
         dequeue();
     }
@@ -47,8 +52,9 @@ LinkedQueue::~LinkedQueue(){
 
 
 //adds an item to the end of the queue
-void LinkedQueue::enqueue(std::string item){
-    LinkedNode* newNode = new LinkedNode(item);
+template<class T>
+void LinkedQueue<T>::enqueue(T item){
+    LinkedNode<T>* newNode = new LinkedNode<T>(item);
     //if front is nullptr, end should be nullptr too
     if (front == nullptr){
         front = newNode;
@@ -62,29 +68,48 @@ void LinkedQueue::enqueue(std::string item){
 
 //takes an item off the front of the queue and returns it
 //throws out_of_range exception if the queue is empty
-std::string LinkedQueue::dequeue(){
+template<class T>
+T LinkedQueue<T>::dequeue(){
     if(front == nullptr){
         throw std::out_of_range("Queue is empty");
     }
     else if(front == end){
-        std::string tempItem = front->getItem();
+        T tempItem = "Queue is empty";
         delete front;
         front = nullptr;
         end = nullptr;
         return tempItem;
     }
     else{
-        std::string tempItem = front->getItem();
         LinkedNode* tempPtr = front->getNext();
 
         delete front;
 
         front = tempPtr;
+        std::string tempItem = front->getItem();
         return tempItem;
     }
 }
 
+//todo
+template<class T>
+void LinkedQueue<T>::remove(T itemToRemove){
+    if(front == nullptr){
+        throw std::out_of_range("Queue is empty");
+    }
+    end = front;
+    while (end->getNext() != nullptr){
+        if(end->getItem() == itemToRemove){
+            LinkedNode* tempPtr = end;
+
+            delete end;
+        }
+    }
+}
+
+
 //returns true if the queue has no items, false otherwise
-bool LinkedQueue::isEmpty(){
+template<class T>
+bool LinkedQueue<T>::isEmpty(){
     return front == nullptr;
 }

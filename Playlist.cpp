@@ -6,10 +6,10 @@
 
 //constructor
 Playlist::Playlist(std::string playlistName){
-    playlistName = playlistName;
-    songsInPlaylist = new LinkedQueue();
-    duration = 0.0;
-    songCount = 0;
+    this->playlistName = playlistName;
+    this->songsInPlaylist = new LinkedQueue<Song>();
+    this->duration = 0.0;
+    this->songCount = 0;
 }
 
 //destructor
@@ -34,47 +34,26 @@ int Playlist::getSongCount(){
 }
 
 void Playlist::add(Song* songToAdd){
-    LinkedNode* newNode = new LinkedNode(songToAdd);
-    if (front == nullptr){
-        front = newNode;
-        end = newNode;
-        duration += songToAdd*.getDuration();
-        songCount++;
-    }
-    else {
-        end->setNext(newNode);
-        end = newNode;
-        duration += songToAdd*.getDuration();
-        songCount++;
-    }
+    songsInPlaylist->enqueue(songToAdd);
+    duration += songToAdd->getDuration();
+    songCount++;
 }
 
-void Playlist::played(){
-    if(front == nullptr){
-        throw std::out_of_range("Playlist is empty");
-    }
-    else if(front == end){
-        std::string songInfo = front->getItem()*.toString();
-        delete front;
-        front = nullptr;
-        end = nullptr;
-        return songInfo;
-    }
-    else{
-        std::string songInfo = front->getItem()*.toString();
-        LinkedNode* tempPtr = front->getNext();
+std::string Playlist::played(){
 
-        delete front;
+    Song nextSongPlaying = songsInPlaylist->dequeue();
+    nextSongPlaying.addPlayCount();
+    std::string songAsString = nextSongPlaying.toString();
+    return songAsString;
 
-        front = tempPtr;
-        return songInfo;
-    }
+}
+
+
+void Playlist::remove(Song songToRemove){
+    songsInPlaylist->remove(songToRemove);
 }
 
 //todo
-void Playlist::remove(Song songToRemove);
-
-
 std::string Playlist::printCollection(){
     std::string playlistAsString;
     for(int i=0; i <= songCount; i++){
