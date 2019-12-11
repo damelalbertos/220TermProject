@@ -49,7 +49,6 @@ std::string Library::getSong(){
 //todo
 std::string Library::getArtist();
 
-//todo
 void Library::saveCollection(std::string filename){
     std::ofstream outf(filename);
     if (outf){
@@ -61,7 +60,6 @@ void Library::saveCollection(std::string filename){
     }
 }
 
-//todo
 void Library::loadCollection(std::string filename){
     load_library(filename);
 }

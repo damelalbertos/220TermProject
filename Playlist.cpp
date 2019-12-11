@@ -7,7 +7,7 @@
 //constructor
 Playlist::Playlist(std::string playlistName){
     this->playlistName = playlistName;
-    this->songsInPlaylist = new LinkedQueue<Song>();
+    this->songsInPlaylist = new LinkedQueue<Song*>();
     this->duration = 0.0;
     this->songCount = 0;
 }
