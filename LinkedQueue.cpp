@@ -74,36 +74,74 @@ T LinkedQueue<T>::dequeue(){
         throw std::out_of_range("Queue is empty");
     }
     else if(front == end){
-        T tempItem = "Queue is empty";
+        T tempItem = front->getItem();
         delete front;
         front = nullptr;
         end = nullptr;
         return tempItem;
     }
     else{
+        T tempItem = front->getItem();
         LinkedNode* tempPtr = front->getNext();
 
         delete front;
 
         front = tempPtr;
-        std::string tempItem = front->getItem();
         return tempItem;
     }
 }
 
+template<class T>
+int LinkedQueue<T>::find(T itemParameter1, itemParameter2){
+    int indexToReturn = -1;
+    end = front;
+    while(end->getItem() != itemParameter1){
+        indexToReturn++;
+        end = end->getNext();
+    }
+
+    //resets end to the proper node
+    while(end->getNext() != nullptr){
+        end = end->getNext();
+    }
+
+    return indexToReturn;
+}
+
 //todo
 template<class T>
-void LinkedQueue<T>::remove(T itemToRemove){
-    if(front == nullptr){
-        throw std::out_of_range("Queue is empty");
-    }
+std::string LinkedQueue<T>::removeValueAt(int index){
+    LinkedNode* nodeToLinkTo;
+    std::string valueToReturn;
+    int count = 0;
     end = front;
-    while (end->getNext() != nullptr){
-        if(end->getItem() == itemToRemove){
-            LinkedNode* tempPtr = end;
 
-            delete end;
+    if(index < 0 || index > currItemCount){
+        throw std::out_of_range("INDEX OUT OF RANGE");
+    }
+    else {
+        while(count != index) {
+            end = end->getNext();
+            count++;
         }
+        //makes copy of value, holds onto next and then deletes the node to be removed
+        valueToReturn = end->getItem();
+        nodeToLinkTo = end->getNext();
+        delete end;
+
+        //iterates through to the point where the node was removed and sets next to the second half of the list to reconnect them
+        while(end->getNext() != nullptr){
+            end = end->getNext();
+        }
+        end->setNext(nodeToLinkTo);
+
+        //resets end to the proper node
+        while(end->getNext() != nullptr) {
+            end = end->getNext();
+        }
+
+        currItemCount--;
+        return valueToReturn;
     }
 }
 
