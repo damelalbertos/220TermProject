@@ -89,6 +89,12 @@ T LinkedQueue<T>::dequeue(){
         std::string tempItem = front->getItem();
         return tempItem;
     }
+
+    //std::string returnStr = front->getItem();
+    //LinkedNode* temp = front;
+    //front = front->getNext();
+    //delete temp;
+    //return returnStr;
 }
 
 //todo
