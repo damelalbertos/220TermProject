@@ -1,7 +1,9 @@
 #include <iostream>
+#include "UserInterface.h"
 
 int main() {
-    //UI STRING SET UP
+    //UI SET UP
+    UserInterface* user = new UserInterface();
     std::string command;
     std::string typeCommand = "Type a command or type help for a list of commands.";
 
@@ -9,7 +11,7 @@ int main() {
     std::cout << "Welcome to Auto DJ!" << std::endl;
     std::cout << typeCommand << std::endl;
     std::cin >> command;
-    reactToCommand(command);
+    user->reactToCommand(command);
     return 0;
 }
 

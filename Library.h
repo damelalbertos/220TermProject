@@ -8,6 +8,7 @@
 #include "Song.h"
 #include "ArrayList.h"
 #include "MusicCollection.h"
+#include "File.h"
 
 class Library : public MusicCollection{
 
@@ -51,14 +52,14 @@ public:
     * @returns a string of all the songs in the collection
     * @post sends an error if the list is empty
     */
-    std::string getSong();
+    std::string getSong(std::string songTitle);
 
     /**
     * returns all of the songs of an artist
     * @returns a string of all the songs in the collection
     * @post sends an error if the list is empty
     */
-    std::string getArtist();
+    std::string getArtist(std::string artistName);
 
     /**
     * saves the names, the duration and all songs to a txt file
