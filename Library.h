@@ -7,6 +7,7 @@
 
 #include "Song.h"
 #include "ArrayList.h"
+#include "MusicCollection.h"
 
 class Library : public MusicCollection{
 
@@ -41,10 +42,9 @@ public:
 
     /**
     * prints all the info of all the songs
-    * @returns a string of all the songs in the collection
     * @post sends an error if the list is empty
     */
-    std::string printCollection();
+    void printCollection();
 
     /**
     * returns the info of a specific song
@@ -64,13 +64,13 @@ public:
     * saves the names, the duration and all songs to a txt file
     * @post sends an error if the list is empty
     */
-    void saveCollection();
+    void saveCollection(std::string filename);
 
     /**
     * loads the saved txt file of all the songs and can be used to add new songs
     * @post sends an error if the txt file is empty
     */
-    void loadCollection();
+    void loadCollection(std::string filename);
 
 
 };

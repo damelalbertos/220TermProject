@@ -3,6 +3,7 @@
 //
 #include "Library.h"
 #include "Song.h"
+#include "File.h"
 
 Library::Library(){
     allSongs = new ArrayList<Song>(10);
@@ -28,10 +29,16 @@ void Library::remove(Song itemToRemove){
 }
 
 //todo
-std::string Library::printCollection(){
-    std::string libraryAsString;
+void Library::printCollection(){
+    //todo if empty
+
+
+
+    std::cout << "Artist:\tTitle:\tDuration (seconds):\tPlay Count:";
     for(int i=0; i <= currSongCount; i++){
-        allSongs
+        Song currentSong = allSongs[i];
+        std::cout << currentSong.getArtist() << "\t" << currentSong.getTitle() << "\t" << currentSong.getDuration() << "\t" << currentSong.getPlayCount() << std::endl;
+
     }
 }
 
@@ -43,7 +50,18 @@ std::string Library::getSong(){
 std::string Library::getArtist();
 
 //todo
-void Library::saveCollection();
+void Library::saveCollection(std::string filename){
+    std::ofstream outf(filename);
+    if (outf){
+        for (int i = 0; i <= currSongCount; i++){
+            Song currentSong = allSongs[i];
+            outf << currentSong.getArtist() << "\t" << currentSong.getTitle() << "\t" << currentSong.getDuration() << "\t" << currentSong.getPlayCount() << std::endl;
+        }
+        outf.close();
+    }
+}
 
 //todo
-void Library::loadCollection();
+void Library::loadCollection(std::string filename){
+    load_library(filename);
+}

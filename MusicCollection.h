@@ -40,7 +40,7 @@ public:
     * prints the collection
     * @post sends an error if the collection is empty
     */
-    virtual std::string printCollection()=0;
+    virtual void printCollection()=0;
 
     /**
     * saves collection to a txt file
