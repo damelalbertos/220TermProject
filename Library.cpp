@@ -31,23 +31,28 @@ void Library::remove(Song itemToRemove){
 //todo
 void Library::printCollection(){
     //todo if empty
+    if (currSongCount == 0){
+        std::cout << "The library is empty." << std::endl;
+    }
 
+    else {
 
+        std::cout << "Artist:\tTitle:\tDuration (seconds):\tPlay Count:";
+        for (int i = 0; i <= currSongCount; i++) {
+            Song currentSong = allSongs[i];
+            std::cout << currentSong.getArtist() << "\t" << currentSong.getTitle() << "\t" << currentSong.getDuration()
+                      << "\t" << currentSong.getPlayCount() << std::endl;
 
-    std::cout << "Artist:\tTitle:\tDuration (seconds):\tPlay Count:";
-    for(int i=0; i <= currSongCount; i++){
-        Song currentSong = allSongs[i];
-        std::cout << currentSong.getArtist() << "\t" << currentSong.getTitle() << "\t" << currentSong.getDuration() << "\t" << currentSong.getPlayCount() << std::endl;
-
+        }
     }
 }
 
 //todo
-std::string Library::getSong(){
+std::string Library::getSong(std::string songTitle){
 }
 
 //todo
-std::string Library::getArtist();
+std::string Library::getArtist(std::string artistName);
 
 void Library::saveCollection(std::string filename){
     std::ofstream outf(filename);
@@ -61,5 +66,24 @@ void Library::saveCollection(std::string filename){
 }
 
 void Library::loadCollection(std::string filename){
-    load_library(filename);
+    std::ifstream infile(filename);
+    if (infile) {
+        while (infile) {
+            std::string strInput;
+            getline(infile, strInput);
+            if (strInput != "") {
+                int size = countChar(strInput, '\t') + 1;
+                std::string* song = toList(strInput, size);
+                std::string artist = song[0];
+                std::string name = song[1];
+                float duration = stoi(song[2]) / 1000;
+                Song newSong = Song(artist, name, duration);
+                add(newSong);
+            }
+        }
+    }
+
+    else {
+        std::cerr << "File not found." << std::endl;
+    }
 }

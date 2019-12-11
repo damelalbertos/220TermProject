@@ -4,6 +4,7 @@
 
 #include "File.h"
 #include "Song.h"
+#include "Library.h"
 
 int countChar(std::string stringToSearch, char characterToCount){
     int length = stringToSearch.length();
