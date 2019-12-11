@@ -16,7 +16,7 @@ class Playlist{
 
 private:
     std::string playlistName;
-    LinkedQueue* songsInPlaylist;
+    LinkedQueue<Song*>* songsInPlaylist;
     float duration;
     int songCount;
 
