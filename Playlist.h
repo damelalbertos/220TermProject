@@ -9,6 +9,7 @@
 #include "LinkedQueue.h"
 #include "LinkedNode.h"
 #include "Song.h"
+#include "LinkedList.h"
 #include <string>
 
 
@@ -16,7 +17,7 @@ class Playlist{
 
 private:
     std::string playlistName;
-    LinkedQueue<Song*>* songsInPlaylist;
+    LinkedList<Song*>* songsInPlaylist;
     float duration;
     int songCount;
 

@@ -3,6 +3,7 @@
 //
 #include "Song.h"
 #include "Playlist.h"
+#include <iostream>
 //constructor test
 void runSongTests(Song mySong1){
     std::cout << mySong1.toString() << std::endl;
@@ -57,11 +58,6 @@ void nameAndDurationPlaylistTests(Playlist testPlaylist){
     std::cout << testPlaylist.getDuration() << std::endl;
 }
 
-Song mySong1 =  Song("King Gizzard and the Lizard Wizard", "The spider and me", 193.2);
-Song mySong2 =  Song("Led Zeppelin", "Stairway to Heaven", 481.8);
-Song mySong3 =  Song("Lorde", "The Love Club", 202.2);
-Song mySong4 =  Song("The Knocks", "No Requests", 190.8);
-Song mySong5 =  Song("ASAP Ferg", "Work", 166.8);
 
 //copy constructor test
 
@@ -78,3 +74,19 @@ Song mySong5 =  Song("ASAP Ferg", "Work", 166.8);
 //add to play count test
 
 //clear play count test
+
+int main(){
+    Song mySong1 =  Song("King Gizzard and the Lizard Wizard", "The spider and me", 193.2);
+    Song mySong2 =  Song("Led Zeppelin", "Stairway to Heaven", 481.8);
+    Song mySong3 =  Song("Lorde", "The Love Club", 202.2);
+    Song mySong4 =  Song("The Knocks", "No Requests", 190.8);
+    Song mySong5 =  Song("ASAP Ferg", "Work", 166.8);
+    Song mySong6 =  Song("ASAP Ferg", "Worj", 166.8);
+    if (mySong1 < mySong2){
+        std::cout << "Pass" << std::endl;
+    }
+    if (mySong6 < mySong5){
+        std::cout << "Pass" << std::endl;
+    }
+
+}

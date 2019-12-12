@@ -53,7 +53,7 @@ void Library::printCollection(){
 }
 
 //todo
-std::string Library::getSong(std::string songTitle){
+std::string Library::getSong(std::string artistName, std::string songTitle){
 
 }
 
