@@ -98,9 +98,9 @@ int LinkedList<T>::itemCount(){
 template<class T>
 void LinkedList<T>::clearList(){
     while(front->getNext() != nullptr) {
-        end = front->getNext();
+        LinkedNode<T>* temp = front->getNext();
         delete front;
-        front = end;
+        front = temp;
 
     }
     front = nullptr;
