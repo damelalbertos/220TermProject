@@ -19,7 +19,7 @@ LinkedList<T>::~LinkedList(){
 
 template<class T>
 void LinkedList<T>::insertAtEnd(T itemToAdd){
-    LinkedNode<T>* newNode = new LinkedNode(itemToAdd);
+    LinkedNode<T>* newNode = new LinkedNode<T>(itemToAdd);
     if(front == nullptr && end == nullptr){
         end = newNode;
         front = end;
@@ -33,12 +33,12 @@ void LinkedList<T>::insertAtEnd(T itemToAdd){
 }
 
 template<class T>
-int LinkedList<T>::getValueAt(int index){
+T LinkedList<T>::getValueAt(int index){
     if(index < 0){
         throw std::out_of_range("INDEX OUT OF RANGE");
     }
     else {
-        int valueToReturn;
+        T valueToReturn;
         int count = 0;
         while(count != index) {
             end = end->getNext();
@@ -55,7 +55,7 @@ int LinkedList<T>::getValueAt(int index){
 }
 
 template<class T>
-std::string LinkedList::toString(){
+std::string LinkedList<T>::toString(){
     std::string stringToReturn;
     end = front;
     if(front == nullptr && end == nullptr){
@@ -136,37 +136,11 @@ int LinkedList<T>::findLast(T itemToFind){
     return indexToReturn;
 }
 
-template<class T>
-int LinkedList<T>::findMaxIndex(){
-    int maxValue = front->getItem();
-    int indexToReturn = 0;
-    end = front;
 
-    if(front == nullptr){
-        throw std::out_of_range("list empty");
-    }
-    else{
-        while (end->getNext() != nullptr) {
-            if (end->getItem() > maxValue) {
-                maxValue = end->getItem();
-                indexToReturn++;
-            }
-            else {
-                end = end->getNext();
-                indexToReturn++;
-            }
-        }
-    }
-    //resets end to the proper node
-    while(end->getNext() != nullptr){
-        end = end->getNext();
-    }
-    return indexToReturn;
-}
 
 template<class T>
 void LinkedList<T>::insertAtFront(T itemToAdd){
-    LinkedNode<T>* newNode = new LinkedNode(itemToAdd);
+    LinkedNode<T>* newNode = new LinkedNode<T>(itemToAdd);
     if(front == nullptr && end == nullptr){
         front = newNode;
         end = newNode;
@@ -185,13 +159,13 @@ void LinkedList<T>::insertAtFront(T itemToAdd){
 }
 
 template<class T>
-void LinkedList::insertAt(T itemToAdd, int index){
+void LinkedList<T>::insertAt(T itemToAdd, int index){
     end = front;
     if(index < 0 or index > currItemCount){
         throw std::out_of_range("index out of scope");
     }
     else {
-        LinkedNode* newNode = new LinkedNode(itemToAdd);
+        LinkedNode<T>* newNode = new LinkedNode<T>(itemToAdd);
         int count = 0;
         while (count != index) {
             end = end->getNext();
@@ -208,7 +182,7 @@ void LinkedList::insertAt(T itemToAdd, int index){
 }
 
 template<class T>
-int LinkedList<T>::removeValueAtEnd(){
+T LinkedList<T>::removeValueAtEnd(){
     std::string valueToReturn;
     if(isEmpty()){
         throw std::out_of_range("list is empty");
@@ -227,8 +201,8 @@ int LinkedList<T>::removeValueAtEnd(){
 }
 
 template<class T>
-std::string LinkedList<T>::removeValueAtFront(){
-    std::string valueToReturn;
+T LinkedList<T>::removeValueAtFront(){
+    T valueToReturn;
     end = front->getNext();
 
     if(isEmpty()){
@@ -248,9 +222,9 @@ std::string LinkedList<T>::removeValueAtFront(){
 }
 
 template<class T>
-std::string LinkedList<T>::removeValueAt(int index){
-    LinkedNode* nodeToLinkTo;
-    std::string valueToReturn;
+T LinkedList<T>::removeValueAt(int index){
+    LinkedNode<T>* nodeToLinkTo;
+    T valueToReturn;
     int count = 0;
     end = front;
 
