@@ -5,6 +5,8 @@
 #ifndef LINKEDNODE_H
 #define LINKEDNODE_H
 
+#include <iostream>
+
 template <class T>
 class LinkedNode {
 

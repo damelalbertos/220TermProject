@@ -6,11 +6,10 @@
 #define LAB8SOLN_LINKEDLIST_H
 
 
-#include "List.h"
 #include "LinkedNode.h"
 
 template <class T>
-class LinkedList : public List{
+class LinkedList{
 private:
     LinkedNode<T>* front;
     LinkedNode<T>* end;
@@ -121,30 +120,9 @@ public:
      */
      T removeValueAt(int index);
 
-    /**
-     * removes the item at the front of the list, and returns a copy of that item
-     * @post the item at the front is removed from the list, everything else is shifted down one
-     * @return a copy of the item at index
-     * @throws out_of_range exception if there is no item to remove
-     */
-    void removeValueAtFrontNoPrint();
-
-    /**
-     * removes the item at index from the list, and returns a copy of that item
-     * @param index the location from which to get the value
-     * @post the item at index is removed from the list, everything else is shifted down one
-     * @throws out_of_range exception if index is invalid
-     */
-    virtual void removeValueAtNoPrint(int index)=0;
-
-    /**
-     * removes the item at the end of the list, and returns a copy of that item
-     * @post the item at the end is removed from the list
-     * @throws out_of_range exception if there is no item to remove
-     */
-    virtual void removeValueAtEndNoPrint()=0;
-
 };
+
+#include "LinkedList.inl"
 
 
 #endif //LAB8SOLN_LINKEDLIST_H

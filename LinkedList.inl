@@ -100,6 +100,7 @@ void LinkedList<T>::clearList(){
     while(front->getNext() != nullptr) {
         end = front->getNext();
         delete front;
+        front = end;
 
     }
     front = nullptr;

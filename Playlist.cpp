@@ -14,8 +14,11 @@ Playlist::Playlist(std::string playlistName){
 
 //destructor
 Playlist::~Playlist(){
-    songsInPlaylist->removeValueAtFront();
     delete songsInPlaylist;
+    songsInPlaylist = nullptr;
+    duration = 0;
+    songCount = 0;
+
 }
 
 std::string Playlist::getName(){

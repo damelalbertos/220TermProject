@@ -13,10 +13,7 @@ PlaylistCollection::PlaylistCollection(){
 PlaylistCollection::PlaylistCollection(const PlaylistCollection& playlistCollectionToCopy){
 }
 
-//todo
-PlaylistCollection::PlaylistCollection& operator=(const PlaylistCollection& playlistCollectionToCopy){
 
-}
 
 void PlaylistCollection::add(Playlist playlistToAdd){
     playlistArray->insertAtEnd(playlistToAdd);

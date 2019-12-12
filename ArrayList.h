@@ -9,9 +9,8 @@
 #include <string>
 #include <iostream>
 #include "ArrayLib.h"
-#include "List.h"
 template<class T>
-class ArrayList : public List {
+class ArrayList{
 private:
     //pointer to the start of the array
     T* array;

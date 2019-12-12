@@ -24,9 +24,7 @@ public:
 
     //copy constructor
     PlaylistCollection(const PlaylistCollection& playlistCollectionToCopy);
-
-    //assignment operator
-    PlaylistCollection& operator=(const PlaylistCollection& playlistCollectionToCopy);
+    
 
     /**
     * adds a playlist to the end of the list of playlists
