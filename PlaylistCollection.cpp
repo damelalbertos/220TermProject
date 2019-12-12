@@ -5,38 +5,24 @@
 
 //default constructor
 PlaylistCollection::PlaylistCollection(){
-    playlistArray = new ArrayList<Playlist>[10];
-    currCapacity = 10;
-    currPlaylistCount = 0;
+    playlistArray = new ArrayList<Playlist>(10);
 }
 
-//constructor
-
-
-PlaylistCollection::~PlaylistCollection(){
+PlaylistCollection::PlaylistCollection(const PlaylistCollection& playlistCollectionToCopy){
 
 }
 
-PlaylistCollection::PlaylistCollection(const PlaylistCollection& playlistCollectionToCopy);
+PlaylistCollection::PlaylistCollection& operator=(const PlaylistCollection& playlistCollectionToCopy){
 
-PlaylistCollection::PlaylistCollection& operator=(const PlaylistCollection& playlistCollectionToCopy);
+}
 
 void PlaylistCollection::add(Playlist playlistToAdd){
-    if(currCapacity == currPlaylistCount && currPlaylistCount != 0){
-        doubleCapacity(currCapacity, playlistArray);
-        playlistArray[currPlaylistCount+1]=playlistToAdd;
-        currPlaylistCount++;
-    }
-    else{
-        array[currPlaylistCount+1]=playlistToAdd;
-        currPlaylistCount++;
-    };
+    playlistArray->insertAtEnd(playlistToAdd);
 }
 
 //todo
 void PlaylistCollection::remove(Playlist itemToRemove){
-    int indexToRemove = allPlaylists.find(itemToRemove);
-    allPlaylists.remove(indexToRemove);
+
 }
 
 std::string PlaylistCollection::printCollection(){
@@ -60,7 +46,11 @@ std::string PlaylistCollection::printCollection(){
 }
 
 //todo
-void PlaylistCollection::saveCollection();
+void PlaylistCollection::saveCollection(){
+
+}
 
 //todo
-void PlaylistCollection::loadToCollection();
+void PlaylistCollection::loadToCollection(){
+
+}

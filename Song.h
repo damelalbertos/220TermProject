@@ -23,7 +23,11 @@ public:
 
     Song(const Song& songToCopy);
 
+    Song& operator==(const Song& songToCopy);
 
+    Song& operator>=(const Song& songToCopy);
+
+    Song& operator<=(const Song& songToCopy);
 
     //getters
     std::string getArtist();

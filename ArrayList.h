@@ -25,7 +25,7 @@ private:
      *        the old array is deleted.
      */
     void doubleCapacity(int capacity, T* oldArray){
-        int* doubledArr = new int[capacity*2];
+        T* doubledArr = new T[capacity*2];
         for(int i =0; i < capacity; i++){
             doubledArr[i] = oldArray[i];
         }

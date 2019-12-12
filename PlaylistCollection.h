@@ -14,13 +14,10 @@ class PlaylistCollection : public MusicCollection{
 private:
 
     ArrayList<Playlist>* playlistArray;
-    int currPlaylistCount;
-    int currCapacity;
-
 
 public:
     //constructor
-    PlaylistCollection(Playlist* playlists);
+    PlaylistCollection();
 
     //destructor
     ~PlaylistCollection();

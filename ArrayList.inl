@@ -19,7 +19,7 @@ ArrayList<T>::ArrayList(int initialCapacity) {
 
 //Copy Constructor
 template<class T>
-ArrayList<T>::ArrayList(const ArrayList& arrayListToCopy){
+ArrayList<T>::ArrayList(const ArrayList<T>& arrayListToCopy){
     for (int i = 0; i < currCapacity; i++) {
         this->array[i] = arrayListToCopy.array[i];
     }
@@ -29,7 +29,7 @@ ArrayList<T>::ArrayList(const ArrayList& arrayListToCopy){
 
 //Overloaded Assignment Operator
 template<class T>
-ArrayList& ArrayList<T>::operator=(const ArrayList& arrayListToCopy){
+ArrayList<T>& ArrayList<T>::operator=(const ArrayList<T>& arrayListToCopy){
     if(this != &arrayListToCopy){
         delete[] this->array;
         this->array = nullptr;
@@ -45,11 +45,12 @@ ArrayList& ArrayList<T>::operator=(const ArrayList& arrayListToCopy){
 
 //Destructor
 template<class T>
-ArrayList::~ArrayList(){
+ArrayList<T>::~ArrayList(){
     array = nullptr;
 }
 
-void ArrayList::insertAtEnd(int itemToAdd){
+template<class T>
+void ArrayList<T>::insertAtEnd(T itemToAdd){
     if(currCapacity == currItemCount && currItemCount != 0){
         doubleCapacity(currCapacity, array);
         array[currItemCount+1]=itemToAdd;
@@ -62,7 +63,8 @@ void ArrayList::insertAtEnd(int itemToAdd){
 
 }
 
-int ArrayList::getValueAt(int index){
+template<class T>
+int ArrayList<T>::getValueAt(int index){
     if (index < 0 || index > currItemCount) {
         throw std::out_of_range("Bad index given to getValueAt: "+ std::to_string(index));
     }
@@ -71,11 +73,14 @@ int ArrayList::getValueAt(int index){
     }
 }
 
-std::string ArrayList::toString(){
+template<class T>
+std::string ArrayList<T>::toString(){
+
     return ::toString(array+1,currItemCount);
 }
 
-bool ArrayList::isEmpty(){
+template<class T>
+bool ArrayList<T>::isEmpty(){
     bool empty;
 
     for(int i =0; i < currCapacity; i++){
@@ -95,23 +100,26 @@ bool ArrayList::isEmpty(){
     }
 }
 
-int ArrayList::itemCount(){
+template<class T>
+int ArrayList<T>::itemCount(){
     return currItemCount;
 }
 
-void ArrayList::clearList(){
+template<class T>
+void ArrayList<T>::clearList(){
     for(int i =1; i < currCapacity; i++){
         array[i] = NULL;
     }
     currItemCount = 0;
 }
 
-int ArrayList::find(int numToFind){
+template<class T>
+int ArrayList<T>::find(T itemToFind){
     int foundNumIndex = -1;
 
     for (int i = 1; i < currItemCount+1; i++) {
 
-        if (array[i] == numToFind) {
+        if (array[i] == itemToFind) {
             foundNumIndex = i;
             return foundNumIndex-1;
         }
@@ -119,11 +127,12 @@ int ArrayList::find(int numToFind){
     return foundNumIndex;
 }
 
-int ArrayList::findLast(int numToFind){
+template<class T>
+int ArrayList<T>::findLast(T itemToFind){
     int foundNumIndex = 0;
     for (int i = 0; i < currCapacity +1; i++){
 
-        if (array[i] == numToFind){
+        if (array[i] == itemToFind){
             foundNumIndex = i;
         }
     }
@@ -131,24 +140,9 @@ int ArrayList::findLast(int numToFind){
     return foundNumIndex-1;
 }
 
-int ArrayList::findMaxIndex(){
-    if (currCapacity < 1){
-        throw std::out_of_range("In findMaxIndex, List must have items");
-    }
-    else{
-        int maxValue = array[1];
-        int indexToReturn = 0;
-        for (int i = 1; i <= currItemCount; i++){
-            if(array[i] > maxValue){
-                maxValue = array[i];
-                indexToReturn = i -1;
-            }
-        }
-        return indexToReturn;
-    }
-}
 
-void ArrayList::insertAtFront(int itemToAdd){
+template<class T>
+void ArrayList<T>::insertAtFront(T itemToAdd){
 
     if(currItemCount == currCapacity){
         doubleCapacity(currCapacity, array);
@@ -163,7 +157,8 @@ void ArrayList::insertAtFront(int itemToAdd){
     }
 }
 
-void ArrayList::insertAt(int itemToAdd, int index){
+template<class T>
+void ArrayList<T>::insertAt(T itemToAdd, int index){
     if(index < 0 || index > currItemCount){
         throw std::out_of_range("Bad index given to insertAt: " + std::to_string(index));
     }
@@ -181,46 +176,49 @@ void ArrayList::insertAt(int itemToAdd, int index){
     }
 }
 
-int ArrayList::removeValueAtEnd(){
+template<class T>
+std::string ArrayList<T>::removeValueAtEnd(){
     if (array[currItemCount-1] == 0) {
         throw std::out_of_range("Array is empty");
     }
     else {
-        int numToReturn = array[currItemCount-1];
+        std::string itemToReturn = array[currItemCount-1];
         array[currItemCount-1] = 0;
         currItemCount -= 1;
-        return numToReturn;
+        return itemToReturn;
     }
 }
 
-int ArrayList::removeValueAtFront(){
+template<class T>
+std::string ArrayList<T>::removeValueAtFront(){
     if (array[0] == 0) {
         throw std::out_of_range("Array is empty");
     }
     else {
-        int numToReturn = array[1];
+        std::string itemToReturn = array[1];
         array[1] = NULL;
 
         for (int i = 0 ; i <= currItemCount; i++) {
             array[i] = array[i + 1];
         }
         currItemCount - 1;
-        return numToReturn;
+        return itemToReturn;
     }
 }
 
-int ArrayList::removeValueAt(int index){
+template<class T>
+std::string ArrayList<T>::removeValueAt(int index){
     if (index > currItemCount || index < currItemCount) {
         throw std::out_of_range("Bad index given to insertAt: " + std::to_string(index));
     }
     else {
-        int numToReturn = array[index];
+        std::string itemToReturn = array[index];
         array[index] = 0;
 
         for (int i = index; i < currItemCount; i++) {
             array[i] = array[i + 1];
         }
         currItemCount -= 1;
-        return numToReturn;
+        return itemToReturn;
     }
 }
