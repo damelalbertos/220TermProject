@@ -53,7 +53,7 @@ public:
     * @param itemToAdd - the song you want to add
     * @post sends an error if the user does not input a proper song object
     */
-    void add(Song* songToAdd);
+    void add(Song songToAdd);
 
     /**
     * removes a song from the beginning of the playlist queue

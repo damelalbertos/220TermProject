@@ -11,7 +11,7 @@ template <class T>
 class LinkedNode {
 
 private:
-    T* item;
+    T item;
     LinkedNode* next;
 
 public:

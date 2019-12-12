@@ -6,6 +6,7 @@
 #define FINAL_PROJECT_SONG_H
 
 #include<string>
+#include "ArrayList.h"
 
 class Song{
 
