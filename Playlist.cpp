@@ -40,27 +40,25 @@ void Playlist::add(Song* songToAdd){
 }
 
 std::string Playlist::played(){
-
-    Song nextSongPlaying = songsInPlaylist->dequeue();
-    nextSongPlaying.addPlayCount();
-    std::string songAsString = nextSongPlaying.toString();
+    Song* songPlaying = songsInPlaylist->dequeue();
+    songPlaying->addPlayCount();
+    std::string songAsString = songPlaying->toString();
     return songAsString;
 
 }
 
 
-void Playlist::remove(Song songToRemove){
-    songsInPlaylist->remove(songToRemove);
+void Playlist::remove(std::string artistToRemove, std::string songToRemove){
+    songsInPlaylist
+    songsInPlaylist->remove(artistToRemove, songToRemove);
 }
 
 //todo
-std::string Playlist::printCollection(){
+std::string Playlist::printPlaylist(){
     std::string playlistAsString;
     for(int i=0; i <= songCount; i++){
-        playlistAsString += front->getItem().toString();
-        playlistAsString += "\n";
+        playlistAsString += songsInPlaylist->
     }
-    return playlistAsString;
 }
 
 //todo

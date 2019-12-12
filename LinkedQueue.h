@@ -37,7 +37,27 @@ public:
     //throws out_of_range exception if the queue is empty
     T dequeue();
 
-    void remove();
+    /**
+     * gives a string representation of the current list
+     * @returns a string representing the given list in the exact format shown below
+     * {1, 2, 3, 4, 5}
+     */
+    std::string toString();
+
+    /**
+     * Searches an int array for a certain value
+     * @return the index of the first occurrence of numToFind if it is present, otherwise returns -1
+     */
+    int find(T itemToFind);
+
+    /**
+     * removes the item at index from the list, and returns a copy of that item
+     * @param index the location from which to get the value
+     * @post the item at index is removed from the list, everything else is shifted down one
+     * @return a copy of the item at index
+     * @throws out_of_range exception if index is invalid
+     */
+    void removeValueAt(int index);
 
     //returns true if the queue has no items, false otherwise
     bool isEmpty();

@@ -71,7 +71,7 @@ public:
     * @param itemToRemove - the song you want to remove
     * @post sends an error if the user does not input a proper song object, deletes playlist if the song count is equal to zero
     */
-    void remove(Song songToRemove);
+    void remove(std::string artistToRemove, std::string songToRemove);
 
     //gets a song from the playlist
     Song getSong(Song songToFind);
@@ -80,7 +80,7 @@ public:
     * prints the all the songs in the playlist with song with all information
     * @post sends error if list is empty
     */
-    std::string printCollection();
+    std::string printPlaylist();
 
     /**
     * saves the playlist to a txt file
