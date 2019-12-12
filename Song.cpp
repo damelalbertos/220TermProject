@@ -46,7 +46,7 @@ void Song::addPlayCount(){
     playCount++;
 }
 
-void Song::clearPlayCount(int num){
+void Song::clearPlayCount(){
     playCount = 0;
 }
 

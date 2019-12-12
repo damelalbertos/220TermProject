@@ -20,10 +20,14 @@ void PlaylistCollection::add(Playlist playlistToAdd){
 }
 
 void PlaylistCollection::remove(std::string itemToRemove){
-    for(int i=0; i <= playlistArray->itemCount(); i++){
-        Playlist playlistToLookAt = playlistArray->getValueAt(i);
-        if(playlistToLookAt.getName() == itemToRemove){
-            delete playlistToLookAt;
+    Playlist playlistToLookAt;
+    for(int i=0; i <= playlistArray->itemCount(); i++) {
+        playlistToLookAt = playlistArray->getValueAt(i);
+        if (playlistToLookAt.getName() == itemToRemove) {
+            for (int i = 0; i <= playlistToLookAt.getSongCount(); i++) {
+                playlistToLookAt.played();
+            }
+            playlistArray->removeValueAt(i);
         }
     }
 }
