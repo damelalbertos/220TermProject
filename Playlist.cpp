@@ -3,7 +3,12 @@
 //
 #include "Playlist.h"
 
-
+Playlist::Playlist(){
+    this->playlistName = "";
+    this->songsInPlaylist = new LinkedList<Song*>();
+    this->duration = 0.0;
+    this->songCount = 0;
+}
 //constructor
 Playlist::Playlist(std::string playlistName){
     this->playlistName = playlistName;

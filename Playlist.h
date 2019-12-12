@@ -21,6 +21,7 @@ private:
     int songCount;
 
 public:
+    Playlist();
 
     //constructor
     Playlist(std::string playlistName);

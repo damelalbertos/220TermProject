@@ -52,7 +52,7 @@ template<class T>
 void ArrayList<T>::insertAtEnd(T itemToAdd){
     if(currCapacity == currItemCount && currItemCount != 0){
         doubleCapacity(currCapacity, array);
-        array[currItemCount+1]=itemToAdd;
+        array[currItemCount]=itemToAdd;
         currItemCount++;
     }
     else{
@@ -68,14 +68,14 @@ T ArrayList<T>::getValueAt(int index){
         throw std::out_of_range("Bad index given to getValueAt: "+ std::to_string(index));
     }
     else {
-        return array[index +1];
+        return array[index];
     }
 }
 
 template<class T>
 std::string ArrayList<T>::toString(){
 
-    return ::toString(array+1,currItemCount);
+    return toString(array+1,currItemCount);
 }
 
 template<class T>
@@ -176,7 +176,7 @@ void ArrayList<T>::insertAt(T itemToAdd, int index){
 }
 
 template<class T>
-std::string ArrayList<T>::removeValueAtEnd(){
+T ArrayList<T>::removeValueAtEnd(){
     if (array[currItemCount-1] == 0) {
         throw std::out_of_range("Array is empty");
     }
@@ -189,7 +189,7 @@ std::string ArrayList<T>::removeValueAtEnd(){
 }
 
 template<class T>
-std::string ArrayList<T>::removeValueAtFront(){
+T ArrayList<T>::removeValueAtFront(){
     if (array[0] == 0) {
         throw std::out_of_range("Array is empty");
     }
@@ -206,13 +206,12 @@ std::string ArrayList<T>::removeValueAtFront(){
 }
 
 template<class T>
-std::string ArrayList<T>::removeValueAt(int index){
+T ArrayList<T>::removeValueAt(int index){
     if (index > currItemCount || index < currItemCount) {
         throw std::out_of_range("Bad index given to insertAt: " + std::to_string(index));
     }
     else {
-        std::string itemToReturn = array[index];
-        array[index] = 0;
+        T itemToReturn = array[index];
 
         for (int i = index; i < currItemCount; i++) {
             array[i] = array[i + 1];

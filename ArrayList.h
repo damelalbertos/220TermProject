@@ -8,7 +8,6 @@
 #include <stdexcept>
 #include <string>
 #include <iostream>
-#include "ArrayLib.h"
 template<class T>
 class ArrayList{
 private:
@@ -124,7 +123,7 @@ public:
      * @return a copy of the item at the end
      * @throws out_of_range exception if there is no item to remove
      */
-    std::string removeValueAtEnd();
+    T removeValueAtEnd();
 
     /**
      * removes the item at the front of the list, and returns a copy of that item
@@ -132,7 +131,7 @@ public:
      * @return a copy of the item at index
      * @throws out_of_range exception if there is no item to remove
      */
-    std::string removeValueAtFront();
+    T removeValueAtFront();
 
     /**
      * removes the item at index from the list, and returns a copy of that item
@@ -141,7 +140,7 @@ public:
      * @return a copy of the item at index
      * @throws out_of_range exception if index is invalid
      */
-    std::string removeValueAt(int index);
+    T removeValueAt(int index);
 
 };
 
