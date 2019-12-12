@@ -144,21 +144,27 @@ void UserInterface::allPlaylists() {
 }
 
 void UserInterface::playlistInfo(std::string playlistName) {
-    //TODO
-    Playlist* pl; //pin-point right playlist
-    std::string str = pl->printCollection();
+    Playlist* pl;
+    std::string str = pl->printCollection(playlistName);
     std::cout << str << std::endl;
 }
 
 void UserInterface::newPlaylist(std::string playlistName) {
-    //TODO
+    Playlist* newPl = new Playlist(playlistName);
+    PlaylistCollection* pl;
+    pl->add(newPl);
 }
 
 void UserInterface::addSong(std::string songName, std::string artistName, int duration, std::string playlistName) {
+    Song* cancion = new Song(artistName, songName, duration);
+    Playlist* pl;
+    pl->add(cancion);
     //TODO
 }
 
 void UserInterface::removeSong(std::string songName, std::string artistName, std::string playlistName) {
+    Playlist* pl;
+    pl->remove(artistName, songName);
     //TODO
 }
 
