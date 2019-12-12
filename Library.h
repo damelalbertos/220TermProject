@@ -52,7 +52,7 @@ public:
     * @returns a string of all the songs in the collection
     * @post sends an error if the list is empty
     */
-    std::string getSong(std::string songTitle);
+    std::string getSong(std::string artistName, std::string songTitle);
 
     /**
     * returns all of the songs of an artist

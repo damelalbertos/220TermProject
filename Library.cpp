@@ -18,9 +18,6 @@ Library::Library(const Library& songCollectionToCopy){
 
 }
 
-Library::Library& operator=(const Library& songCollectionToCopy){
-
-}
 
 void Library::add(Song itemToAdd){
     allSongs->insertAtEnd(itemToAdd);
@@ -33,9 +30,8 @@ void Library::remove(Song itemToRemove){
     allSongs->removeValueAt(songIndex);
 }
 
-//todo
+
 void Library::printCollection(){
-    //todo if empty
     if (currSongCount == 0){
         std::cout << "The library is empty." << std::endl;
     }
@@ -44,7 +40,7 @@ void Library::printCollection(){
 
         std::cout << "Artist:\tTitle:\tDuration (seconds):\tPlay Count:";
         for (int i = 0; i <= currSongCount; i++) {
-            Song currentSong = allSongs[i];
+            Song currentSong = allSongs->getValueAt(i);
             std::cout << currentSong.getArtist() << "\t" << currentSong.getTitle() << "\t" << currentSong.getDuration()
                       << "\t" << currentSong.getPlayCount() << std::endl;
 
@@ -54,19 +50,29 @@ void Library::printCollection(){
 
 //todo
 std::string Library::getSong(std::string artistName, std::string songTitle){
-
+    for (int i = 0; i < currSongCount; i++){
+        Song currentSong = allSongs->getValueAt(i);
+        if (currentSong.getArtist() == artistName && currentSong.getTitle() == songTitle){
+            std::cout << currentSong.toString() << std::endl;
+        }
+    }
 }
 
 //todo
 std::string Library::getArtist(std::string artistName){
-
+    for (int i = 0; i < currSongCount; i++){
+        Song currentSong = allSongs->getValueAt(i);
+        if (currentSong.getArtist() == artistName){
+            std::cout << currentSong.toString() << std::endl;
+        }
+    }
 }
 
 void Library::saveCollection(std::string filename){
     std::ofstream outf(filename);
     if (outf){
         for (int i = 0; i <= currSongCount; i++){
-            Song currentSong = allSongs[i];
+            Song currentSong = allSongs->getValueAt(i);
             outf << currentSong.getArtist() << "\t" << currentSong.getTitle() << "\t" << currentSong.getDuration() << "\t" << currentSong.getPlayCount() << std::endl;
         }
         outf.close();
