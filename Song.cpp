@@ -3,6 +3,13 @@
 //
 #include "Song.h"
 
+Song::Song(){
+    this->artist = "";
+    this->title = "";
+    this->duration = 0.0;
+    this->playCount = 0;
+}
+
 Song::Song(std::string artist, std::string title, float duration){
     this->artist = artist;
     this->title = title;

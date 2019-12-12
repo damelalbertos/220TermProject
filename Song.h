@@ -17,7 +17,7 @@ private:
     int playCount;
 
 public:
-
+    Song();
     //constructor, copy constructor, assignment operator
     Song(std::string artist, std::string title, float duration);
 
