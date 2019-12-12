@@ -8,7 +8,7 @@
 #include"string"
 
 
-template <class T>;
+template <class T>
 class MusicCollection{
 
 private:

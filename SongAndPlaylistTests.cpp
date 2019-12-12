@@ -3,6 +3,7 @@
 //
 #include "Song.h"
 #include "Playlist.h"
+#include "Library.h"
 #include <iostream>
 //constructor test
 void runSongTests(Song mySong1){
@@ -27,26 +28,31 @@ void runSongTests(Song mySong1){
 
 void enqueuePlaylistTest(Playlist testPlaylist){
     Song mySong1 =  Song("King Gizzard and the Lizard Wizard", "The spider and me", 193.2);
+    Song* mySong1ptr = &mySong1;
     Song mySong2 =  Song("Led Zeppelin", "Stairway to Heaven", 481.8);
+    Song* mySong2ptr = &mySong2;
     Song mySong3 =  Song("Lorde", "The Love Club", 202.2);
+    Song* mySong3ptr = &mySong3;
     Song mySong4 =  Song("The Knocks", "No Requests", 190.8);
+    Song* mySong4ptr = &mySong4;
     Song mySong5 =  Song("ASAP Ferg", "Work", 166.8);
+    Song* mySong5ptr = &mySong5;
 
 
-    testPlaylist.add(mySong1);
-    testPlaylist.add(mySong2);
-    testPlaylist.add(mySong3);
-    testPlaylist.add(mySong4);
-    testPlaylist.add(mySong5);
+    testPlaylist.add(mySong1ptr);
+    testPlaylist.add(mySong2ptr);
+    testPlaylist.add(mySong3ptr);
+    testPlaylist.add(mySong4ptr);
+    testPlaylist.add(mySong5ptr);
 
     testPlaylist.getSongCount();
 
-    testPlaylist.printCollection();
+    testPlaylist.printPlaylist();
     testPlaylist.played();
-    testPlaylist.printCollection();
+    testPlaylist.printPlaylist();
 
-    testPlaylist.remove("No Requests");
-    testPlaylist.printCollection();
+    testPlaylist.removeSong("The Knocks", "No Requests");
+    testPlaylist.printPlaylist();
 }
 
 void nameAndDurationPlaylistTests(Playlist testPlaylist){

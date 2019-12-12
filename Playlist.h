@@ -6,7 +6,6 @@
 #define PROJECT_PLAYLIST_H
 
 #include "MusicCollection.h"
-#include "LinkedQueue.h"
 #include "LinkedNode.h"
 #include "Song.h"
 #include "LinkedList.h"
