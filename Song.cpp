@@ -18,18 +18,6 @@ Song::Song(const Song& songToCopy){
     playCount = songToCopy.playCount;
 }
 
-Song::Song& operator==(const Song& songToCopy){
-
-}
-
-Song::Song& operator>=(const Song& songToCopy){
-
-}
-
-Song::Song& operator<=(const Song& songToCopy){
-
-}
-
 
 std::string Song::getArtist(){
     return artist;

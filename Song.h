@@ -23,11 +23,43 @@ public:
 
     Song(const Song& songToCopy);
 
-    Song& operator==(const Song& songToCopy);
+    bool operator==(const Song& songToCopy){
+        if(artist == songToCopy.artist && title == songToCopy.title){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
 
-    Song& operator>=(const Song& songToCopy);
+    bool operator>(const Song& songToCopy){
+        std::string song1 = artist + title;
+        std::string song2 = songToCopy.artist + songToCopy.title;
 
-    Song& operator<=(const Song& songToCopy);
+        int result = song1.compare(song2);
+
+        if(result > 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+
+    }
+
+    bool operator<(const Song& songToCopy){
+        std::string song1 = artist + title;
+        std::string song2 = songToCopy.artist + songToCopy.title;
+
+        int result = song1.compare(song2);
+
+        if(result > 0){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
 
     //getters
     std::string getArtist();
