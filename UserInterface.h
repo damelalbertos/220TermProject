@@ -34,7 +34,6 @@ public:
      * Print all songs in alphabetical order by artist, alphabetical by song too
      * LOGIC:
      * call the printLibrary function from Library Class
-     * WHERE IS THE SORTING COMING FROM?
      */
     void library();
 
