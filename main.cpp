@@ -8,10 +8,18 @@ int main() {
     std::string typeCommand = "Type a command or type help for a list of commands.";
 
     //PROGRAM
-    std::cout << "Welcome to Auto DJ!" << std::endl;
-    std::cout << typeCommand << std::endl;
+    std::cout << "Hi! Would you like to Test your code or start Auto DJ?" << std::endl;
+    std::cout << "Type ""Test"" or ""DJ""." << std::endl;
     std::cin >> command;
-    user->reactToCommand(command);
+    if (command == "Test" || command == "test"){
+        //runtests()
+    }
+    else{
+        std::cout << "Welcome to Auto DJ!" << std::endl;
+        std::cout << typeCommand << std::endl;
+        std::cin >> command;
+        user->reactToCommand(command);
+    }
     return 0;
 }
 

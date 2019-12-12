@@ -5,6 +5,9 @@
 #include <iostream>
 #include <cstdlib>
 #include "UserInterface.h"
+#include "Library.h"
+#include "PlaylistCollection.h"
+#include "Playlist.h"
 
 UserInterface::UserInterface() {
 }
@@ -110,5 +113,63 @@ void UserInterface::help() {
     std::cout << "play next: Display info on next song in a playlist." << std::endl;
     std::cout << "new random: Create a new playlist that populates with random songs from library." << std::endl;
     std::cout << "quit: Save the library/playlists and terminate program." << std::endl;
+}
 
+void UserInterface::library() {
+    Library* lib;
+    lib->printCollection();
+}
+
+void UserInterface::artistSongs(std::string artist) {
+    Library* lib;
+    lib->getArtist(artist);
+}
+
+void UserInterface::songInfo(std::string artist, std::string songTitle) {
+    Library* lib;
+    lib->getSong(songTitle);
+}
+
+void UserInterface::import(std::string filename) {
+    //TODO
+}
+
+void UserInterface::discontinue(std::string filename) {
+    //TODO
+}
+
+void UserInterface::allPlaylists() {
+    PlaylistCollection* pl;
+    pl->printCollection();
+}
+
+void UserInterface::playlistInfo(std::string playlistName) {
+    //TODO
+    Playlist* pl; //pin-point right playlist
+    std::string str = pl->printCollection();
+    std::cout << str << std::endl;
+}
+
+void UserInterface::newPlaylist(std::string playlistName) {
+    //TODO
+}
+
+void UserInterface::addSong(std::string songName, std::string artistName, int duration, std::string playlistName) {
+    //TODO
+}
+
+void UserInterface::removeSong(std::string songName, std::string artistName, std::string playlistName) {
+    //TODO
+}
+
+void UserInterface::playNext(std::string playlistName) {
+    //todo
+}
+
+void UserInterface::newRandom(std::string playlistName, int duration) {
+    //todo
+}
+
+void UserInterface::quit() {
+    //TODO
 }
