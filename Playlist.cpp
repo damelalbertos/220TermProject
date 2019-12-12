@@ -7,27 +7,15 @@
 //constructor
 Playlist::Playlist(std::string playlistName){
     this->playlistName = playlistName;
-    this->songsInPlaylist = new LinkedQueue<Song*>();
+    this->songsInPlaylist = new LinkedList<Song*>();
     this->duration = 0.0;
     this->songCount = 0;
 }
 
 //destructor
 Playlist::~Playlist(){
-    songsInPlaylist->dequeue();
+    songsInPlaylist->removeValueAtFront();
     delete songsInPlaylist;
-}
-
-//todo
-//copy constructor
-Playlist::Playlist(const Playlist& playlistToCopy){
-
-}
-
-//todo
-//assignment operator
-Playlist::Playlist& operator=(const Playlist& playlistToCopy){
-
 }
 
 std::string Playlist::getName(){
@@ -43,35 +31,43 @@ int Playlist::getSongCount(){
 }
 
 void Playlist::add(Song* songToAdd){
-    songsInPlaylist->enqueue(songToAdd);
+    songsInPlaylist->insertAtEnd(songToAdd);
     duration += songToAdd->getDuration();
     songCount++;
 }
 
 std::string Playlist::played(){
-    Song* songPlaying = songsInPlaylist->dequeue();
+    Song* songPlaying = songsInPlaylist->removeValueAtFront();
     songPlaying->addPlayCount();
     std::string songAsString = songPlaying->toString();
     return songAsString;
 }
 
-//todo
-void Playlist::remove(std::string artistToRemove, std::string songToRemove){
+void Playlist::removeSong(std::string artistToRemove, std::string songToRemove){
     for(int i=0; i <= songCount; i++){
-        Song songToLookAt = songsInPlaylist->
-
+        Song* songToLookAt = songsInPlaylist->getValueAt(i);
+        if(songToLookAt->getArtist() == artistToRemove && songToLookAt->getTitle() == songToRemove){
+            songsInPlaylist->removeValueAt(i);
+        }
     }
+
 }
 
 std::string Playlist::printPlaylist(){
     std::string playlistAsString;
     for(int i=0; i <= songCount; i++){
-        playlistAsString += songsInPlaylist->
+        Song* songToLookAt = songsInPlaylist->getValueAt(i);
+        std::cout << songToLookAt->toString() << std::endl;
     }
+    std::cout << "Duration left in playlist: " << getDuration() << std::endl;
 }
 
 //todo
-void Playlist::saveCollection();
+void Playlist::saveCollection(){
+
+}
 
 //todo
-void Playlist::loadCollection();
+void Playlist::loadCollection(){
+
+}

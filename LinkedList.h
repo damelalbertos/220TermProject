@@ -12,13 +12,13 @@
 template <class T>
 class LinkedList : public List{
 private:
-    LinkedNode* front;
-    LinkedNode* end;
+    LinkedNode<T>* front;
+    LinkedNode<T>* end;
     int currItemCount;
 
     //Private to disable copying and assigning from outside class, don't implement these methods
-    LinkedList(const LinkedList& arrayListToCopy);
-    LinkedList& operator=(const LinkedList& arrayListToCopy);
+    LinkedList(const LinkedList<T>& arrayListToCopy);
+    LinkedList& operator=(const LinkedList<T>& arrayListToCopy);
 public:
     /**
      * Constructor
@@ -102,7 +102,7 @@ public:
      * @return a copy of the item at the end
      * @throws out_of_range exception if there is no item to remove
      */
-     std::string removeValueAtEnd();
+     T removeValueAtEnd();
 
     /**
      * removes the item at the front of the list, and returns a copy of that item
@@ -110,7 +110,7 @@ public:
      * @return a copy of the item at index
      * @throws out_of_range exception if there is no item to remove
      */
-     std::string removeValueAtFront();
+     T removeValueAtFront();
 
     /**
      * removes the item at index from the list, and returns a copy of that item
@@ -119,7 +119,7 @@ public:
      * @return a copy of the item at index
      * @throws out_of_range exception if index is invalid
      */
-    std::string removeValueAt(int index);
+     T removeValueAt(int index);
 
     /**
      * removes the item at the front of the list, and returns a copy of that item

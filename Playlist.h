@@ -11,6 +11,7 @@
 #include "Song.h"
 #include "LinkedList.h"
 #include <string>
+#include <iostream>
 
 
 class Playlist{
@@ -29,11 +30,6 @@ public:
     //destructor
     ~Playlist();
 
-    //copy constructor
-    Playlist(const Playlist& playlistToCopy);
-
-    //assignment operator
-    Playlist& operator=(const Playlist& playlistToCopy);
 
     /**
     * gets the name of the playlist
@@ -72,10 +68,7 @@ public:
     * @param itemToRemove - the song you want to remove
     * @post sends an error if the user does not input a proper song object, deletes playlist if the song count is equal to zero
     */
-    void remove(std::string artistToRemove, std::string songToRemove);
-
-    //gets a song from the playlist
-    Song getSong(Song songToFind);
+    void removeSong(std::string artistToRemove, std::string songToRemove);
 
     /**
     * prints the all the songs in the playlist with song with all information
