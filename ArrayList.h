@@ -7,6 +7,8 @@
 
 #include <stdexcept>
 #include <string>
+#include <iostream>
+#include "ArrayLib.h"
 #include "List.h"
 template<class T>
 class ArrayList : public List {
@@ -41,10 +43,10 @@ public:
     ArrayList(int initialCapacity);
 
     //Copy Constructor
-    ArrayList(const ArrayList& arrayListToCopy);
+    ArrayList(const ArrayList<T>& arrayListToCopy);
 
     //Overloaded Assignment Operator
-    ArrayList& operator=(const ArrayList& arrayListToCopy);
+    ArrayList<T>& operator=(const ArrayList<T>& arrayListToCopy);
 
     //Destructor
     ~ArrayList();
@@ -61,7 +63,7 @@ public:
      * @return a copy of the item at index
      * @throws out_of_range exception if index is invalid
      */
-    int getValueAt(int index);
+    T getValueAt(int index);
 
     /**
      * gives a string representation of the current list
@@ -144,5 +146,6 @@ public:
 
 };
 
+#include "ArrayList.inl"
 
 #endif //COMP220_ARRAYLIST_H

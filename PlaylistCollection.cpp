@@ -1,6 +1,7 @@
 //
 // Created by Matt on 11/26/2019.
 //
+#include <iostream>
 #include "PlaylistCollection.h"
 
 //default constructor
@@ -8,10 +9,11 @@ PlaylistCollection::PlaylistCollection(){
     playlistArray = new ArrayList<Playlist>(10);
 }
 
+//todo
 PlaylistCollection::PlaylistCollection(const PlaylistCollection& playlistCollectionToCopy){
-
 }
 
+//todo
 PlaylistCollection::PlaylistCollection& operator=(const PlaylistCollection& playlistCollectionToCopy){
 
 }
@@ -20,29 +22,28 @@ void PlaylistCollection::add(Playlist playlistToAdd){
     playlistArray->insertAtEnd(playlistToAdd);
 }
 
-//todo
-void PlaylistCollection::remove(Playlist itemToRemove){
-
+void PlaylistCollection::remove(std::string itemToRemove){
+    for(int i=0; i <= playlistArray->itemCount(); i++){
+        Playlist playlistToLookAt = playlistArray->getValueAt(i);
+        if(playlistToLookAt.getName() == itemToRemove){
+            delete playlistToLookAt;
+        }
+    }
 }
 
-std::string PlaylistCollection::printCollection(){
-    std::string playlistsAsString;
+void PlaylistCollection::printCollection(){
+    std::string playlistAsString;
 
-    if (currCapacity >= 1){
-        for (int i = 0; i < currPlaylistCount; i++){
-            playlistsAsString += std::to_string(playlistArray[i].getName);
-            playlistsAsString += " : ";
-            playlistsAsString += std::to_string(playlistArray[i].getDuration);
-            playlistsAsString += " Minutes";
-            playlistsAsString += "\n";
-        }
-        return playlistsAsString;
+    for(int i=0; i <= playlistArray->itemCount(); i++) {
+        Playlist playlistToLookAt = playlistArray->getValueAt(i);
+        playlistAsString += playlistToLookAt.getName();
+        playlistAsString += " : ";
+        playlistAsString += playlistToLookAt.getDuration();
+        playlistAsString += " Minutes";
+        std::cout << playlistAsString << std::endl;
+        playlistAsString = "";
     }
-    else{
-        playlistsAsString = "No playlists made yet";
 
-        return playlistsAsString;
-    }
 }
 
 //todo

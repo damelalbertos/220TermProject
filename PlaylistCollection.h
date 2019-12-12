@@ -40,14 +40,14 @@ public:
     * @param itemToRemove - the playlist you want to remove
     * @post sends an error if the user does not input a proper playlist name or the playlist is not present
     */
-    void remove(Playlist itemToRemove);
+    void remove(std::string itemToRemove);
 
     /**
     * prints the names of all the playlists and their durations
     * @returns a string of all the playlists in the collection
     * @post sends an error if the list is empty
     */
-    std::string printCollection();
+    void printCollection();
 
     /**
     * saves the names, the duration and all songs incldued in an indidvidual playlist to a txt file

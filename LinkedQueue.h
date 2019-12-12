@@ -48,7 +48,7 @@ public:
      * Searches an int array for a certain value
      * @return the index of the first occurrence of numToFind if it is present, otherwise returns -1
      */
-    int find(T itemToFind);
+    int find(std::string itemParameter1, std::string itemParameter2);
 
     /**
      * removes the item at index from the list, and returns a copy of that item
@@ -63,5 +63,7 @@ public:
     bool isEmpty();
 
 };
+
+#include "LinkedNode.inl"
 
 #endif //STACKSANDQUEUES_QUEUE_H

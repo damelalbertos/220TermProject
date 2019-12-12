@@ -10,21 +10,27 @@ Library::Library(){
     currCapacity = 10;
 }
 
-Library::~Library();
+Library::~Library(){
 
-Library::Library(const Library& songCollectionToCopy);
-
-Library::Library& operator=(const Library& songCollectionToCopy);
-
-void Library::add(Song itemToAdd){
-    allSongs.insertAtEnd(itemToAdd);
 }
 
-//todo
+Library::Library(const Library& songCollectionToCopy){
+
+}
+
+Library::Library& operator=(const Library& songCollectionToCopy){
+
+}
+
+void Library::add(Song itemToAdd){
+    allSongs->insertAtEnd(itemToAdd);
+}
+
+
 void Library::remove(Song itemToRemove){
     int songIndex;
-    songIndex = allSongs.find(itemToRemove);
-    allSongs.removeValueAt(songIndex);
+    songIndex = allSongs->find(itemToRemove);
+    allSongs->removeValueAt(songIndex);
 }
 
 //todo
@@ -48,10 +54,13 @@ void Library::printCollection(){
 
 //todo
 std::string Library::getSong(std::string songTitle){
+
 }
 
 //todo
-std::string Library::getArtist(std::string artistName);
+std::string Library::getArtist(std::string artistName){
+
+}
 
 void Library::saveCollection(std::string filename){
     std::ofstream outf(filename);

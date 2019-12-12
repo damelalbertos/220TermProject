@@ -1,6 +1,4 @@
-//
-// Created by Toby Dragon on 10/24/17.
-//
+
 #include "LinkedQueue.h"
 
 //Creates an empty queue
@@ -98,10 +96,10 @@ T LinkedQueue<T>::dequeue(){
 }
 
 template<class T>
-int LinkedQueue<T>::find(T itemParameter1, itemParameter2){
+int LinkedQueue<T>::find(std::string itemParameter1, std::string itemParameter2){
     int indexToReturn = -1;
     end = front;
-    while(end->getItem() != itemParameter1){
+    while(end->getNext() != nullptr){
         indexToReturn++;
         end = end->getNext();
     }

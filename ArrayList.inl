@@ -1,9 +1,8 @@
 //
 // Created by Matt on 10/15/2019.
 //
-#include <iostream>
+
 #include "ArrayList.h"
-#include "ArrayLib.h"
 
 template<class T>
 ArrayList<T>::ArrayList(int initialCapacity) {
@@ -64,7 +63,7 @@ void ArrayList<T>::insertAtEnd(T itemToAdd){
 }
 
 template<class T>
-int ArrayList<T>::getValueAt(int index){
+T ArrayList<T>::getValueAt(int index){
     if (index < 0 || index > currItemCount) {
         throw std::out_of_range("Bad index given to getValueAt: "+ std::to_string(index));
     }

@@ -13,13 +13,22 @@ Playlist::Playlist(std::string playlistName){
 }
 
 //destructor
-Playlist::~Playlist();
+Playlist::~Playlist(){
+    songsInPlaylist->dequeue();
+    delete songsInPlaylist;
+}
 
+//todo
 //copy constructor
-Playlist::Playlist(const Playlist& playlistToCopy);
+Playlist::Playlist(const Playlist& playlistToCopy){
 
+}
+
+//todo
 //assignment operator
-Playlist::Playlist& operator=(const Playlist& playlistToCopy);
+Playlist::Playlist& operator=(const Playlist& playlistToCopy){
+
+}
 
 std::string Playlist::getName(){
     return playlistName;
@@ -44,16 +53,16 @@ std::string Playlist::played(){
     songPlaying->addPlayCount();
     std::string songAsString = songPlaying->toString();
     return songAsString;
-
-}
-
-
-void Playlist::remove(std::string artistToRemove, std::string songToRemove){
-    songsInPlaylist
-    songsInPlaylist->remove(artistToRemove, songToRemove);
 }
 
 //todo
+void Playlist::remove(std::string artistToRemove, std::string songToRemove){
+    for(int i=0; i <= songCount; i++){
+        Song songToLookAt = songsInPlaylist->
+
+    }
+}
+
 std::string Playlist::printPlaylist(){
     std::string playlistAsString;
     for(int i=0; i <= songCount; i++){
