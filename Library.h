@@ -7,10 +7,9 @@
 
 #include "Song.h"
 #include "ArrayList.h"
-#include "MusicCollection.h"
 #include "File.h"
 
-class Library : public MusicCollection{
+class Library{
 
 private:
     ArrayList<Song>* allSongs;

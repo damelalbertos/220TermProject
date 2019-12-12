@@ -9,7 +9,7 @@
 #include "ArrayList.h"
 
 
-class PlaylistCollection : public MusicCollection{
+class PlaylistCollection {
 
 private:
 

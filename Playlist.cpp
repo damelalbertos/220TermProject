@@ -43,7 +43,7 @@ std::string Playlist::played(){
     return songAsString;
 }
 
-void Playlist::removeSong(std::string artistToRemove, std::string songToRemove){
+void Playlist::remove(std::string artistToRemove, std::string songToRemove){
     for(int i=0; i <= songCount; i++){
         Song* songToLookAt = songsInPlaylist->getValueAt(i);
         if(songToLookAt->getArtist() == artistToRemove && songToLookAt->getTitle() == songToRemove){
@@ -53,7 +53,7 @@ void Playlist::removeSong(std::string artistToRemove, std::string songToRemove){
 
 }
 
-std::string Playlist::printPlaylist(){
+std::string Playlist::printCollection(){
     std::string playlistAsString;
     for(int i=0; i <= songCount; i++){
         Song* songToLookAt = songsInPlaylist->getValueAt(i);

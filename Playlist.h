@@ -5,7 +5,6 @@
 #ifndef PROJECT_PLAYLIST_H
 #define PROJECT_PLAYLIST_H
 
-#include "MusicCollection.h"
 #include "LinkedNode.h"
 #include "Song.h"
 #include "LinkedList.h"
@@ -67,13 +66,13 @@ public:
     * @param itemToRemove - the song you want to remove
     * @post sends an error if the user does not input a proper song object, deletes playlist if the song count is equal to zero
     */
-    void removeSong(std::string artistToRemove, std::string songToRemove);
+    void remove(std::string artistToRemove, std::string songToRemove);
 
     /**
     * prints the all the songs in the playlist with song with all information
     * @post sends error if list is empty
     */
-    std::string printPlaylist();
+    std::string printCollection();
 
     /**
     * saves the playlist to a txt file
