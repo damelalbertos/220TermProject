@@ -15,7 +15,31 @@ PlaylistCollection::PlaylistCollection(const PlaylistCollection& playlistCollect
 }
 
 void PlaylistCollection::genRandPlaylist(std::string name, float duration) {
-    //TODO Matt
+    //TODO
+    Playlist newRandPlaylist = Playlist(name);
+    Song newSongToAdd;
+
+    int randNumber;
+    //library currSongCount
+    int range = currSongCount - 0;
+    range = range + 1;
+
+    while(newRandPlaylist.getDuration()<= duration) {
+        randNumber = rand()% range + 0
+        newSongToAdd = library[randNumber];
+        if(newRandPlaylist.getSongCount() == 0) {
+            newRandPlaylist.add(newSongToAdd);
+        }
+        else {
+            for (int i = 0; i <= newRandPlaylist.getSongCount(); i++){
+                if(newRandPlaylist.songsInPlaylist->getValueAt(i)* = newSongToAdd) {
+                    randNumber = rand()% range + 0
+                }
+            }
+            newRandPlaylist.add(newSongToAdd);
+
+        }
+    }
 }
 
 Playlist PlaylistCollection::getPlaylist(std::string name) {
@@ -76,7 +100,13 @@ void PlaylistCollection::printAPlaylist(std::string playlistName){
 void PlaylistCollection::removeFromAll(Song songToRemove) {
     std::string artist = songToRemove.getArtist();
     std::string name = songToRemove.getTitle();
-    //todo Matt: for loop through every playlist in the collection and call remove using the artist and name
+    Playlist playlistToLookAt;
+    for (int i = 0; i <= playlistArray->itemCount(); i++) {
+        playlistToLookAt = playlistArray->getValueAt(i);
+        for (int j = 0; j <= playlistToLookAt.getSongCount(); j++) {
+            playlistToLookAt.remove(artist, name);
+        }
+    }
 }
 
 //todo Matt

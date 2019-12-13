@@ -5,7 +5,7 @@
 #ifndef TERM_PROJECT_MASTERTEST_H
 #define TERM_PROJECT_MASTERTEST_H
 
-#include "PlaylistAndLibraryCollectionTests.cpp"
+#include "PlaylistCollectionTests.cpp"
 #include "LibraryTests.cpp"
 #include "FileTest.cpp"
 #include "SongAndPlaylistTests.cpp"
