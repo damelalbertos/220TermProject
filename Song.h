@@ -74,7 +74,7 @@ public:
     //executables
     void addPlayCount();
 
-    void clearPlayCount(int num);
+    void clearPlayCount();
 
     std::string toString();
 

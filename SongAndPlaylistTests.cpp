@@ -39,20 +39,20 @@ void enqueuePlaylistTest(Playlist testPlaylist){
     Song* mySong5ptr = &mySong5;
 
 
-    testPlaylist.add(mySong1ptr);
-    testPlaylist.add(mySong2ptr);
-    testPlaylist.add(mySong3ptr);
-    testPlaylist.add(mySong4ptr);
-    testPlaylist.add(mySong5ptr);
+    testPlaylist.add(mySong1);
+    testPlaylist.add(mySong2);
+    testPlaylist.add(mySong3);
+    testPlaylist.add(mySong4);
+    testPlaylist.add(mySong5);
 
     testPlaylist.getSongCount();
 
-    testPlaylist.printPlaylist();
+    testPlaylist.printCollection();
     testPlaylist.played();
-    testPlaylist.printPlaylist();
+    testPlaylist.printCollection();
 
-    testPlaylist.removeSong("The Knocks", "No Requests");
-    testPlaylist.printPlaylist();
+    testPlaylist.remove("The Knocks", "No Requests");
+    testPlaylist.printCollection();
 }
 
 void nameAndDurationPlaylistTests(Playlist testPlaylist){
