@@ -86,7 +86,7 @@ void PlaylistCollection::saveCollection(std::string filename){
         //for (int i = 0; i <= placeholder; i++){
             //get current playlist
             //call Playlist::saveCollection() on the playlist
-            //outf << playlist name << "\t" << playlist duration << playlist songCount << std::endl;
+            //outf << playlist name << "\t" << playlist duration << playlist songCount << "\n";
         }
         outf.close();
     }

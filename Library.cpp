@@ -75,13 +75,14 @@ Song Library::getSong(std::string artistName, std::string songTitle){
     }
 }
 
-std::string Library::getArtist(std::string artistName){
+void Library::getArtist(std::string artistName){
     for (int i = 0; i < currSongCount; i++){
         Song currentSong = allSongs->getValueAt(i);
         if (currentSong.getArtist() == artistName){
             std::cout << currentSong.toString() << std::endl;
         }
     }
+    std::cerr << "No songs by " << artistName << " were found in the library." <<std::endl;
 }
 
 void Library::saveCollection(std::string filename){
@@ -89,7 +90,7 @@ void Library::saveCollection(std::string filename){
     if (outf){
         for (int i = 0; i <= currSongCount; i++){
             Song currentSong = allSongs->getValueAt(i);
-            outf << currentSong.getArtist() << "\t" << currentSong.getTitle() << "\t" << currentSong.getDuration() << "\t" << currentSong.getPlayCount() << std::endl;
+            outf << currentSong.getArtist() << "\t" << currentSong.getTitle() << "\t" << (currentSong.getDuration() * 1000) << "\t" << currentSong.getPlayCount() << "\n";
         }
         outf.close();
     }
@@ -133,7 +134,7 @@ void Library::discontinue(std::string filename, PlaylistCollection playlists) {
                 Song newSong = Song(artist,name,duration);
                 if (getSong(artist,name) == newSong) {
                     playlists.removeFromAll(getSong(artist,name));
-                    allSongs->find(getSong(artist,name));
+                    remove(getSong(artist,name));
                 }
             }
         }

@@ -78,7 +78,7 @@ void Playlist::saveCollection(){
     if (outf){
         for (int i = 0; i <= songCount; i++){
             Song* currentSong = songsInPlaylist->getValueAt(i);
-            outf << currentSong->getArtist() << "\t" << currentSong->getTitle() << "\t" << currentSong->getDuration() << "\t" << currentSong->getPlayCount() << std::endl;
+            outf << currentSong->getArtist() << "\t" << currentSong->getTitle() << "\t" << (currentSong->getDuration() * 1000) << "\t" << currentSong->getPlayCount() << "\n";
         }
         outf.close();
     }

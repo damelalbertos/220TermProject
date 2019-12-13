@@ -82,10 +82,9 @@ public:
 
     /**
     * returns all of the songs of an artist
-    * @returns the song object if it is in the library
-    * @post sends an error if the list is empty
+    * @post prints all songs by an artist
     */
-    std::string getArtist(std::string artistName);
+    void getArtist(std::string artistName);
 
     /**
     * saves the names, the duration and all songs to a txt file
