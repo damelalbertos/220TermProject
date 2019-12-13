@@ -3,6 +3,7 @@
 //
 #include <iostream>
 #include "PlaylistCollection.h"
+#include "Library.h"
 
 //default constructor
 PlaylistCollection::PlaylistCollection(){
@@ -14,7 +15,7 @@ PlaylistCollection::PlaylistCollection(const PlaylistCollection& playlistCollect
 }
 
 void PlaylistCollection::genRandPlaylist(std::string name, float duration) {
-
+    //TODO Matt
 }
 
 Playlist PlaylistCollection::getPlaylist(std::string name) {
