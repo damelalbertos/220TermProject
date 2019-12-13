@@ -56,7 +56,7 @@ void loadLibraryTest(){
 }
 
 
-int main(){
+int runFileTests(){
     countCharTest();
     toStringTest();
     toListTest();
