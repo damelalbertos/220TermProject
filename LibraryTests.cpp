@@ -18,13 +18,7 @@ void addTests(){
     testLib.add(mySong3);
 
 
-    std::cout << "Should be:\n"
-                << "Artist:\tTitle:\tDuration (seconds):\tPlay Count:\n"
-                << "King Gizzard and the Lizard Wizard\tThe spider and me\t193.2\t0\n"
-                << "Led Zeppelin\tStairway to Heaven\t481.8\t0\n"
-                << "Lorde\tThe Love Club\t202.2\t0" << std::endl;
 
-    testLib.printCollection();
 }
 
 void removeTests(){

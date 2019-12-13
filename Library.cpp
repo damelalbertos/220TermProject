@@ -22,6 +22,14 @@ ArrayList<Song>* Library::getCollection(){
     return allSongs;
 }
 
+int Library::getCurrCapacity() {
+    return currCapacity;
+}
+
+int Library::getCurrSongCount() {
+    return currSongCount;
+}
+
 void Library::add(Song itemToAdd){
     allSongs->insertAtEnd(itemToAdd);
 }

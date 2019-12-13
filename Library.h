@@ -41,6 +41,18 @@ public:
     ArrayList<Song>* getCollection();
 
     /**
+     * returns the currSongCount
+     * @return currSongCount
+     */
+    int getCurrSongCount();
+
+    /**
+     * returns the currCapacity
+     * @return currCapacity
+     */
+    int getCurrCapacity();
+
+    /**
     * removes a song from the list of songs and shifts the rest down if necessary
     * @param itemToRemove - the song you want to remove
     * @post sends an error if the user does not input a proper song name or the song is not present
