@@ -35,6 +35,12 @@ public:
     void add(Song itemToAdd);
 
     /**
+     * returns the collection
+     * @return allSongs
+     */
+    ArrayList<Song>* getCollection();
+
+    /**
     * removes a song from the list of songs and shifts the rest down if necessary
     * @param itemToRemove - the song you want to remove
     * @post sends an error if the user does not input a proper song name or the song is not present

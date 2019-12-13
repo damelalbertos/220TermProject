@@ -18,6 +18,9 @@ Library::Library(const Library& songCollectionToCopy){
 
 }
 
+ArrayList<Song>* Library::getCollection(){
+    return allSongs;
+}
 
 void Library::add(Song itemToAdd){
     allSongs->insertAtEnd(itemToAdd);
