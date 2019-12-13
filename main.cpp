@@ -1,5 +1,6 @@
 #include <iostream>
 #include "UserInterface.h"
+#include "MasterTest.h"
 
 int main() {
     //UI SET UP
@@ -11,7 +12,7 @@ int main() {
     std::cout << "Hi! Would you like to Test your code or start Auto DJ?" << std::endl;
     std::cout << "Type ""Test"" or ""DJ""." << std::endl;
     if (command == "Test" || command == "test"){
-        //runtests()
+        runAllTests();
     }
     else{
         std::cout << "Welcome to Auto DJ!" << std::endl;
