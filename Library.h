@@ -78,7 +78,7 @@ public:
     * @returns Song object if found
     * @post if not found it prints the info of the song
     */
-    std::string getSong(std::string artistName, std::string songTitle);
+    Song getSong(std::string artistName, std::string songTitle);
 
     /**
     * returns all of the songs of an artist
