@@ -13,6 +13,10 @@ PlaylistCollection::PlaylistCollection(const PlaylistCollection& playlistCollect
     //todo
 }
 
+PlaylistCollection::~PlaylistCollection() {
+    delete playlistArray;
+}
+
 void PlaylistCollection::genRandPlaylist(std::string name, float duration, Library songLib) {
 
     Playlist newRandPlaylist = Playlist(name);
@@ -41,9 +45,12 @@ void PlaylistCollection::genRandPlaylist(std::string name, float duration, Libra
     }
 }
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> 2a5eee6917e256008a464bd759d61756a637c524
 void PlaylistCollection::add(Playlist playlistToAdd){
     playlistArray->insertAtEnd(playlistToAdd);
 }

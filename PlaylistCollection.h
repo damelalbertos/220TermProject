@@ -34,7 +34,10 @@ public:
      */
     void genRandPlaylist(std::string name, float duration, Library songLib);
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2a5eee6917e256008a464bd759d61756a637c524
     /**
     * adds a playlist to the end of the list of playlists
     * @param itemToAdd - the playlist you want to add

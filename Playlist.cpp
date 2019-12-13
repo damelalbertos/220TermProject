@@ -30,7 +30,10 @@ std::string Playlist::getName(){
     return playlistName;
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 2a5eee6917e256008a464bd759d61756a637c524
 float Playlist::getDuration(){
     return duration;
 }
