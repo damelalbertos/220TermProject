@@ -9,12 +9,12 @@ PlaylistCollection::PlaylistCollection(){
     playlistArray = new ArrayList<Playlist>(10);
 }
 
-PlaylistCollection::~PlaylistCollection(){
-    delete playlistArray;
-}
-
 PlaylistCollection::PlaylistCollection(const PlaylistCollection& playlistCollectionToCopy){
     //todo
+}
+
+PlaylistCollection::~PlaylistCollection() {
+    delete playlistArray;
 }
 
 void PlaylistCollection::genRandPlaylist(std::string name, float duration, Library songLib) {
@@ -44,9 +44,6 @@ void PlaylistCollection::genRandPlaylist(std::string name, float duration, Libra
         }
     }
 }
-
-
-
 
 void PlaylistCollection::add(Playlist playlistToAdd){
     playlistArray->insertAtEnd(playlistToAdd);
