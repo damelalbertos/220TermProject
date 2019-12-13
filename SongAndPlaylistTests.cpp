@@ -81,7 +81,7 @@ void nameAndDurationPlaylistTests(Playlist testPlaylist){
 
 //clear play count test
 
-int main(){
+int runSongAndPlaylistTests(){
     Song mySong1 =  Song("King Gizzard and the Lizard Wizard", "The spider and me", 193.2);
     Song mySong2 =  Song("Led Zeppelin", "Stairway to Heaven", 481.8);
     Song mySong3 =  Song("Lorde", "The Love Club", 202.2);
