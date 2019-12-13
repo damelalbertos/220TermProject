@@ -60,10 +60,9 @@ void PlaylistCollection::printAPlaylist(std::string playlistName){
         if(playlistToLookAt.getName() == playlistName){
             playlistToLookAt.printCollection();
         }
-        else{
-            std::cout << "Playlist Not Found" << std::endl;
-        }
     }
+
+    std::cout << "Playlist Not Found" << std::endl;
 
 }
 
