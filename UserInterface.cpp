@@ -162,15 +162,13 @@ void UserInterface::newPlaylist(std::string playlistName) {
 
 void UserInterface::addSong(std::string songName, std::string artistName, int duration, std::string playlistName) {
     Song* cancion = new Song(artistName, songName, duration);
-    Playlist* pl;
+    Playlist* pl = PlaylistCollection->getPlaylist(playlistName);
     pl->add(cancion);
-    //TODO
 }
 
 void UserInterface::removeSong(std::string songName, std::string artistName, std::string playlistName) {
-    Playlist* pl;
+    Playlist* pl = PlaylistCollection->getPlaylist(playlistName);
     pl->remove(artistName, songName);
-    //TODO
 }
 
 void UserInterface::playNext(std::string playlistName) {
