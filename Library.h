@@ -8,6 +8,7 @@
 #include "Song.h"
 #include "ArrayList.h"
 #include "File.h"
+#include "PlaylistCollection.h"
 
 class Library{
 
@@ -41,6 +42,14 @@ public:
     void remove(Song itemToRemove);
 
     /**
+     * removes all songs in a given file from the library
+     * @param filename - the filename containing songs to discontinue
+     * @param playlists - collection of all playlists
+     * @post removes each song in the file from all playlists and the library
+     */
+     void discontinue(std::string filename, PlaylistCollection playlists);
+
+    /**
     * prints all the info of all the songs
     * @post sends an error if the list is empty
     */
@@ -48,14 +57,14 @@ public:
 
     /**
     * returns the info of a specific song
-    * @returns a string of all the songs in the collection
-    * @post sends an error if the list is empty
+    * @returns Song object if found
+    * @post if not found it prints the info of the song
     */
-    std::string getSong(std::string artistName, std::string songTitle);
+    Song getSong(std::string artistName, std::string songTitle);
 
     /**
     * returns all of the songs of an artist
-    * @returns a string of all the songs in the collection
+    * @returns the song object if it is in the library
     * @post sends an error if the list is empty
     */
     std::string getArtist(std::string artistName);

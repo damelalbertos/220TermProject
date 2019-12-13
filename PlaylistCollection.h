@@ -49,6 +49,13 @@ public:
     void remove(std::string itemToRemove);
 
     /**
+     * removes a song from every playlist in a collection
+     * @param songToRemove
+     * @post the song will be removed from every playlist
+     */
+    void removeFromAll(Song songToRemove);
+
+    /**
     * prints the names of all the playlists and their durations
     * @returns a string of all the playlists in the collection
     * @post sends an error if the list is empty

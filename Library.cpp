@@ -48,17 +48,22 @@ void Library::printCollection(){
     }
 }
 
-//todo
-std::string Library::getSong(std::string artistName, std::string songTitle){
-    for (int i = 0; i < currSongCount; i++){
-        Song currentSong = allSongs->getValueAt(i);
-        if (currentSong.getArtist() == artistName && currentSong.getTitle() == songTitle){
-            std::cout << currentSong.toString() << std::endl;
+Song Library::getSong(std::string artistName, std::string songTitle){
+    if (allSongs->isEmpty()){
+        std::cerr << "Library is empty." << std::endl;
+    }
+    else {
+        for (int i = 0; i < currSongCount; i++) {
+            Song currentSong = allSongs->getValueAt(i);
+            if (currentSong.getArtist() == artistName && currentSong.getTitle() == songTitle) {
+                std::cout << currentSong.toString() << std::endl;
+                return currentSong;
+            }
         }
+        std::cerr << songTitle << " by " << artistName << " was not found in the library." <<std::endl;
     }
 }
 
-//todo
 std::string Library::getArtist(std::string artistName){
     for (int i = 0; i < currSongCount; i++){
         Song currentSong = allSongs->getValueAt(i);
@@ -79,7 +84,7 @@ void Library::saveCollection(std::string filename){
     }
 }
 
-void Library::loadCollection(std::string filename){
+void Library::loadCollection(std::string filename) {
     std::ifstream infile(filename);
     if (infile) {
         while (infile) {
@@ -87,17 +92,41 @@ void Library::loadCollection(std::string filename){
             getline(infile, strInput);
             if (strInput != "") {
                 int size = countChar(strInput, '\t') + 1;
-                std::string* song = toList(strInput, size);
+                std::string *song = toList(strInput, size);
                 std::string artist = song[0];
                 std::string name = song[1];
                 float duration = stoi(song[2]) / 1000;
-                Song newSong = Song(artist, name, duration);
-                add(newSong);
+                if (!getSong(artist, name)) {
+                    Song newSong = Song(artist, name, duration);
+                    add(newSong);
+                }
             }
         }
-    }
-
-    else {
+    } else {
         std::cerr << "File not found." << std::endl;
     }
+}
+
+void Library::discontinue(std::string filename, PlaylistCollection playlists) {
+    std::ifstream infile(filename);
+    if (infile) {
+        while (infile) {
+            std::string strInput;
+            getline(infile, strInput);
+            if (strInput != "") {
+                int size = countChar(strInput, '\t') + 1;
+                std::string *song = toList(strInput, size);
+                std::string artist = song[0];
+                std::string name = song[1];
+                float duration = stoi(song[2]) / 1000;
+                Song newSong = Song(artist,name,duration);
+                if (getSong(artist,name) == newSong) {
+                    playlists.removeFromAll(getSong(artist,name));
+                    allSongs->find(getSong(artist,name));
+                }
+            }
+        }
+
+    }
+
 }

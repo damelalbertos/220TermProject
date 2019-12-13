@@ -72,6 +72,12 @@ void PlaylistCollection::printAPlaylist(std::string playlistName){
 
 }
 
+void PlaylistCollection::removeFromAll(Song songToRemove) {
+    std::string artist = songToRemove.getArtist();
+    std::string name = songToRemove.getTitle();
+    //todo Matt: for loop through every playlist in the collection and call remove using the artist and name
+}
+
 //todo
 void PlaylistCollection::saveCollection(){
 
