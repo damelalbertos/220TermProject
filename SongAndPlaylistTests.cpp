@@ -4,39 +4,36 @@
 #include "Song.h"
 #include "Playlist.h"
 #include "Library.h"
+#include "TestLib.h"
 #include <iostream>
 //constructor test
 void runSongTests(Song mySong1){
-    std::cout << mySong1.toString() << std::endl;
-    std::cout << mySong1.getArtist()<< std::endl;
-    std::cout << mySong1.getTitle()<< std::endl;
-    std::cout << mySong1.getDuration()<< std::endl;
+    printAssertEquals("King Gizzard and the Lizard WizardThe spider and me193.20", mySong1.toString());
+    printAssertEquals("King Gizzard and the Lizard Wizard", mySong1.getArtist());
+    printAssertEquals("The spider and me", mySong1.getTitle());
+    printAssertEquals("193.2", std::to_string(mySong1.getDuration()));
 
-    std::cout << mySong1.getPlayCount()<< std::endl;
+    printAssertEquals(0, mySong1.getPlayCount());
     mySong1.addPlayCount();
-    std::cout << mySong1.getPlayCount()<< std::endl;
+    printAssertEquals(1, mySong1.getPlayCount());
     mySong1.addPlayCount();
-    std::cout << mySong1.getPlayCount()<< std::endl;
+    printAssertEquals(2, mySong1.getPlayCount());
     mySong1.clearPlayCount();
-    std::cout << mySong1.getPlayCount()<< std::endl;
+    printAssertEquals(0, mySong1.getPlayCount());
 
-    std::cout << mySong1.toString() << std::endl;
+    printAssertEquals("King Gizzard and the Lizard WizardThe spider and me193.20", mySong1.toString());
     Song songCopy = mySong1;
-    std::cout << songCopy.toString() << std::endl;
+    printAssertEquals("King Gizzard and the Lizard WizardThe spider and me193.20", songCopy.toString());
 
 }
 
-void enqueuePlaylistTest(Playlist testPlaylist){
+void enqueuePlaylistTest(){
+    Playlist testPlaylist;
     Song mySong1 =  Song("King Gizzard and the Lizard Wizard", "The spider and me", 193.2);
-    Song* mySong1ptr = &mySong1;
     Song mySong2 =  Song("Led Zeppelin", "Stairway to Heaven", 481.8);
-    Song* mySong2ptr = &mySong2;
     Song mySong3 =  Song("Lorde", "The Love Club", 202.2);
-    Song* mySong3ptr = &mySong3;
     Song mySong4 =  Song("The Knocks", "No Requests", 190.8);
-    Song* mySong4ptr = &mySong4;
     Song mySong5 =  Song("ASAP Ferg", "Work", 166.8);
-    Song* mySong5ptr = &mySong5;
 
 
     testPlaylist.add(mySong1);
@@ -45,13 +42,29 @@ void enqueuePlaylistTest(Playlist testPlaylist){
     testPlaylist.add(mySong4);
     testPlaylist.add(mySong5);
 
-    testPlaylist.getSongCount();
+    printAssertEquals(5,testPlaylist.getSongCount());
 
+    std::cout << "Should be:\n"
+              << "King Gizzard and the Lizard WizardThe spider and me193.20\n"
+              << "Led ZeppelinStairway to Heaven481.80\n"
+              << "LordeThe Love Club202.20\n"
+              << "The KnocksNo Requests190.80\n"
+              << "ASAP FergWork166.80"  << std::endl;
     testPlaylist.printCollection();
     testPlaylist.played();
+    std::cout << "Should be:\n"
+              << "Led ZeppelinStairway to Heaven481.80\n"
+              << "LordeThe Love Club202.20\n"
+              << "The KnocksNo Requests190.80\n"
+              << "ASAP FergWork166.80"  << std::endl;
     testPlaylist.printCollection();
 
     testPlaylist.remove("The Knocks", "No Requests");
+    std::cout << "Should be:\n"
+              << "King Gizzard and the Lizard WizardThe spider and me193.20\n"
+              << "Led ZeppelinStairway to Heaven481.80\n"
+              << "LordeThe Love Club202.20\n"
+              << "ASAP FergWork166.80"  << std::endl;
     testPlaylist.printCollection();
 }
 
@@ -83,16 +96,7 @@ void nameAndDurationPlaylistTests(Playlist testPlaylist){
 
 int runSongAndPlaylistTests(){
     Song mySong1 =  Song("King Gizzard and the Lizard Wizard", "The spider and me", 193.2);
-    Song mySong2 =  Song("Led Zeppelin", "Stairway to Heaven", 481.8);
-    Song mySong3 =  Song("Lorde", "The Love Club", 202.2);
-    Song mySong4 =  Song("The Knocks", "No Requests", 190.8);
-    Song mySong5 =  Song("ASAP Ferg", "Work", 166.8);
-    Song mySong6 =  Song("ASAP Ferg", "Worj", 166.8);
-    if (mySong1 < mySong2){
-        std::cout << "Pass" << std::endl;
-    }
-    if (mySong6 < mySong5){
-        std::cout << "Pass" << std::endl;
-    }
+    runSongTests(mySong1);
+    enqueuePlaylistTest();
 
 }
