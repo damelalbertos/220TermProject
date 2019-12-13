@@ -13,6 +13,9 @@ PlaylistCollection::PlaylistCollection(){
 PlaylistCollection::PlaylistCollection(const PlaylistCollection& playlistCollectionToCopy){
 }
 
+void PlaylistCollection::genRandPlaylist(std::string name, float duration) {
+    
+}
 
 
 void PlaylistCollection::add(Playlist playlistToAdd){

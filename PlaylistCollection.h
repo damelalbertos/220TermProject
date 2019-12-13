@@ -24,6 +24,13 @@ public:
 
     //copy constructor
     PlaylistCollection(const PlaylistCollection& playlistCollectionToCopy);
+
+    /**
+     * genereates a playlist of random songs based off the duration
+     * @param name
+     * @param duration
+     */
+    void genRandPlaylist(std::string name, float duration);
     
 
     /**
