@@ -48,6 +48,13 @@ public:
     void printCollection();
 
     /**
+    * prints the requested playlist and its durations
+    * @returns a string of all the playlists in the collection
+    * @post sends an error if the list is empty
+    */
+    void printAPlaylist(std::string playlistName);
+
+    /**
     * saves the names, the duration and all songs incldued in an indidvidual playlist to a txt file
     * @post sends an error if the list is empty
     */

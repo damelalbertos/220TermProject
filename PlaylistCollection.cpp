@@ -47,6 +47,21 @@ void PlaylistCollection::printCollection(){
 
 }
 
+void PlaylistCollection::printAPlaylist(std::string playlistName){
+    std::string playlistAsString;
+
+    for(int i=0; i <= playlistArray->itemCount(); i++) {
+        Playlist playlistToLookAt = playlistArray->getValueAt(i);
+        if(playlistToLookAt.getName() == playlistName){
+            playlistToLookAt.printCollection();
+        }
+        else{
+            std::cout << "Playlist Not Found" << std::endl;
+        }
+    }
+
+}
+
 //todo
 void PlaylistCollection::saveCollection(){
 
