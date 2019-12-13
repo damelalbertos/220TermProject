@@ -11,9 +11,10 @@
 #include "File.h"
 #include <string>
 #include <iostream>
+#include "MusicCollection.h"
 
 
-class Playlist{
+class Playlist {
 
 private:
     std::string playlistName;

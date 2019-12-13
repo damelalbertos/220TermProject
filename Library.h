@@ -9,8 +9,9 @@
 #include "ArrayList.h"
 #include "File.h"
 #include "PlaylistCollection.h"
+#include "MusicCollection.h"
 
-class Library{
+class Library : MusicCollection{
 
 private:
     ArrayList<Song>* allSongs;

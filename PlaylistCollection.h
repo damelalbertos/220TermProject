@@ -7,11 +7,12 @@
 
 #include "Playlist.h"
 #include "ArrayList.h"
+#include "MusicCollection.h"
 #include "Library.h"
 
 
 
-class PlaylistCollection {
+class PlaylistCollection : MusicCollection {
 
 private:
 
