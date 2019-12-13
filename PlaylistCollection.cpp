@@ -14,7 +14,7 @@ PlaylistCollection::PlaylistCollection(const PlaylistCollection& playlistCollect
 }
 
 void PlaylistCollection::genRandPlaylist(std::string name, float duration) {
-    
+
 }
 
 
