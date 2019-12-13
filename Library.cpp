@@ -96,8 +96,8 @@ void Library::loadCollection(std::string filename) {
                 std::string artist = song[0];
                 std::string name = song[1];
                 float duration = stoi(song[2]) / 1000;
-                if (!getSong(artist, name)) {
-                    Song newSong = Song(artist, name, duration);
+                Song newSong = Song(artist, name, duration);
+                if ((getSong(artist,name) == newSong) == false) {
                     add(newSong);
                 }
             }

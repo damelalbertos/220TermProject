@@ -71,15 +71,17 @@ public:
 
     /**
     * saves the names, the duration and all songs incldued in an indidvidual playlist to a txt file
+     * @param filename - name of the file to save to
     * @post sends an error if the list is empty
     */
-    void saveCollection();
+    void saveCollection(std::string filename);
 
     /**
     * loads the saved txt file of all the playlists and can be used to add new playlists
+     * @param filename - name of the file to save to
     * @post sends an error if the txt file is empty
     */
-    void loadToCollection();
+    void loadToCollection(std::string filename);
 
 
 };

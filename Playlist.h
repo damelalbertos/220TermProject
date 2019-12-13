@@ -8,6 +8,7 @@
 #include "LinkedNode.h"
 #include "Song.h"
 #include "LinkedList.h"
+#include "File.h"
 #include <string>
 #include <iostream>
 
@@ -83,9 +84,10 @@ public:
 
     /**
     * loads the playlist from a txt file
+     * @param filename - name of file to import into playlist
     * @post sends error if the txt has incorrect data but still uplaod what is possible
     */
-    void loadCollection();
+    void loadCollection(std::string filename);
 
 };
 

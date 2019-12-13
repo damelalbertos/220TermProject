@@ -71,12 +71,39 @@ std::string Playlist::printCollection(){ // add playlistName parameter
     std::cout << "Duration left in playlist: " << getDuration() << std::endl;
 }
 
-//todo
+
 void Playlist::saveCollection(){
+    std::string filename = playlistName + ".txt";
+    std::ofstream outf(filename);
+    if (outf){
+        for (int i = 0; i <= songCount; i++){
+            Song* currentSong = songsInPlaylist->getValueAt(i);
+            outf << currentSong->getArtist() << "\t" << currentSong->getTitle() << "\t" << currentSong->getDuration() << "\t" << currentSong->getPlayCount() << std::endl;
+        }
+        outf.close();
+    }
 
 }
 
-//todo
-void Playlist::loadCollection(){
-
+//todo Matt
+void Playlist::loadCollection(std::string filename){
+    std::ifstream infile(filename);
+    if (infile) {
+        while (infile) {
+            std::string strInput;
+            getline(infile, strInput);
+            if (strInput != "") {
+                int size = countChar(strInput, '\t') + 1;
+                std::string *song = toList(strInput, size);
+                std::string artist = song[0];
+                std::string name = song[1];
+                float duration = stoi(song[2]) / 1000;
+                Song newSong = Song(artist, name, duration);
+                //check to see if song is in playlist. if it's not:
+                    add(newSong);
+            }
+        }
+    } else {
+        std::cerr << "File not found." << std::endl;
+    }
 }
