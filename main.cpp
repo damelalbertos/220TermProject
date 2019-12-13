@@ -10,16 +10,18 @@ int main() {
     //PROGRAM
     std::cout << "Hi! Would you like to Test your code or start Auto DJ?" << std::endl;
     std::cout << "Type ""Test"" or ""DJ""." << std::endl;
-    std::cin >> command;
     if (command == "Test" || command == "test"){
         //runtests()
     }
     else{
         std::cout << "Welcome to Auto DJ!" << std::endl;
+    }
+    while (command != "quit"){
         std::cout << typeCommand << std::endl;
         std::cin >> command;
         user->reactToCommand(command);
     }
+
     return 0;
 }
 
