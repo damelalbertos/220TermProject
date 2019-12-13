@@ -6,7 +6,7 @@
 #include "Song.h"
 #include "Library.h"
 
-void addTests(){
+void libraryAddTests(){
     Song mySong1 =  Song("King Gizzard and the Lizard Wizard", "The spider and me", 193.2);
     Song mySong2 =  Song("Led Zeppelin", "Stairway to Heaven", 481.8);
     Song mySong3 =  Song("Lorde", "The Love Club", 202.2);
@@ -24,7 +24,7 @@ void addTests(){
 
 }
 
-void removeTests(){
+void libraryRemoveTests(){
     Song mySong1 =  Song("King Gizzard and the Lizard Wizard", "The spider and me", 193.2);
     Song mySong2 =  Song("Led Zeppelin", "Stairway to Heaven", 481.8);
     Song mySong3 =  Song("Lorde", "The Love Club", 202.2);
@@ -211,7 +211,7 @@ void getArtistTests(){
 
 }
 
-void saveCollectionTests(){
+void saveLibraryTests(){
     Song mySong1 =  Song("King Gizzard and the Lizard Wizard", "The spider and me", 193.2);
     Song mySong2 =  Song("Led Zeppelin", "Stairway to Heaven", 481.8);
     Song mySong3 =  Song("Lorde", "The Love Club", 202.2);
@@ -243,16 +243,16 @@ void saveCollectionTests(){
 
 }
 
-int main(){
-    addTests();
+int runLibraryTests(){
+    libraryAddTests();
     getSongTests();
     getArtistTests();
-    removeTests();
+    libraryRemoveTests();
     getCurrSongCountTests();
     getCurrCapacityTests();
     testPrintLibrary();
     testLoadLibrary();
     testDiscontinue();
-    saveCollectionTests();
+    saveLibraryTests();
     return 0;
 }

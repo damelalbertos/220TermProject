@@ -89,7 +89,6 @@ void Playlist::saveCollection(){
 
 }
 
-//todo Matt
 void Playlist::loadCollection(std::string filename){
     std::ifstream infile(filename);
     if (infile) {

@@ -4,6 +4,7 @@
 #include "Playlist.h"
 #include "PlaylistCollection.h"
 #include "Song.h"
+#include "TestLib.h"
 
 PlaylistCollection createPlaylistCollectionForTest(){
     Song mySong1 =  Song("King Gizzard and the Lizard Wizard", "The spider and me", 193.2);
@@ -41,7 +42,7 @@ PlaylistCollection createPlaylistCollectionForTest(){
 }
 
 
-void addTests(){
+void playlistCollectionAddTests(){
     std::cout << "-----------AddTest----------" << std::endl;
     PlaylistCollection testCollection = createPlaylistCollectionForTest();
 
@@ -52,8 +53,9 @@ void addTests(){
 }
 
 
-void removeTest(){
+void playlistCollectionRemoveTest(){
     PlaylistCollection testCollection = createPlaylistCollectionForTest();
+    Library testLib = Library();
 
     testLib.loadCollection("testSmall.txt");
 
@@ -101,15 +103,12 @@ void saveCollectionTests(){
 
 }
 
-int main(){
-    addTests();
-    removeTest();
+int runPlaylistAndLibraryCollectionTests() {
+    playlistCollectionAddTests();
+    playlistCollectionRemoveTest();
     printCollectionTest();
     printAPlaylistTests();
     removeFromAllTests();
     saveCollectionTests();
     return 0;
-
-void runPlaylistAndLibraryCollectionTests(){
-
 }

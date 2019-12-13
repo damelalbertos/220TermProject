@@ -53,11 +53,8 @@ void toListTest(){
 
 
 int runFileTests(){
-    std::cout << "(--------Testing countChar--------)" << std::endl;
     countCharTest();
-    std::cout << "(--------Testing toString--------)" << std::endl;
     toStringTest();
-    std::cout << "(--------Testing toList--------)" << std::endl;
     toListTest();
     return 0;
 }
