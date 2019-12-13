@@ -44,6 +44,8 @@ public:
     */
     float getDuration();
 
+    bool findSong(Song* songToFind);
+
     /**
     * gets the number of songs in a playlist
     * @returns songCount

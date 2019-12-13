@@ -30,10 +30,15 @@ std::string Playlist::getName(){
     return playlistName;
 }
 
-<<<<<<< HEAD
+bool Playlist::findSong(Song* songToFind){
+    int found = songsInPlaylist->find(songToFind);
+    if (found != -1){
+        return true;
+    } else{
+        return false;
+    }
+}
 
-=======
->>>>>>> 2a5eee6917e256008a464bd759d61756a637c524
 float Playlist::getDuration(){
     return duration;
 }
