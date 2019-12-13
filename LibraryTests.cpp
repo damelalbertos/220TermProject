@@ -52,9 +52,9 @@ void removeTests(){
 
 
 
-int main(){
-
-    addTests();
-
-    return 0;
-}
+//int main(){
+//
+//    addTests();
+//
+//    return 0;
+//}
