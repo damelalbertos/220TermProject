@@ -61,7 +61,7 @@ public:
      * call add function from Library class in a loop, going through file
      * HOW TO KEEP TRACK OF DUPLICATES???
      */
-    void import(std::string filename);
+    static void import(std::string filename);
 
     /*
      * Remove all songs on the file from the library and any playlists its on
@@ -142,7 +142,7 @@ public:
      * call saveCollection function from Library Class, call
      * saveCollection function from PlaylistCollection Class
      */
-    void quit();
+    void quit(std::string filename);
 
 };
 
