@@ -49,6 +49,12 @@ public:
     */
     int getSongCount();
 
+    /**
+     * returns songsInPlaylist
+     * @return songsInPlaylist
+     *
+     */
+    LinkedList<Song*>* getPlaylist();
 
     /**
     * adds a song to the end of the playlist queue

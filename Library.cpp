@@ -60,7 +60,7 @@ void Library::printCollection(){
 }
 
 Song Library::getSong(std::string artistName, std::string songTitle){
-    if (allSongs->isEmpty()){
+    if (currSongCount == 0){
         std::cerr << "Library is empty." << std::endl;
     }
     else {

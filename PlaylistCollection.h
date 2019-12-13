@@ -7,6 +7,8 @@
 
 #include "Playlist.h"
 #include "ArrayList.h"
+#include "Library.h"
+
 
 
 class PlaylistCollection {
@@ -30,7 +32,7 @@ public:
      * @param name
      * @param duration
      */
-    void genRandPlaylist(std::string name, float duration);
+    void genRandPlaylist(std::string name, float duration, Library songLib);
 
     Playlist getPlaylist(std::string name);
 

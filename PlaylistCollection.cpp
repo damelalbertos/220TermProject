@@ -3,37 +3,36 @@
 //
 #include <iostream>
 #include "PlaylistCollection.h"
-#include "Library.h"
 
 //default constructor
 PlaylistCollection::PlaylistCollection(){
     playlistArray = new ArrayList<Playlist>(10);
 }
 
-//todo
 PlaylistCollection::PlaylistCollection(const PlaylistCollection& playlistCollectionToCopy){
+    //todo
 }
 
-void PlaylistCollection::genRandPlaylist(std::string name, float duration) {
-    //TODO
+void PlaylistCollection::genRandPlaylist(std::string name, float duration, Library songLib) {
+
     Playlist newRandPlaylist = Playlist(name);
     Song newSongToAdd;
 
     int randNumber;
     //library currSongCount
-    int range = currSongCount - 0;
+    int range = songLib.getCurrSongCount();
     range = range + 1;
 
     while(newRandPlaylist.getDuration()<= duration) {
-        randNumber = rand()% range + 0
-        newSongToAdd = library[randNumber];
+        randNumber = rand()% range + 0;
+        newSongToAdd = songLib.getCollection()->getValueAt(randNumber);
         if(newRandPlaylist.getSongCount() == 0) {
             newRandPlaylist.add(newSongToAdd);
         }
         else {
             for (int i = 0; i <= newRandPlaylist.getSongCount(); i++){
-                if(newRandPlaylist.songsInPlaylist->getValueAt(i)* = newSongToAdd) {
-                    randNumber = rand()% range + 0
+                if(newRandPlaylist.getPlaylist()->getValueAt(i)->getArtist() == newSongToAdd.getArtist() && newRandPlaylist.getPlaylist()->getValueAt(i)->getTitle() == newSongToAdd.getTitle()) {
+                    randNumber = rand()% range + 0;
                 }
             }
             newRandPlaylist.add(newSongToAdd);
@@ -83,8 +82,6 @@ void PlaylistCollection::printCollection(){
 
 
 void PlaylistCollection::printAPlaylist(std::string playlistName){
-    std::string playlistAsString;
-
 
     for(int i=0; i <= playlistArray->itemCount(); i++) {
         Playlist playlistToLookAt = playlistArray->getValueAt(i);
@@ -113,11 +110,10 @@ void PlaylistCollection::removeFromAll(Song songToRemove) {
 void PlaylistCollection::saveCollection(std::string filename){
     std::ofstream outf(filename);
     if (outf){
-        //for loop through playlist collection
-        //for (int i = 0; i <= placeholder; i++){
-            //get current playlist
-            //call Playlist::saveCollection() on the playlist
-            //outf << playlist name << "\t" << playlist duration << playlist songCount << "\n";
+        for (int i = 0; i < playlistArray->itemCount(); i++){
+            Playlist currentPlaylist = playlistArray->getValueAt(i);
+            currentPlaylist.saveCollection();
+            outf << currentPlaylist.getName() << "\t" << currentPlaylist.getDuration() << currentPlaylist.getSongCount() << "\n";
         }
         outf.close();
     }
@@ -135,10 +131,10 @@ void PlaylistCollection::loadToCollection(std::string filename){
                 int size = countChar(strInput, '\t') + 1;
                 std::string *playlist = toList(strInput, size);
                 std::string name = playlist[0];
-                float duration = std::stoi(playlist[1]);
-                int songCount = std::stoi(playlist[2]);
-                //create new playlist using name/duration/songCount, I think the structure of Playlist needs to be changed for this
-                //add the playlist to the collection
+                Playlist newPlaylist = Playlist(name);
+                std::string playlistFile = newPlaylist.getName() + ".txt";
+                newPlaylist.loadCollection(playlistFile);
+                add(newPlaylist);
             }
         }
     } else {
