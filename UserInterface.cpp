@@ -178,6 +178,13 @@ void UserInterface::playNext(std::string playlistName) {
 void UserInterface::newRandom(std::string playlistName, int duration) {
     PlaylistCollection* pl;
     pl->genRandPlaylist(playlistName, duration);
+
+    Playlist newRandPlaylist = Playlist(playlistName);
+    while(newRandPlaylist.getDuration() <= duration){
+
+    }
+
+
 }
 
 void UserInterface::quit(std:string filename) {
