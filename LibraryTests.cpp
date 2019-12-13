@@ -140,7 +140,7 @@ void testLoadLibrary(){
     testLib.printCollection();
 
 }
-/**
+
 void testDiscontinue(){
     Library testLib = Library();
 
@@ -158,7 +158,7 @@ void testDiscontinue(){
 
     PlaylistCollection unusedCollection;
 
-    testLib.discontinue("testDiscontinue.txt", unusedCollection);
+    testLib.discontinueLib("testDiscontinue.txt");
 
     std::cout << "Should be:\n"
               << "100 gecs\t745 sticky\t141.29\t0\n"
@@ -169,7 +169,7 @@ void testDiscontinue(){
 
     printAssertEquals(3,testLib.getCurrSongCount());
 }
-*/
+
 void getSongTests(){
     Library testLib = Library();
     testLib.loadCollection("testSmall.txt");
@@ -252,7 +252,7 @@ int runLibraryTests(){
     getCurrCapacityTests();
     testPrintLibrary();
     testLoadLibrary();
-    //testDiscontinue();
+    testDiscontinue();
     saveLibraryTests();
     return 0;
 }

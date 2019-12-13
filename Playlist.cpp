@@ -30,9 +30,6 @@ std::string Playlist::getName(){
     return playlistName;
 }
 
-LinkedList<Song*>* Playlist::getPlaylist() {
-    return songsInPlaylist;
-}
 
 float Playlist::getDuration(){
     return duration;

@@ -70,7 +70,7 @@ public:
     */
     std::string played();
 
-    void Playlist::discontinuePlaylist(std::string filename);
+    void discontinuePlaylist(std::string filename);
 
     /**
     * removes a song from anywhere in the playlist

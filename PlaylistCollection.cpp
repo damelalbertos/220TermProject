@@ -41,10 +41,7 @@ void PlaylistCollection::genRandPlaylist(std::string name, float duration, Libra
     }
 }
 
-Playlist PlaylistCollection::getPlaylist(std::string name) {
-    int playlistToReturn = playlistArray->find(name);
-    return playlistArray->getValueAt(playlistToReturn);
-}
+
 
 
 void PlaylistCollection::add(Playlist playlistToAdd){
