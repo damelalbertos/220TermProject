@@ -94,7 +94,10 @@ void UserInterface::reactToCommand(std::string command) {
         duration = stoi(sDuration);
         newRandom(playlistName,duration);
     } else if (command == "quit"){
-        quit();
+        std::string filename;
+        std::cout << "Please type the filename to save your library and playlists." << std::endl;
+        std::cin >> filename;
+        quit(filename);
     }
 }
 
@@ -131,10 +134,13 @@ void UserInterface::songInfo(std::string artist, std::string songTitle) {
 }
 
 void UserInterface::import(std::string filename) {
-    //TODO
+    Library* lib;
+    lib->loadCollection(filename);
 }
 
 void UserInterface::discontinue(std::string filename) {
+    Library* lib;
+    //lib->remove()
     //TODO
 }
 
@@ -144,9 +150,8 @@ void UserInterface::allPlaylists() {
 }
 
 void UserInterface::playlistInfo(std::string playlistName) {
-    Playlist* pl;
-    std::string str = pl->printCollection(playlistName);
-    std::cout << str << std::endl;
+    PlaylistCollection* pl;
+    pl->printAPlaylist(playlistName);
 }
 
 void UserInterface::newPlaylist(std::string playlistName) {
@@ -169,13 +174,17 @@ void UserInterface::removeSong(std::string songName, std::string artistName, std
 }
 
 void UserInterface::playNext(std::string playlistName) {
-    //todo
+    //TODO
 }
 
 void UserInterface::newRandom(std::string playlistName, int duration) {
-    //todo
+    PlaylistCollection* pl;
+    pl->genRandPlaylist(playlistName, duration);
 }
 
-void UserInterface::quit() {
-    //TODO
+void UserInterface::quit(std:string filename) {
+    PlaylistCollection* pl;
+    Library* lib;
+    pl->saveCollection();
+    lib->saveCollection(filename);
 }
