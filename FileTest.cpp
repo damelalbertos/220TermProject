@@ -48,18 +48,16 @@ void toListTest(){
 
 }
 
-//todo
-void loadLibraryTest(){
-    Library testLib;
-    testLib.loadCollection("testSmall.txt");
-    testLib.printCollection();
-}
+
+
 
 
 int runFileTests(){
+    std::cout << "(--------Testing countChar--------)" << std::endl;
     countCharTest();
+    std::cout << "(--------Testing toString--------)" << std::endl;
     toStringTest();
+    std::cout << "(--------Testing toList--------)" << std::endl;
     toListTest();
-    loadLibraryTest();
     return 0;
 }

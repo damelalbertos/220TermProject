@@ -13,6 +13,15 @@ void printAssertEquals(int expected, int actual){
     }
 }
 
+void printAssertEquals(Song expected, Song actual){
+    if (expected == actual){
+        std::cout << "pass" << std::endl;
+    }
+    else {
+        std::cout << "FAIL, expected: " << expected.toString() << "\tactual: " << actual.toString() << std::endl;
+    }
+}
+
 void printAssertEquals(bool expected, bool actual){
     if (expected == actual){
         std::cout << "pass" << std::endl;

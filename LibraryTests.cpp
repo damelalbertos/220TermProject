@@ -13,6 +13,8 @@ void addAndGetSong(){
     printAssertEquals(testSong->getTitle(), result.getTitle()); //string
 }
 
-void runLibraryTests(){
+int main(){
     addAndGetSong();
+
+    return 0;
 }

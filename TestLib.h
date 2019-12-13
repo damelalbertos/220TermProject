@@ -5,6 +5,17 @@
 #ifndef COMP220LAB_TESTLIBRARY_H
 #define COMP220LAB_TESTLIBRARY_H
 
+#include "Song.h"
+
+/**
+ * reports whether ints are equal or not
+ * @param expected - the value you expect the actual value to be
+ * @param actual - the actual value to test
+ * @post prints only "pass" if the values are equal,
+ *      Else it prints "FAIL" and their respective values
+ */
+void printAssertEquals(Song expected, Song actual);
+
 /**
  * reports whether ints are equal or not
  * @param expected - the value you expect the actual value to be

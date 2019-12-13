@@ -53,25 +53,3 @@ std::string* toList(std::string str, int size){
     }
     return strList;
 }
-
-
-void load_library(std::string filename){
-    std::ifstream infile(filename);
-    if (infile) {
-        while (infile) {
-            std::string strInput;
-            getline(infile, strInput);
-            if (strInput != "") {
-                int size = countChar(strInput, '\t') + 1;
-                std::string* song = toList(strInput, size);
-                std::string artist = song[0];
-                std::string name = song[1];
-                float duration = stoi(song[2]) / 1000;
-                Song newSong = Song(artist, name, duration);
-            }
-        }
-    }
-    else {
-        std::cerr << "File not found." << std::endl;
-    }
-}
