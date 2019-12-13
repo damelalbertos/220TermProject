@@ -38,7 +38,7 @@ int Playlist::getSongCount(){
     return songCount;
 }
 
-void Playlist::add(Song songToAdd){
+void Playlist::add(Song  songToAdd){
     Song* songPtr = &songToAdd;
     songsInPlaylist->insertAtEnd(songPtr);
     duration += songPtr->getDuration();
