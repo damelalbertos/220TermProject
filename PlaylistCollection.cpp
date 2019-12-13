@@ -110,15 +110,24 @@ void PlaylistCollection::removeFromAll(Song songToRemove) {
 void PlaylistCollection::saveCollection(std::string filename){
     std::ofstream outf(filename);
     if (outf){
+<<<<<<< HEAD
         for (int i = 0; i < playlistArray->itemCount(); i++){
             Playlist currentPlaylist = playlistArray->getValueAt(i);
             currentPlaylist.saveCollection();
             outf << currentPlaylist.getName() << "\t" << currentPlaylist.getDuration() << currentPlaylist.getSongCount() << "\n";
         }
         outf.close();
+=======
+        //for loop through playlist collection
+        //for (int i = 0; i <= placeholder; i++){
+            //get current playlist
+            //call Playlist::saveCollection() on the playlist
+            //outf << playlist name << "\t" << playlist duration << playlist songCount << "\n";
+>>>>>>> 65675b82ea345bdf0276260b78e011c5287f9d3b
     }
-
+    outf.close();
 }
+
 
 //todo Matt
 void PlaylistCollection::loadToCollection(std::string filename){
