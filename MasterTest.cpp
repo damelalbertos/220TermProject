@@ -8,5 +8,5 @@ void runAllTests(){
     runSongAndPlaylistTests();
     runPlaylistAndLibraryCollectionTests();
     runFileTests();
-    runLibraryTests();
+    //runLibraryTests();
 }

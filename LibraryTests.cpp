@@ -197,6 +197,7 @@ void getArtistTests(){
               << "100 gecs\t800db cloud\t140.183\t0\n" << std::endl;
     testLib.getArtist("100 gecs");
 
+<<<<<<< HEAD
     std::cout << "Should raise error:" << std::endl;
     testLib.getArtist("Led Zeppelin");
 
@@ -256,3 +257,11 @@ int main(){
     saveCollectionTests();
     return 0;
 }
+=======
+//int main(){
+//
+//    addTests();
+//
+//    return 0;
+//}
+>>>>>>> 8d50c9d7d4384ac9d38e4c97baf784fa597fc7bb
