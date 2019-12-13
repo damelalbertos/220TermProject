@@ -8,10 +8,9 @@
 #include "Song.h"
 #include "ArrayList.h"
 #include "File.h"
-#include "PlaylistCollection.h"
-#include "MusicCollection.h"
 
-class Library : MusicCollection{
+
+class Library{
 
 private:
     ArrayList<Song>* allSongs;
@@ -66,7 +65,7 @@ public:
      * @param playlists - collection of all playlists
      * @post removes each song in the file from all playlists and the library
      */
-     void discontinue(std::string filename, PlaylistCollection playlists);
+     void discontinueLib(std::string filename);
 
     /**
     * prints all the info of all the songs

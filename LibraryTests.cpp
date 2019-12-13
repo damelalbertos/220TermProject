@@ -140,7 +140,7 @@ void testLoadLibrary(){
     testLib.printCollection();
 
 }
-
+/**
 void testDiscontinue(){
     Library testLib = Library();
 
@@ -169,7 +169,7 @@ void testDiscontinue(){
 
     printAssertEquals(3,testLib.getCurrSongCount());
 }
-
+*/
 void getSongTests(){
     Library testLib = Library();
     testLib.loadCollection("testSmall.txt");
@@ -252,7 +252,7 @@ int runLibraryTests(){
     getCurrCapacityTests();
     testPrintLibrary();
     testLoadLibrary();
-    testDiscontinue();
+    //testDiscontinue();
     saveLibraryTests();
     return 0;
 }

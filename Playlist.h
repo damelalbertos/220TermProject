@@ -70,6 +70,8 @@ public:
     */
     std::string played();
 
+    void Playlist::discontinuePlaylist(std::string filename);
+
     /**
     * removes a song from anywhere in the playlist
     * @param itemToRemove - the song you want to remove

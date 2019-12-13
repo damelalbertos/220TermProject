@@ -90,7 +90,7 @@ void Library::saveCollection(std::string filename){
     if (outf){
         for (int i = 0; i <= currSongCount; i++){
             Song currentSong = allSongs->getValueAt(i);
-            outf << currentSong.getArtist() << "\t" << currentSong.getTitle() << "\t" << (currentSong.getDuration() * 1000) << "\t" << currentSong.getPlayCount() << "\n";
+            outf << currentSong.getArtist() << "\t" << currentSong.getTitle() << "\t" << (currentSong.getDuration() * 60000) << "\t" << currentSong.getPlayCount() << "\n";
         }
         outf.close();
     }
@@ -107,9 +107,9 @@ void Library::loadCollection(std::string filename) {
                 std::string *song = toList(strInput, size);
                 std::string artist = song[0];
                 std::string name = song[1];
-                float duration = stoi(song[2]) / 1000;
+                float duration = stoi(song[2]) / 60000;
                 Song newSong = Song(artist, name, duration);
-                if ((getSong(artist,name) == newSong) == false) {
+                if (allSongs->find(newSong) == -1) {
                     add(newSong);
                 }
             }
@@ -119,7 +119,7 @@ void Library::loadCollection(std::string filename) {
     }
 }
 
-void Library::discontinue(std::string filename, PlaylistCollection playlists) {
+void Library::discontinueLib(std::string filename) {
     std::ifstream infile(filename);
     if (infile) {
         while (infile) {
@@ -130,10 +130,9 @@ void Library::discontinue(std::string filename, PlaylistCollection playlists) {
                 std::string *song = toList(strInput, size);
                 std::string artist = song[0];
                 std::string name = song[1];
-                float duration = stoi(song[2]) / 1000;
+                float duration = stoi(song[2]) / 60000;
                 Song newSong = Song(artist,name,duration);
-                if (getSong(artist,name) == newSong) {
-                    playlists.removeFromAll(getSong(artist,name));
+                if (allSongs->find(newSong) != -1) {
                     remove(getSong(artist,name));
                 }
             }

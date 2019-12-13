@@ -22,6 +22,7 @@ public:
 
     ~MusicCollection();
 
+
     /**
     * adds an item to the collection
     * @param itemToAdd - the object you want to add

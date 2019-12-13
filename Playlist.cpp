@@ -82,7 +82,7 @@ void Playlist::saveCollection(){
     if (outf){
         for (int i = 0; i <= songCount; i++){
             Song* currentSong = songsInPlaylist->getValueAt(i);
-            outf << currentSong->getArtist() << "\t" << currentSong->getTitle() << "\t" << (currentSong->getDuration() * 1000) << "\t" << currentSong->getPlayCount() << "\n";
+            outf << currentSong->getArtist() << "\t" << currentSong->getTitle() << "\t" << (currentSong->getDuration() * 60000) << "\t" << currentSong->getPlayCount() << "\n";
         }
         outf.close();
     }
@@ -100,13 +100,39 @@ void Playlist::loadCollection(std::string filename){
                 std::string *song = toList(strInput, size);
                 std::string artist = song[0];
                 std::string name = song[1];
-                float duration = stoi(song[2]) / 1000;
+                float duration = stoi(song[2]) / 60000;
                 Song newSong = Song(artist, name, duration);
-                //check to see if song is in playlist. if it's not:
+                Song* newSongPtr = &newSong;
+                if (songsInPlaylist->find(newSongPtr) == -1) {
                     add(newSong);
+                }
             }
         }
     } else {
         std::cerr << "File not found." << std::endl;
     }
+}
+
+void Playlist::discontinuePlaylist(std::string filename) {
+    std::ifstream infile(filename);
+    if (infile) {
+        while (infile) {
+            std::string strInput;
+            getline(infile, strInput);
+            if (strInput != "") {
+                int size = countChar(strInput, '\t') + 1;
+                std::string *song = toList(strInput, size);
+                std::string artist = song[0];
+                std::string name = song[1];
+                float duration = stoi(song[2]) / 60000;
+                Song newSong = Song(artist,name,duration);
+                Song* newSongPtr = &newSong;
+                if (songsInPlaylist->find(newSongPtr) != -1) {
+                    remove(newSongPtr->getArtist(), newSongPtr->getTitle());
+                }
+            }
+        }
+
+    }
+
 }
