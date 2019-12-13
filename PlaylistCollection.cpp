@@ -9,6 +9,10 @@ PlaylistCollection::PlaylistCollection(){
     playlistArray = new ArrayList<Playlist>(10);
 }
 
+PlaylistCollection::~PlaylistCollection(){
+    delete playlistArray;
+}
+
 PlaylistCollection::PlaylistCollection(const PlaylistCollection& playlistCollectionToCopy){
     //todo
 }
@@ -41,10 +45,7 @@ void PlaylistCollection::genRandPlaylist(std::string name, float duration, Libra
     }
 }
 
-Playlist PlaylistCollection::getPlaylist(std::string name) {
-    int playlistToReturn = playlistArray->find(name);
-    return playlistArray->getValueAt(playlistToReturn);
-}
+
 
 
 void PlaylistCollection::add(Playlist playlistToAdd){
