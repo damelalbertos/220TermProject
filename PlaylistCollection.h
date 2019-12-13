@@ -31,7 +31,8 @@ public:
      * @param duration
      */
     void genRandPlaylist(std::string name, float duration);
-    
+
+    Playlist getPlaylist(std::string name);
 
     /**
     * adds a playlist to the end of the list of playlists
