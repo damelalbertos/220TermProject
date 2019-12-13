@@ -3,10 +3,6 @@
 //
 
 #include "MasterTest.h"
-#include "PlaylistCollectionTests.cpp"
-#include "LibraryTests.cpp"
-#include "FileTest.cpp"
-#include "SongAndPlaylistTests.cpp"
 
 void runAllTests(){
     std::cout << "(--------Running Song and Playlist Tests--------)" << std::endl;
@@ -17,5 +13,4 @@ void runAllTests(){
     runFileTests();
     std::cout << "(--------Running Library Tests--------)" << std::endl;
     runLibraryTests();
-    //runLibraryTests();
 }
