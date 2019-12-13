@@ -51,7 +51,7 @@ void toListTest(){
 //todo
 void loadLibraryTest(){
     Library testLib;
-    testLib.loadCollection("testSmall.txt")
+    testLib.loadCollection("testSmall.txt");
     testLib.printCollection();
 }
 

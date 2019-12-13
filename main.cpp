@@ -2,7 +2,7 @@
 #include "UserInterface.h"
 #include "MasterTest.h"
 
-int main() {
+int main(){
     //UI SET UP
     UserInterface* user = new UserInterface();
     std::string command;

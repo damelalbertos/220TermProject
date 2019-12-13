@@ -140,7 +140,7 @@ void UserInterface::import(std::string filename) {
 
 void UserInterface::discontinue(std::string filename) {
     Library* lib;
-    //lib->remove()
+    lib->discontinue(filename, )
     //TODO
 }
 
