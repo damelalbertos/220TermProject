@@ -10,7 +10,6 @@ PlaylistCollection::PlaylistCollection(){
     playlistArray = new ArrayList<Playlist>(10);
 }
 
-//todo
 PlaylistCollection::PlaylistCollection(const PlaylistCollection& playlistCollectionToCopy){
 }
 
@@ -118,11 +117,10 @@ void PlaylistCollection::saveCollection(std::string filename){
             //get current playlist
             //call Playlist::saveCollection() on the playlist
             //outf << playlist name << "\t" << playlist duration << playlist songCount << "\n";
-        }
-        outf.close();
     }
-
+    outf.close();
 }
+
 
 //todo Matt
 void PlaylistCollection::loadToCollection(std::string filename){

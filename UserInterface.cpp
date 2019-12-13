@@ -175,7 +175,8 @@ void UserInterface::artistSongs(std::string artist) {
 
 void UserInterface::songInfo(std::string artist, std::string songTitle) {
     Library lib = Library();
-    lib.getSong(artist,songTitle);
+    Song cancion = lib.getSong(artist,songTitle);
+
 }
 
 void UserInterface::import(std::string filename) {
