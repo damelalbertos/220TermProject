@@ -14,14 +14,14 @@ public:
     //constructor
     UserInterface();
 
-    /*
+    /**
      * Reacts to command by user. Goes into another function
      * LOGIC:
      * if <command> call <function>
      */
     void reactToCommand(std::string command);
 
-    /*
+    /**
      * Prints out all the commands available to the user
      *LOGIC:
      * for loop iterating through the list of commands, printing 1 by 1
@@ -30,14 +30,14 @@ public:
     */
     void help();
 
-    /*
+    /**
      * Print all songs in alphabetical order by artist, alphabetical by song too
      * LOGIC:
      * call the printLibrary function from Library Class
      */
     void library();
 
-    /*
+    /**
      * Print all songs by the artist
      * Parameters: artist
      * LOGIC:
@@ -46,7 +46,7 @@ public:
      */
     void artistSongs(std::string artist);
 
-    /*
+    /**
      * Print info about a song
      * Parameters: artist, songTitle
      * LOGIC:
@@ -54,7 +54,7 @@ public:
      */
     void songInfo(std::string artist, std::string songTitle);
 
-    /*
+    /**
      * Add all songs in the file to the library, print any duplicates
      * Parameters: filename
      * LOGIC:
@@ -63,7 +63,7 @@ public:
      */
     static void import(std::string filename);
 
-    /*
+    /**
      * Remove all songs on the file from the library and any playlists its on
      * (if we use a reference this should be done automatically)
      * Print any songs that couldn't be removed
@@ -73,7 +73,7 @@ public:
      */
     void discontinue(std::string filename);
 
-    /*
+    /**
      * Print out the names of all playlists and their duration times
      * Parameters: None
      * LOGIC:
@@ -81,7 +81,7 @@ public:
      */
     void allPlaylists();
 
-    /*
+    /**
      * prints all songs in a playlist and their duration
      * Parameters: playlistName
      * LOGIC:
@@ -89,7 +89,7 @@ public:
      */
     void playlistInfo(std::string playlistName);
 
-    /*
+    /**
      * create a new empty playlist with the given name
      * Parameters: playlistName
      * LOGIC:
@@ -98,7 +98,7 @@ public:
      */
     void newPlaylist(std::string playlistName);
 
-    /*
+    /**
      * Add the given song to the end of the given playlist
      * Parameters: songName, artistName, duration, playlistName
      * LOGIC:
@@ -107,7 +107,7 @@ public:
      */
     void addSong(std::string songName, std::string artistName, int duration, std::string playlistName);
 
-    /*
+    /**
      * remove the song from the given playlist
      * Parameters: songName, artistName, playlistName
      * LOGIC:
@@ -115,7 +115,7 @@ public:
      */
     void removeSong(std::string songName, std::string artistName, std::string playlistName);
 
-    /*
+    /**
      * print all info on next song in playlist, remove from playlist,
      * add to playcount, if playlist is empty, remove playlist from PlaylistCollection
      * Parameters: playlistName
@@ -125,7 +125,7 @@ public:
      */
     void playNext(std::string playlistName);
 
-    /*
+    /**
      * generate a new playlist with the given name and populate it with random songs
      * no duplicates, shuffled, can't go over given duration
      * Parameters: playlistName, duration
@@ -135,7 +135,7 @@ public:
      */
     void newRandom(std::string playlistName, int duration);
 
-    /*
+    /**
      * save the library and all playlists, terminate execution
      * Parameters: None
      * LOGIC:

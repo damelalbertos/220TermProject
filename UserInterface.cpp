@@ -175,7 +175,7 @@ void UserInterface::artistSongs(std::string artist) {
 
 void UserInterface::songInfo(std::string artist, std::string songTitle) {
     Library lib = Library();
-    Song cancion = lib.getSong(artist,songTitle);
+    Song newSong = lib.getSong(artist,songTitle);
 
 }
 
@@ -207,9 +207,9 @@ void UserInterface::newPlaylist(std::string playlistName) {
 }
 
 void UserInterface::addSong(std::string songName, std::string artistName, int duration, std::string playlistName) {
-    Song cancion = Song(artistName, songName, duration);
+    Song newSong = Song(artistName, songName, duration);
     Playlist pl = Playlist(playlistName);
-    pl.add(cancion);
+    pl.add(newSong);
 }
 
 void UserInterface::removeSong(std::string songName, std::string artistName, std::string playlistName) {
