@@ -37,11 +37,11 @@ void toStringTest(){
 }
 
 void toListTest(){
-    std::string testString = "Hello\tWorld\tHow\tAre\tYou";
+    std::string testString = "Hello\tWorld\tHow\tAre\tYou\n";
     std::string* testList = toList(testString,countChar(testString,'\t')+1);
     printAssertEquals("{Hello, World, How, Are, You}", toString(testList,countChar(testString,'\t')+1));
 
-    std::string testString2 = "How\tAre\tYou";
+    std::string testString2 = "How\tAre\tYou\n";
     std::string* testList2 = toList(testString2,countChar(testString2,'\t')+1);
     printAssertEquals("{How, Are, You}", toString(testList2,countChar(testString2,'\t')+1));
 
