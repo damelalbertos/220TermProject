@@ -8,7 +8,6 @@
 #include <string>
 #include <iostream>
 #include <fstream>
-#include "Song.h"
 
 std::string toString(std::string* arrayPtr, int size);
 

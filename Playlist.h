@@ -5,13 +5,11 @@
 #ifndef PROJECT_PLAYLIST_H
 #define PROJECT_PLAYLIST_H
 
-#include "LinkedNode.h"
 #include "Song.h"
 #include "LinkedList.h"
 #include "File.h"
 #include <string>
 #include <iostream>
-#include "MusicCollection.h"
 
 
 class Playlist {

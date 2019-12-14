@@ -5,6 +5,9 @@
 #ifndef TERM_PROJECT_USERINTERFACE_H
 #define TERM_PROJECT_USERINTERFACE_H
 #include<string>
+#include "Library.h"
+#include "PlaylistCollection.h"
+#include "Playlist.h"
 
 class UserInterface {
 private:

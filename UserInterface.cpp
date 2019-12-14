@@ -7,9 +7,7 @@
 #include <string>
 #include <cctype>
 #include "UserInterface.h"
-#include "Library.h"
-#include "PlaylistCollection.h"
-#include "Playlist.h"
+
 
 UserInterface::UserInterface() {
 }
