@@ -56,7 +56,7 @@ void ArrayList<T>::insertAtEnd(T itemToAdd){
         currItemCount++;
     }
     else{
-        array[currItemCount+1]=itemToAdd;
+        array[currItemCount]=itemToAdd;
         currItemCount++;
     };
 

@@ -8,7 +8,7 @@
 #include<string>
 #include "ArrayList.h"
 
-class Song{
+class Song {
 
 private:
     std::string artist;
@@ -25,7 +25,12 @@ public:
     Song(const Song& songToCopy);
 
     bool operator==(const Song& songToCopy){
-        if(artist == songToCopy.artist && title == songToCopy.title){
+        std::string song1 = artist + title;
+        std::string song2 = songToCopy.artist + songToCopy.title;
+
+        int result = song1.compare(song2);
+
+        if(result == 0){
             return true;
         }
         else{

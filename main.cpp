@@ -26,7 +26,9 @@ int main(){
         user->reactToCommand(command);
     }
     */
+    std::cout << "---------File Tests---------" << std::endl;
     runFileTests();
+    std::cout << "---------Library Tests---------" << std::endl;
     runLibraryTests();
     runSongAndPlaylistTests();
     runPlaylistCollectionTests();

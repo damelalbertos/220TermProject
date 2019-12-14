@@ -61,18 +61,17 @@ void Library::printCollection(){
 
 Song Library::getSong(std::string artistName, std::string songTitle){
     if (currSongCount == 0){
-        std::cerr << "Library is empty." << std::endl;
+        throw std::invalid_argument("Library is empty.");
     }
-    else {
-        for (int i = 0; i < currSongCount; i++) {
-            Song currentSong = allSongs->getValueAt(i);
-            if (currentSong.getArtist() == artistName && currentSong.getTitle() == songTitle) {
-                std::cout << currentSong.toString() << std::endl;
-                return currentSong;
-            }
+    for (int i = 0; i < currSongCount; i++) {
+        Song currentSong = allSongs->getValueAt(i);
+        if (currentSong.getArtist() == artistName && currentSong.getTitle() == songTitle) {
+            std::cout << currentSong.toString() << std::endl;
+            return currentSong;
         }
-        std::cerr << songTitle << " by " << artistName << " was not found in the library." <<std::endl;
     }
+    throw std::invalid_argument(songTitle + " by " + artistName + " was not found in the library.");
+
 }
 
 void Library::getArtist(std::string artistName){
@@ -82,7 +81,7 @@ void Library::getArtist(std::string artistName){
             std::cout << currentSong.toString() << std::endl;
         }
     }
-    std::cerr << "No songs by " << artistName << " were found in the library." <<std::endl;
+    throw std::invalid_argument("No songs by " + artistName + " were found in the library.");
 }
 
 void Library::saveCollection(std::string filename){
