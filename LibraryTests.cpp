@@ -83,6 +83,7 @@ void getCurrCapacityTests(){
     Song mySong8 =  Song("New Order", "Age of Consent", 194.5);
     Song mySong9 =  Song("Kanye West", "Freestyle 4", 94.2);
     Song mySong10 =  Song("Bob Dylan", "Hurricane", 402.6);
+    Song mySong11 =  Song("Bruce Springsteen", "Nebraska", 402.6);
 
     Library testLib = Library();
     testLib.add(mySong1);
@@ -97,6 +98,7 @@ void getCurrCapacityTests(){
     testLib.add(mySong9);
     printAssertEquals(10,testLib.getCurrCapacity());
     testLib.add(mySong10);
+    testLib.add(mySong11);
     printAssertEquals(20,testLib.getCurrCapacity());
 
 }
@@ -117,7 +119,7 @@ void testPrintLibrary(){
             << "King Gizzard and the Lizard Wizard\tThe spider and me\t193.2\t0\n"
             << "Led Zeppelin\tStairway to Heaven\t481.8\t0\n"
             << "Lorde\tThe Love Club\t202.2\t0\n"
-            << "The Knocks\tNo Requests\t190.8\t0" << std::endl;
+            << "The Knocks\tNo Requests\t190.8\t0\n" << std::endl;
 
     testLib.printCollection();
 }
@@ -130,12 +132,12 @@ void testLoadLibrary(){
     printAssertEquals(6,testLib.getCurrSongCount());
 
     std::cout << "Should be:\n"
-              << "100 gecs\t745 sticky\t141.29\t0\n"
-              << "100 gecs\tmoney machine\t114.46\t0\n"
-              << "100 gecs\t800db cloud\t140.183\t0\n"
-              << "2 Chainz\tForgiven (feat. Marsha Ambrosius)\t323.306\t0\n"
-              << "2 Chainz\tThreat 2 Society\t225.8\t0\n"
-              << "Aaron Copland\tDance Symphony: I. Dance of the Adolescent\t416.266\t0" << std::endl;
+              << "100 gecs\t745 sticky\t2.35483\t0\n"
+              << "100 gecs\tmoney machine\t1.90767\t0\n"
+              << "100 gecs\t800db cloud\t2.33638\t0\n"
+              << "2 Chainz\tForgiven (feat. Marsha Ambrosius)\t5.38843\t0\n"
+              << "2 Chainz\tThreat 2 Society\t3.7633\t0\n"
+              << "Aaron Copland\tDance Symphony: I. Dance of the Adolescent\t6.93777\t0\n" << std::endl;
 
     testLib.printCollection();
 
@@ -147,12 +149,12 @@ void testDiscontinue(){
     testLib.loadCollection("testSmall.txt");
 
     std::cout << "Should be:\n"
-              << "100 gecs\t745 sticky\t141.29\t0\n"
-              << "100 gecs\tmoney machine\t114.46\t0\n"
-              << "100 gecs\t800db cloud\t140.183\t0\n"
-              << "2 Chainz\tForgiven (feat. Marsha Ambrosius)\t323.306\t0\n"
-              << "2 Chainz\tThreat 2 Society\t225.8\t0\n"
-              << "Aaron Copland\tDance Symphony: I. Dance of the Adolescent\t416.266\t0" << std::endl;
+              << "100 gecs\t745 sticky\t2.35483\t0\n"
+              << "100 gecs\tmoney machine\t1.90767\t0\n"
+              << "100 gecs\t800db cloud\t2.33638\t0\n"
+              << "2 Chainz\tForgiven (feat. Marsha Ambrosius)\t5.38843\t0\n"
+              << "2 Chainz\tThreat 2 Society\t3.7633\t0\n"
+              << "Aaron Copland\tDance Symphony: I. Dance of the Adolescent\t6.93777\t0\n" << std::endl;
 
     testLib.printCollection();
 
@@ -161,9 +163,9 @@ void testDiscontinue(){
     testLib.discontinueLib("testDiscontinue.txt");
 
     std::cout << "Should be:\n"
-              << "100 gecs\t745 sticky\t141.29\t0\n"
-              << "100 gecs\tmoney machine\t114.46\t0\n"
-              << "Aaron Copland\tDance Symphony: I. Dance of the Adolescent\t416.266\t0" << std::endl;
+              << "100 gecs\t745 sticky\t2.35483\t0\n"
+              << "100 gecs\tmoney machine\t1.90767\t0\n"
+              << "Aaron Copland\tDance Symphony: I. Dance of the Adolescent\t6.93777\t0\n" << std::endl;
 
     testLib.printCollection();
 
@@ -174,7 +176,7 @@ void getSongTests(){
     Library testLib = Library();
     testLib.loadCollection("testSmall.txt");
 
-    std::cout << (testLib.getSong("100 gecs", "745 sticky").toString()) << std::endl;
+
     printAssertEquals(Song("100 gecs", "745 sticky", 141.29), testLib.getSong("100 gecs", "745 sticky"));
     printAssertEquals(Song("100 gecs", "money machine", 114.46), testLib.getSong("100 gecs", "money machine"));
     printAssertEquals(Song("100 gecs", "800db cloud", 140.183), testLib.getSong("100 gecs", "800db cloud"));
@@ -182,9 +184,13 @@ void getSongTests(){
     printAssertEquals(Song("2 Chainz", "Threat 2 Society", 225.8), testLib.getSong("2 Chainz", "Threat 2 Society"));
     printAssertEquals(Song("Aaron Copland", "Dance Symphony: I. Dance of the Adolescent", 416.266), testLib.getSong("Aaron Copland", "Dance Symphony: I. Dance of the Adolescent"));
 
-    std::cout << "Should raise error:" << std::endl;
-    testLib.getSong("Led Zeppelin", "Kashmir");
-
+    try{
+        testLib.getSong("Led Zeppelin", "Kashmir");
+        std::cout << "FAIL: should have thrown error"<< std::endl;
+    }
+    catch(std::invalid_argument& e){
+        printAssertEquals("Kashmir by Led Zeppelin was not found in the library.", e.what());
+    }
 
 }
 
@@ -193,21 +199,32 @@ void getArtistTests(){
     testLib.loadCollection("testSmall.txt");
 
     std::cout << "Should be:\n"
-              << "100 gecs\t745 sticky\t141.29\t0\n"
-              << "100 gecs\tmoney machine\t114.46\t0\n"
-              << "100 gecs\t800db cloud\t140.183\t0\n" << std::endl;
+              << "100 gecs 745 sticky\n"
+              << "100 gecs money machine\n"
+              << "100 gecs 800db cloud\n" << std::endl;
     testLib.getArtist("100 gecs");
 
-    std::cout << "Should raise error:" << std::endl;
-    testLib.getArtist("Led Zeppelin");
+    try{
+        testLib.getArtist("Led Zeppelin");
+        std::cout << "FAIL: should have thrown error"<< std::endl;
+    }
+    catch(std::invalid_argument& e){
+        printAssertEquals("No songs by Led Zeppelin were found in the library.", e.what());
+    }
+
 
     std::cout << "Should be:\n"
-              << "2 Chainz\tForgiven (feat. Marsha Ambrosius)\t323.306\t0\n"
-              << "2 Chainz\tThreat 2 Society\t225.8\t0\n" << std::endl;
+              << "2 Chainz Forgiven (feat. Marsha Ambrosius)\n"
+              << "2 Chainz Threat 2 Society\n" << std::endl;
     testLib.getArtist("2 Chainz");
 
-    std::cout << "Should raise error:" << std::endl;
-    testLib.getArtist("King Crimson");
+    try{
+        testLib.getArtist("King Crimson");
+        std::cout << "FAIL: should have thrown error"<< std::endl;
+    }
+    catch(std::invalid_argument& e){
+        printAssertEquals("No songs by King Crimson were found in the library.", e.what());
+    }
 
 
 }

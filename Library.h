@@ -34,6 +34,8 @@ public:
     */
     void add(Song itemToAdd);
 
+    void doubleCapacity();
+
     /**
      * returns the collection
      * @return allSongs

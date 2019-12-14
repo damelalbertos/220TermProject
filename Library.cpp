@@ -22,6 +22,8 @@ ArrayList<Song>* Library::getCollection(){
     return allSongs;
 }
 
+
+
 int Library::getCurrCapacity() {
     return currCapacity;
 }
@@ -32,6 +34,7 @@ int Library::getCurrSongCount() {
 
 void Library::add(Song itemToAdd){
     allSongs->insertAtEnd(itemToAdd);
+    currSongCount++;
 }
 
 
@@ -39,6 +42,7 @@ void Library::remove(Song itemToRemove){
     int songIndex;
     songIndex = allSongs->find(itemToRemove);
     allSongs->removeValueAt(songIndex);
+    currSongCount--;
 }
 
 
@@ -49,8 +53,8 @@ void Library::printCollection(){
 
     else {
 
-        std::cout << "Artist:\tTitle:\tDuration (seconds):\tPlay Count:";
-        for (int i = 0; i <= currSongCount; i++) {
+        std::cout << "Artist:\tTitle:\tDuration (minutes):\tPlay Count:" << std::endl;
+        for (int i = 0; i < currSongCount; i++) {
             Song currentSong = allSongs->getValueAt(i);
             std::cout << currentSong.getArtist() << "\t" << currentSong.getTitle() << "\t" << currentSong.getDuration()
                       << "\t" << currentSong.getPlayCount() << std::endl;
@@ -75,13 +79,18 @@ Song Library::getSong(std::string artistName, std::string songTitle){
 }
 
 void Library::getArtist(std::string artistName){
+    bool found = false;
     for (int i = 0; i < currSongCount; i++){
         Song currentSong = allSongs->getValueAt(i);
         if (currentSong.getArtist() == artistName){
             std::cout << currentSong.toString() << std::endl;
+            found = true;
         }
     }
-    throw std::invalid_argument("No songs by " + artistName + " were found in the library.");
+    if (!found){
+        throw std::invalid_argument("No songs by " + artistName + " were found in the library.");
+    }
+
 }
 
 void Library::saveCollection(std::string filename){
@@ -89,7 +98,7 @@ void Library::saveCollection(std::string filename){
     if (outf){
         for (int i = 0; i <= currSongCount; i++){
             Song currentSong = allSongs->getValueAt(i);
-            outf << currentSong.getArtist() << "\t" << currentSong.getTitle() << "\t" << (currentSong.getDuration() * 60000) << "\t" << currentSong.getPlayCount() << "\n";
+            outf << currentSong.getArtist() << "\t" << currentSong.getTitle() << "\t" << (currentSong.getDuration() * 60000.0) << "\t" << currentSong.getPlayCount() << "\n";
         }
         outf.close();
     }
@@ -106,7 +115,7 @@ void Library::loadCollection(std::string filename) {
                 std::string *song = toList(strInput, size);
                 std::string artist = song[0];
                 std::string name = song[1];
-                float duration = stoi(song[2]) / 60000;
+                float duration = stoi(song[2]) / 60000.0;
                 Song newSong = Song(artist, name, duration);
                 if (allSongs->find(newSong) == -1) {
                     add(newSong);
@@ -129,7 +138,7 @@ void Library::discontinueLib(std::string filename) {
                 std::string *song = toList(strInput, size);
                 std::string artist = song[0];
                 std::string name = song[1];
-                float duration = stoi(song[2]) / 60000;
+                float duration = stoi(song[2]) / 60000.0;
                 Song newSong = Song(artist,name,duration);
                 if (allSongs->find(newSong) != -1) {
                     remove(getSong(artist,name));

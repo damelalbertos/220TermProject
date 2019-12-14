@@ -53,6 +53,7 @@ void Song::clearPlayCount(){
 std::string Song::toString(){
     std::string songAsString;
     songAsString += artist;
+    songAsString += " ";
     songAsString += title;
     return songAsString;
 }

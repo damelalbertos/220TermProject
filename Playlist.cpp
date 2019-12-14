@@ -87,7 +87,7 @@ void Playlist::saveCollection(){
     if (outf){
         for (int i = 0; i <= songCount; i++){
             Song* currentSong = songsInPlaylist->getValueAt(i);
-            outf << currentSong->getArtist() << "\t" << currentSong->getTitle() << "\t" << (currentSong->getDuration() * 60000) << "\t" << currentSong->getPlayCount() << "\n";
+            outf << currentSong->getArtist() << "\t" << currentSong->getTitle() << "\t" << (currentSong->getDuration() * 60000.0) << "\t" << currentSong->getPlayCount() << "\n";
         }
         outf.close();
     }
@@ -105,7 +105,7 @@ void Playlist::loadCollection(std::string filename){
                 std::string *song = toList(strInput, size);
                 std::string artist = song[0];
                 std::string name = song[1];
-                float duration = stoi(song[2]) / 60000;
+                float duration = stoi(song[2]) / 60000.0;
                 Song newSong = Song(artist, name, duration);
                 Song* newSongPtr = &newSong;
                 if (songsInPlaylist->find(newSongPtr) == -1) {
@@ -129,7 +129,7 @@ void Playlist::discontinuePlaylist(std::string filename) {
                 std::string *song = toList(strInput, size);
                 std::string artist = song[0];
                 std::string name = song[1];
-                float duration = stoi(song[2]) / 60000;
+                float duration = stoi(song[2]) / 60000.0;
                 Song newSong = Song(artist,name,duration);
                 Song* newSongPtr = &newSong;
                 if (songsInPlaylist->find(newSongPtr) != -1) {

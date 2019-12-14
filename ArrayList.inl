@@ -116,11 +116,11 @@ template<class T>
 int ArrayList<T>::find(T itemToFind){
     int foundNumIndex = -1;
 
-    for (int i = 1; i < currItemCount+1; i++) {
-
+    for (int i = 0; i < currItemCount; i++) {
+        T current = array[i];
         if (array[i] == itemToFind) {
             foundNumIndex = i;
-            return foundNumIndex-1;
+            return foundNumIndex;
         }
     }
     return foundNumIndex;
@@ -207,16 +207,17 @@ T ArrayList<T>::removeValueAtFront(){
 
 template<class T>
 T ArrayList<T>::removeValueAt(int index){
-    if (index > currItemCount || index < currItemCount) {
+    if (index > currItemCount || index < 0) {
         throw std::out_of_range("Bad index given to insertAt: " + std::to_string(index));
     }
     else {
         T itemToReturn = array[index];
 
+        currItemCount -= 1;
         for (int i = index; i < currItemCount; i++) {
             array[i] = array[i + 1];
         }
-        currItemCount -= 1;
+
         return itemToReturn;
     }
 }
