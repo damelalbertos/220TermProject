@@ -26,7 +26,10 @@ int main(){
         user->reactToCommand(command);
     }
     */
+    runFileTests();
     runLibraryTests();
+    runSongAndPlaylistTests();
+    runPlaylistCollectionTests();
 
     return 0;
 }

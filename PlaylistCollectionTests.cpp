@@ -100,7 +100,7 @@ void saveCollectionTests(){
 
 }
 
-int runPlaylistAndLibraryCollectionTests() {
+int runPlaylistCollectionTests() {
     playlistCollectionAddTests();
     playlistCollectionRemoveTest();
     printCollectionTest();
