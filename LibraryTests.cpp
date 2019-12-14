@@ -246,9 +246,9 @@ void saveLibraryTests(){
 
 int runLibraryTests(){
     libraryAddTests();
-    //getSongTests();
+    getSongTests();
     getArtistTests();
-    //libraryRemoveTests();
+    libraryRemoveTests();
     getCurrSongCountTests();
     getCurrCapacityTests();
     testPrintLibrary();

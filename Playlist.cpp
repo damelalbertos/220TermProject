@@ -73,8 +73,7 @@ void Playlist::remove(std::string artistToRemove, std::string songToRemove){
 }
 
 std::string Playlist::printCollection(){ // add playlistName parameter
-    std::string playlistAsString;
-    for(int i=0; i <= songCount; i++){
+    for(int i=0; i < songCount; i++){
         Song* songToLookAt = songsInPlaylist->getValueAt(i);
         std::cout << songToLookAt->toString() << std::endl;
     }

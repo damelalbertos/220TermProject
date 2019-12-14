@@ -44,7 +44,7 @@ T LinkedList<T>::getValueAt(int index){
         T valueToReturn;
         LinkedNode<T>* tempNode = front;
         for (int i = 0; i < index; i++){
-            valueToReturn = tempNode->getNext()->getItem();
+            valueToReturn = tempNode->getItem();
             tempNode = tempNode->getNext();
         }
         valueToReturn = tempNode->getItem();
