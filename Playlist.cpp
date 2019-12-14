@@ -30,10 +30,10 @@ std::string Playlist::getName(){
     return playlistName;
 }
 
-Song* Playlist::findSong(std::string artistToFind, std::string songToFind){
+Song* Playlist::findSong(std::string artistToFind, std::string titleToFind){
     for(int i=0; i <= songCount; i++){
         Song* songToLookAt = songsInPlaylist->getValueAt(i);
-        if(songToLookAt->getArtist() == artistToFind && songToLookAt->getTitle() == songToFind){
+        if(songToLookAt->getArtist() == artistToFind && songToLookAt->getTitle() == titleToFind){
             return songToLookAt;
         }
     }
