@@ -44,7 +44,7 @@ public:
     */
     float getDuration();
 
-    bool findSong(Song* songToFind);
+    Song* findSong(std::string artistToFind, std::string titleToFind);
 
     /**
     * gets the number of songs in a playlist
