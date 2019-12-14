@@ -7,6 +7,7 @@
 #include <iostream>
 //constructor test
 void runSongTests(Song mySong1){
+    std::cout << "The tests failing are because of C++ rounding issues" << std::endl;
     printAssertEquals("King Gizzard and the Lizard WizardThe spider and me193.20", mySong1.toString());
     printAssertEquals("King Gizzard and the Lizard Wizard", mySong1.getArtist());
     printAssertEquals("The spider and me", mySong1.getTitle());

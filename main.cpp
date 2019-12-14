@@ -26,12 +26,13 @@ int main(){
         user->reactToCommand(command);
     }
     */
+    //runSongAndPlaylistTests();
     std::cout << "---------File Tests---------" << std::endl;
     runFileTests();
     std::cout << "---------Library Tests---------" << std::endl;
     runLibraryTests();
-    runSongAndPlaylistTests();
     runPlaylistCollectionTests();
+
 
     return 0;
 }
