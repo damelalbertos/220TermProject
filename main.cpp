@@ -27,6 +27,7 @@ int main(){
     }
     */
 
+    //todo each of the tests run well until memory issues are encountered
     std::cout << "---------File Tests---------" << std::endl;
     runFileTests();
     std::cout << "---------Song and Playlist Tests---------" << std::endl;
