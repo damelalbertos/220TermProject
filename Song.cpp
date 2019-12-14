@@ -54,7 +54,5 @@ std::string Song::toString(){
     std::string songAsString;
     songAsString += artist;
     songAsString += title;
-    songAsString += std::to_string(duration);
-    songAsString += std::to_string(playCount);
     return songAsString;
 }

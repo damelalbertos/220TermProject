@@ -37,19 +37,19 @@ T LinkedList<T>::getValueAt(int index){
     if(index < 0){
         throw std::out_of_range("INDEX OUT OF RANGE");
     }
+    if (index == 0){
+        return front->getItem();
+    }
     else {
         T valueToReturn;
-        int count = 0;
-        while(count != index) {
-            end = end->getNext();
-            count++;
+        LinkedNode<T>* tempNode = front;
+        for (int i = 0; i < index; i++){
+            valueToReturn = tempNode->getNext()->getItem();
+            tempNode = tempNode->getNext();
         }
-        valueToReturn = end->getItem();
+        valueToReturn = tempNode->getItem();
 
-        //resets end to the proper node
-        while(end->getNext() != nullptr){
-            end = end->getNext();
-        }
+
         return valueToReturn;
     }
 }

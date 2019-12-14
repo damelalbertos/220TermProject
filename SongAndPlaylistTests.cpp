@@ -8,7 +8,7 @@
 //constructor test
 void runSongTests(Song mySong1){
     std::cout << "The tests failing are because of C++ rounding issues" << std::endl;
-    printAssertEquals("King Gizzard and the Lizard WizardThe spider and me193.20", mySong1.toString());
+    printAssertEquals("King Gizzard and the Lizard WizardThe spider and me", mySong1.toString());
     printAssertEquals("King Gizzard and the Lizard Wizard", mySong1.getArtist());
     printAssertEquals("The spider and me", mySong1.getTitle());
     printAssertEquals("193.2", std::to_string(mySong1.getDuration()));
@@ -21,9 +21,9 @@ void runSongTests(Song mySong1){
     mySong1.clearPlayCount();
     printAssertEquals(0, mySong1.getPlayCount());
 
-    printAssertEquals("King Gizzard and the Lizard WizardThe spider and me193.20", mySong1.toString());
+    printAssertEquals("King Gizzard and the Lizard WizardThe spider and me", mySong1.toString());
     Song songCopy = mySong1;
-    printAssertEquals("King Gizzard and the Lizard WizardThe spider and me193.20", songCopy.toString());
+    printAssertEquals("King Gizzard and the Lizard WizardThe spider and me", songCopy.toString());
 
 }
 
@@ -45,26 +45,26 @@ void enqueuePlaylistTest(){
     printAssertEquals(5,testPlaylist.getSongCount());
 
     std::cout << "Should be:\n"
-              << "King Gizzard and the Lizard WizardThe spider and me193.20\n"
-              << "Led ZeppelinStairway to Heaven481.80\n"
-              << "LordeThe Love Club202.20\n"
-              << "The KnocksNo Requests190.80\n"
-              << "ASAP FergWork166.80"  << std::endl;
+              << "King Gizzard and the Lizard WizardThe spider and me\n"
+              << "Led ZeppelinStairway to Heaven\n"
+              << "LordeThe Love Club\n"
+              << "The KnocksNo Requests\n"
+              << "ASAP FergWork"  << std::endl;
     testPlaylist.printCollection();
     testPlaylist.played();
     std::cout << "Should be:\n"
-              << "Led ZeppelinStairway to Heaven481.80\n"
-              << "LordeThe Love Club202.20\n"
-              << "The KnocksNo Requests190.80\n"
-              << "ASAP FergWork166.80"  << std::endl;
+              << "Led ZeppelinStairway to Heaven\n"
+              << "LordeThe Love Club\n"
+              << "The KnocksNo Requests\n"
+              << "ASAP FergWork"  << std::endl;
     testPlaylist.printCollection();
 
     testPlaylist.remove("The Knocks", "No Requests");
     std::cout << "Should be:\n"
-              << "King Gizzard and the Lizard WizardThe spider and me193.20\n"
-              << "Led ZeppelinStairway to Heaven481.80\n"
-              << "LordeThe Love Club202.20\n"
-              << "ASAP FergWork166.80"  << std::endl;
+              << "King Gizzard and the Lizard WizardThe spider and me\n"
+              << "Led ZeppelinStairway to Heaven\n"
+              << "LordeThe Love Club\n"
+              << "ASAP FergWork"  << std::endl;
     testPlaylist.printCollection();
 }
 
