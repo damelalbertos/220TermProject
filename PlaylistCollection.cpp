@@ -21,6 +21,8 @@ void PlaylistCollection::genRandPlaylist(std::string name, float duration, Libra
 
     Playlist newRandPlaylist = Playlist(name);
     Song newSongToAdd;
+    std::string songTitle;
+    std::string songArtist;
 
     int randNumber;
     //library currSongCount
@@ -30,12 +32,15 @@ void PlaylistCollection::genRandPlaylist(std::string name, float duration, Libra
     while(newRandPlaylist.getDuration()<= duration) {
         randNumber = rand()% range + 0;
         newSongToAdd = songLib.getCollection()->getValueAt(randNumber);
+        songArtist = newSongToAdd.getArtist();
+        songTitle = newSongToAdd.getTitle();
+
         if(newRandPlaylist.getSongCount() == 0) {
             newRandPlaylist.add(newSongToAdd);
         }
         else {
             for (int i = 0; i <= newRandPlaylist.getSongCount(); i++){
-                if(newRandPlaylist.getPlaylist()->getValueAt(i)->getArtist() == newSongToAdd.getArtist() && newRandPlaylist.getPlaylist()->getValueAt(i)->getTitle() == newSongToAdd.getTitle()) {
+                if(newRandPlaylist.findSong(songArtist, songTitle)->getArtist() == newSongToAdd.getArtist() && newRandPlaylist.findSong(songArtist, songTitle)->getTitle() == newSongToAdd.getTitle()) {
                     randNumber = rand()% range + 0;
                 }
             }
@@ -45,12 +50,7 @@ void PlaylistCollection::genRandPlaylist(std::string name, float duration, Libra
     }
 }
 
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> 2a5eee6917e256008a464bd759d61756a637c524
 void PlaylistCollection::add(Playlist playlistToAdd){
     playlistArray->insertAtEnd(playlistToAdd);
 }
