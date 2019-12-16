@@ -32,6 +32,7 @@ int main(){
     }
     else{
         std::cout << "Welcome to Auto DJ!" << std::endl;
+        Library lib = Library();
     }
     while (command != "quit"){
         std::cout << typeCommand << std::endl;
