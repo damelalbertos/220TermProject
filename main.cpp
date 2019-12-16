@@ -19,6 +19,7 @@ int main(){
     //PROGRAM
     std::cout << "Hi! Would you like to Test your code or start Auto DJ?" << std::endl;
     std::cout << "Type ""Test"" or ""DJ""." << std::endl;
+    std::cin >> command;
     if (command == "Test" || command == "test"){
         //todo each of the tests run well until memory issues are encountered
         std::cout << "---------Library Tests---------" << std::endl;
