@@ -43,7 +43,6 @@ void playlistCollectionAddTests(){
     std::cout << "-----------AddTest----------" << std::endl;
     PlaylistCollection testCollection = createPlaylistCollectionForTest();
 
-
     testCollection.printCollection();
 
 
@@ -74,6 +73,10 @@ void printCollectionTest(){
     PlaylistCollection testCollection = createPlaylistCollectionForTest();
 
     testCollection.printCollection();
+    std::cout << "Should be:\n"
+                 "testPlaylist : 877.2 minutes\n"
+              << "testPlaylist2 : 1068 minutes\n"
+              << "testPlaylist3 : 1234.8 minutes\n" << std::endl;
 
 
 
@@ -81,6 +84,12 @@ void printCollectionTest(){
 
 void printAPlaylistTests(){
     PlaylistCollection testCollection = createPlaylistCollectionForTest();
+
+    testCollection.printAPlaylist("testPlaylist");
+    std::cout << "Should be:\n"
+                 "King Gizzard and the Lizard Wizard The spider and me\n"
+              << "Led Zeppelin Stairway to Heaven\n"
+              << "Lorde The Love Club\n" << std::endl;
 
 
 }
@@ -91,14 +100,27 @@ void removeFromAllTests(){
     Song mySong1 =  Song("King Gizzard and the Lizard Wizard", "The spider and me", 193.2);
     testCollection.removeFromAll(mySong1);
 
+    testCollection.getPlaylist("testPlaylist");
+    std::cout<< "Should be:\n"
+            << "Led Zeppelin Stairway to Heaven\n"
+            << "Lorde The Love Club\n" << std::endl;
+
+    testCollection.getPlaylist("testPlaylist2");
+    std::cout<< "Should be:\n"
+            << "Led Zeppelin Stairway to Heaven\n"
+            << "Lorde The Love Club\n"
+            << "The Knocks No Requests\n" << std::endl;
+
+    testCollection.getPlaylist("testPlaylist3");
+    std::cout<< "Should be:\n"
+            << "Led Zeppelin Stairway to Heaven\n"
+            << "Lorde The Love Club\n"
+            << "The Knocks No Requests\n" << std::endl;
 
 
 }
 
-void saveCollectionTests(){
-    PlaylistCollection testCollection = createPlaylistCollectionForTest();
 
-}
 
 int runPlaylistCollectionTests() {
     playlistCollectionAddTests();
@@ -106,6 +128,5 @@ int runPlaylistCollectionTests() {
     printCollectionTest();
     printAPlaylistTests();
     removeFromAllTests();
-    saveCollectionTests();
     return 0;
 }
