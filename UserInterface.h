@@ -36,7 +36,7 @@ public:
      * LOGIC:
      * call the printLibrary function from Library Class
      */
-    void library();
+    void library(Library lib);
 
     /**
      * Print all songs by the artist
@@ -124,7 +124,7 @@ public:
      * iterate through playlist, call getsonginfo,
      * remove function from PlaylistCollection Class
      */
-    void playNext(std::string playlistName, PlaylistCollection);
+    void playNext(std::string playlistName, PlaylistCollection pl);
 
     /**
      * generate a new playlist with the given name and populate it with random songs

@@ -25,7 +25,7 @@ bool caseInSensStringCompare(std::string & str1, std::string &str2) {
             std::equal(str1.begin(), str1.end(), str2.begin(), &compareChar));
 }
 
-void UserInterface::reactToCommand(std::string command, Library libIn, PlaylistCollection plIn){
+void UserInterface::reactToCommand(std::string command, Library lib, PlaylistCollection pl){
     std::string help = "help";
     std::string library = "library";
     std::string artist = "artist";
@@ -59,12 +59,12 @@ void UserInterface::reactToCommand(std::string command, Library libIn, PlaylistC
     if (helpCheck){
         this->help();
     } else if (libraryCheck){
-        this->library();
+        this->library(lib);
     } else if (artistCheck){
         std::string artistSelection;
         std::cout << "What artist?" << std::endl;
         std::cin >> artistSelection;
-        this->artistSongs(artistSelection, libIn);
+        this->artistSongs(artistSelection, lib);
     } else if (songCheck){
         std::string artistSelection;
         std::string songTitle;
@@ -72,29 +72,29 @@ void UserInterface::reactToCommand(std::string command, Library libIn, PlaylistC
         std::cin >> artistSelection;
         std::cout << "What song?" << std::endl;
         std::cin >> songTitle;
-        this->songInfo(artistSelection, songTitle, libIn);
+        this->songInfo(artistSelection, songTitle, lib);
     } else if (importCheck){
         std::string filename;
         std::cout << "Please type the filename." << std::endl;
         std::cin >> filename;
-        this->import(filename);
+        this->import(filename, lib);
     } else if (discontinueCheck){
         std::string filename;
         std::cout << "Please type the filename." << std::endl;
         std::cin >> filename;
-        this->discontinue(filename);
+        this->discontinue(filename, lib, pl);
     } else if (playlistsCheck){
-        this->allPlaylists();
+        this->allPlaylists(pl);
     } else if (playlistCheck){
         std::string playlistName;
         std::cout << "What is the playlist name?" << std::endl;
         std::cin >> playlistName;
-        this->playlistInfo(playlistName);
+        this->playlistInfo(playlistName, pl);
     } else if (newCheck){
         std::string playlistName;
         std::cout << "What would you like to call the playlist?" << std::endl;
         std::cin >> playlistName;
-        this->newPlaylist(playlistName);
+        this->newPlaylist(playlistName, pl);
     } else if (addCheck){
         std::string songName;
         std::string artistName;
@@ -109,7 +109,7 @@ void UserInterface::reactToCommand(std::string command, Library libIn, PlaylistC
         std::cout << "Which playlist would you like to add this song to?" << std::endl;
         std::cin >> playlistName;
         int duration = stoi(sDuration);
-        this->addSong(songName,artistName,duration,playlistName);
+        this->addSong(songName,artistName,duration,playlistName, pl, lib);
     } else if (removeCheck){
         std::string songName;
         std::string artistName;
@@ -120,12 +120,12 @@ void UserInterface::reactToCommand(std::string command, Library libIn, PlaylistC
         std::cin >> artistName;
         std::cout << "Which playlist would you like to remove this song from?" << std::endl;
         std::cin >> playlistName;
-        this->removeSong(songName,artistName,playlistName);
+        this->removeSong(songName,artistName,playlistName, pl);
     } else if (nextCheck){
         std::string playlistName;
         std::cout << "What is the playlist name?" << std::endl;
         std::cin >> playlistName;
-        this->playNext(playlistName);
+        this->playNext(playlistName, pl);
     } else if (randomCheck){
         std::string playlistName;
         std::string sDuration;
@@ -135,12 +135,12 @@ void UserInterface::reactToCommand(std::string command, Library libIn, PlaylistC
         std::cout << "What would you like the duration to be?" << std::endl;
         std::cin >> sDuration;
         duration = stoi(sDuration);
-        this->newRandom(playlistName,duration);
+        this->newRandom(playlistName,duration, pl, lib);
     } else if (quitCheck){
         std::string filename;
         std::cout << "Please type the filename to save your library and playlists." << std::endl;
         std::cin >> filename;
-        this->quit(filename);
+        this->quit(filename, pl, lib);
     }
 }
 
@@ -161,8 +161,7 @@ void UserInterface::help() {
     std::cout << "quit: Save the library/playlists and terminate program." << std::endl;
 }
 
-void UserInterface::library() {
-    Library lib = Library();
+void UserInterface::library(Library lib) {
     lib.printCollection();
 }
 
@@ -171,8 +170,7 @@ void UserInterface::artistSongs(std::string artist, Library lib) {
 }
 
 void UserInterface::songInfo(std::string artist, std::string songTitle, Library lib) {
-    Song newSong = lib.getSong(artist,songTitle);
-
+    Song chosenSong = lib.getSong(artist,songTitle);
 }
 
 void UserInterface::import(std::string filename, Library lib) {
@@ -194,7 +192,7 @@ void UserInterface::playlistInfo(std::string playlistName, PlaylistCollection pl
 
 void UserInterface::newPlaylist(std::string playlistName, PlaylistCollection pl) {
     Playlist newPl = Playlist(playlistName);
-    pl.add(playlistName);
+    pl.add(newPl);
 }
 
 void UserInterface::addSong(std::string songName, std::string artistName, int duration, std::string playlistName, PlaylistCollection pl, Library lib) {
@@ -209,10 +207,10 @@ void UserInterface::removeSong(std::string songName, std::string artistName, std
     Playlist playlistToRemove = pl.getPlaylist(playlistName);
     playlistToRemove.remove(artistName, songName);
 }
-//todo
+
 void UserInterface::playNext(std::string playlistName, PlaylistCollection pl) {
-    Playlist pl = Playlist(playlistName);
-    pl.played();
+    Playlist chosenPl = pl.getPlaylist(playlistName);
+    chosenPl.played();
 }
 
 void UserInterface::newRandom(std::string playlistName, int duration, PlaylistCollection pl, Library lib) {
