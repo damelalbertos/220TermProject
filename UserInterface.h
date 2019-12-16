@@ -10,8 +10,6 @@
 #include "Playlist.h"
 
 class UserInterface {
-private:
-    int playCount;
 
 public:
     //constructor
