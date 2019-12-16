@@ -222,37 +222,30 @@ T LinkedList<T>::removeValueAtFront(){
 }
 
 template<class T>
-T LinkedList<T>::removeValueAt(int index){
-    LinkedNode<T>* nodeToLinkTo;
+T LinkedList<T>::removeValueAt(int index) {
     T valueToReturn;
     int count = 0;
-    end = front;
+    LinkedNode<T> *currPtr = front;
 
-    if(index < 0 || index > currItemCount){
+    if (index < 0 || index > currItemCount) {
         throw std::out_of_range("INDEX OUT OF RANGE");
-    }
-    else {
-        while(count != index) {
-            end = end->getNext();
-            count++;
-        }
-        //makes copy of value, holds onto next and then deletes the node to be removed
-        valueToReturn = end->getItem();
-        nodeToLinkTo = end->getNext();
-        delete end;
+    } else {
+        //check to see if first one is the one to remove
+        if (index == 0) {
+            removeValueAtFront();
+        } else {
+            while (count + 1 != index) {
+                //while count+1 != index
+                currPtr = currPtr->getNext();
+                count++;
+            }
+            LinkedNode<T> *itemToDelete = currPtr->getNext();
+            T itemToReturn = itemToDelete->getItem();
+            currPtr->setNext(currPtr->getNext()->getNext());
+            delete itemToDelete;
 
-        //iterates through to the point where the node was removed and sets next to the second half of the list to reconnect them
-        while(end->getNext() != nullptr){
-            end = end->getNext();
+            currItemCount--;
+            return itemToReturn;
         }
-        end->setNext(nodeToLinkTo);
-
-        //resets end to the proper node
-        while(end->getNext() != nullptr) {
-            end = end->getNext();
-        }
-
-        currItemCount--;
-        return valueToReturn;
     }
 }

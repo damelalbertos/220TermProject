@@ -69,6 +69,7 @@ void Playlist::remove(std::string artistToRemove, std::string songToRemove){
         Song* songToLookAt = songsInPlaylist->getValueAt(i);
         if(songToLookAt->getArtist() == artistToRemove && songToLookAt->getTitle() == songToRemove){
             songsInPlaylist->removeValueAt(i);
+            duration = duration - songToLookAt->getDuration();
             songCount--;
             return;
         }

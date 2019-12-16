@@ -50,7 +50,8 @@ void enqueuePlaylistTest(){
               << "Led Zeppelin Stairway to Heaven\n"
               << "Lorde The Love Club\n"
               << "The Knocks No Requests\n"
-              << "ASAP Ferg Work\n"  << std::endl;
+              << "ASAP Ferg Work\n"
+              << "Duration left in playlist: 1234.8\n"  << std::endl;
     testPlaylist.printCollection();
     testPlaylist.played();
     std::cout << "\n\n\nTest3\n"
@@ -58,7 +59,8 @@ void enqueuePlaylistTest(){
               << "Led Zeppelin Stairway to Heaven\n"
               << "Lorde The Love Club\n"
               << "The Knocks No Requests\n"
-              << "ASAP Ferg Work\n"  << std::endl;
+              << "ASAP Ferg Work\n"
+              << "Duration left in playlist: 1041.6\n"  << std::endl;
     testPlaylist.printCollection();
 
     testPlaylist.remove("The Knocks", "No Requests");
@@ -66,7 +68,8 @@ void enqueuePlaylistTest(){
               << "Should be:\n"
               << "Led Zeppelin Stairway to Heaven\n"
               << "Lorde The Love Club\n"
-              << "ASAP Ferg Work\n"  << std::endl;
+              << "ASAP Ferg Work\n"
+              << "Duration left in playlist: 850.8\n"  << std::endl;
     testPlaylist.printCollection();
 }
 
@@ -100,5 +103,6 @@ int runSongAndPlaylistTests(){
     Song mySong1 =  Song("King Gizzard and the Lizard Wizard", "The spider and me", 193.2);
     runSongTests(mySong1);
     enqueuePlaylistTest();
+    std::cout << "Done" << std::endl;
 
 }
