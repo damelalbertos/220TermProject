@@ -45,18 +45,7 @@ ArrayList<T>& ArrayList<T>::operator=(const ArrayList<T>& arrayListToCopy){
 //Destructor
 template<class T>
 ArrayList<T>::~ArrayList(){
-    delete array;
     array = nullptr;
-}
-
-template<class T>
-void ArrayList<T>::doubleCapacity(int capacity, T* oldArray){
-    T* doubledArr = new T[capacity*2];
-    for(int i =0; i < capacity; i++){
-        doubledArr[i] = oldArray[i];
-    }
-    delete[] oldArray;
-    this->array = doubledArr;
 }
 
 template<class T>
