@@ -52,7 +52,7 @@ ArrayList<T>::~ArrayList(){
 template<class T>
 void ArrayList<T>::doubleCapacity(int capacity, T* oldArray){
     T* doubledArr = new T[capacity*2];
-    for(int i =0; i < capacity; i++){
+    for(int i =0; i <= capacity; i++){
         doubledArr[i] = oldArray[i];
     }
     delete[] oldArray;
