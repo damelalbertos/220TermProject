@@ -64,7 +64,7 @@ public:
     */
     std::string played();
 
-    void discontinuePlaylist(std::string filename);
+    void discontinue(std::string filename);
 
     /**
     * removes a song from anywhere in the playlist

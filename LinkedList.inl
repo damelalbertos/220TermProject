@@ -227,7 +227,7 @@ T LinkedList<T>::removeValueAt(int index) {
     int count = 0;
     LinkedNode<T> *currPtr = front;
 
-    if (index < 0 || index > currItemCount) {
+    if (index < 0 || index > currItemCount-1) {
         throw std::out_of_range("INDEX OUT OF RANGE");
     } else {
         //check to see if first one is the one to remove

@@ -136,7 +136,7 @@ public:
      * create a new playlist object with given name and duration, call add function from
      * PlaylistCollection Class
      */
-    void newRandom(std::string playlistName, int duration);
+    void newRandom(std::string playlistName, int duration, Library lib);
 
     /**
      * save the library and all playlists, terminate execution

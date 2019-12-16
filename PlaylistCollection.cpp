@@ -145,3 +145,10 @@ void PlaylistCollection::loadToCollection(std::string filename){
 
 
 }
+
+void PlaylistCollection::discontinuePlaylists(std::string filename) {
+    for (int i = 0; i < playlistArray->itemCount(); i++){
+        Playlist currentPlaylist = playlistArray->getValueAt(i);
+        currentPlaylist.discontinue(filename);
+    }
+}

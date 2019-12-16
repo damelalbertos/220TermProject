@@ -17,6 +17,7 @@ private:
 
     ArrayList<Playlist>* playlistArray;
 
+
 public:
     //constructor
     PlaylistCollection();
@@ -83,6 +84,7 @@ public:
     */
     void loadToCollection(std::string filename);
 
+    void discontinuePlaylists(std::string filename);
 
 };
 

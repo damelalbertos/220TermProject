@@ -7,9 +7,10 @@
 #include "LibraryTests.cpp"
 #include "FileTest.cpp"
 #include "SongAndPlaylistTests.cpp"
+#include "UserInterface.h"
 
 int main(){
-    /**
+
     //UI SET UP
     UserInterface* user = new UserInterface();
     std::string command;
@@ -19,7 +20,15 @@ int main(){
     std::cout << "Hi! Would you like to Test your code or start Auto DJ?" << std::endl;
     std::cout << "Type ""Test"" or ""DJ""." << std::endl;
     if (command == "Test" || command == "test"){
-        runAllTests();
+        //todo each of the tests run well until memory issues are encountered
+        std::cout << "---------Library Tests---------" << std::endl;
+        runLibraryTests();
+        std::cout << "---------Song and Playlist Tests---------" << std::endl;
+        runSongAndPlaylistTests();
+        std::cout << "---------File Tests---------" << std::endl;
+        runFileTests();
+        std::cout << "---------Playlist Collection Tests---------" << std::endl;
+        runPlaylistCollectionTests();
     }
     else{
         std::cout << "Welcome to Auto DJ!" << std::endl;
@@ -29,15 +38,15 @@ int main(){
         std::cin >> command;
         user->reactToCommand(command);
     }
-    */
+
 
     //todo each of the tests run well until memory issues are encountered
+    std::cout << "---------Library Tests---------" << std::endl;
+    runLibraryTests();
     std::cout << "---------Song and Playlist Tests---------" << std::endl;
     runSongAndPlaylistTests();
     std::cout << "---------File Tests---------" << std::endl;
     runFileTests();
-    std::cout << "---------Library Tests---------" << std::endl;
-    runLibraryTests();
     std::cout << "---------Playlist Collection Tests---------" << std::endl;
     runPlaylistCollectionTests();
 

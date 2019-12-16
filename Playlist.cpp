@@ -48,8 +48,8 @@ int Playlist::getSongCount(){
     return songCount;
 }
 
-void Playlist::add(Song  songToAdd){
-    Song* songPtr = new Song(songToAdd);
+void Playlist::add(Song songToAdd){
+    Song* songPtr = &songToAdd;
     songsInPlaylist->insertAtEnd(songPtr);
     duration += songToAdd.getDuration();
     songCount++;
@@ -74,6 +74,7 @@ void Playlist::remove(std::string artistToRemove, std::string songToRemove){
             return;
         }
     }
+    std::cout << "The song is not in this playlist." << std::endl;
 
 }
 
@@ -123,7 +124,7 @@ void Playlist::loadCollection(std::string filename){
     }
 }
 
-void Playlist::discontinuePlaylist(std::string filename) {
+void Playlist::discontinue(std::string filename) {
     std::ifstream infile(filename);
     if (infile) {
         while (infile) {

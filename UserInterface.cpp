@@ -166,63 +166,57 @@ void UserInterface::library() {
     lib.printCollection();
 }
 
-void UserInterface::artistSongs(std::string artist) {
-    Library lib = Library();
+void UserInterface::artistSongs(std::string artist, Library lib) {
     lib.getArtist(artist);
 }
 
-void UserInterface::songInfo(std::string artist, std::string songTitle) {
-    Library lib = Library();
+void UserInterface::songInfo(std::string artist, std::string songTitle, Library lib) {
     Song newSong = lib.getSong(artist,songTitle);
 
 }
 
-void UserInterface::import(std::string filename) {
-    Library lib = Library();
+void UserInterface::import(std::string filename, Library lib) {
     lib.loadCollection(filename);
 }
 
-void UserInterface::discontinue(std::string filename) {
-    Library lib = Library();
-    PlaylistCollection pl = PlaylistCollection();
-    lib.discontinue(filename, pl);
+void UserInterface::discontinue(std::string filename, Library lib, PlaylistCollection p1) {
+    p1.discontinuePlaylists(filename);
+    lib.discontinueLib(filename);
 }
 
-void UserInterface::allPlaylists() {
-    PlaylistCollection pl = PlaylistCollection();
+void UserInterface::allPlaylists(PlaylistCollection pl) {
     pl.printCollection();
 }
 
-void UserInterface::playlistInfo(std::string playlistName) {
-    PlaylistCollection pl = PlaylistCollection();
+void UserInterface::playlistInfo(std::string playlistName, PlaylistCollection pl) {
     pl.printAPlaylist(playlistName);
 }
 
-void UserInterface::newPlaylist(std::string playlistName) {
+void UserInterface::newPlaylist(std::string playlistName, PlaylistCollection pl) {
     Playlist newPl = Playlist(playlistName);
-    PlaylistCollection pl;
     pl.add(playlistName);
 }
 
-void UserInterface::addSong(std::string songName, std::string artistName, int duration, std::string playlistName) {
+void UserInterface::addSong(std::string songName, std::string artistName, int duration, std::string playlistName, Playlist pl, Library lib) {
     Song newSong = Song(artistName, songName, duration);
-    Playlist pl = Playlist(playlistName);
-    pl.add(newSong);
+    if (lib.getCollection()->find(newSong) != -1) {
+        pl.add(lib.getSong(artistName,songName));
+    }
 }
-
-void UserInterface::removeSong(std::string songName, std::string artistName, std::string playlistName) {
-    Playlist pl = Playlist(playlistName);
+//todo
+void UserInterface::removeSong(std::string songName, std::string artistName, std::string playlistName, PlaylistCollection p1) {
+    Playlist playlistToRemoveFrom = p1.;
     pl.remove(artistName, songName);
 }
-
+//todo
 void UserInterface::playNext(std::string playlistName) {
     Playlist pl = Playlist(playlistName);
     pl.played();
 }
 
-void UserInterface::newRandom(std::string playlistName, int duration) {
+void UserInterface::newRandom(std::string playlistName, int duration, Library lib) {
     PlaylistCollection pl = PlaylistCollection();
-    pl.genRandPlaylist(playlistName, duration);
+    pl.genRandPlaylist(playlistName, duration, lib);
 }
 
 void UserInterface::quit(std::string filename) {
