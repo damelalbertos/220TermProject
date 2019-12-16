@@ -7,12 +7,20 @@
 #include <iostream>
 //constructor test
 void runSongTests(Song mySong1){
+    //to string
     printAssertEquals("King Gizzard and the Lizard Wizard The spider and me", mySong1.toString());
+
+    //get artist
     printAssertEquals("King Gizzard and the Lizard Wizard", mySong1.getArtist());
+
+    //the title
     printAssertEquals("The spider and me", mySong1.getTitle());
+
     std::cout << "The test is failing because of C++ rounding issues" << std::endl;
+    //get duration
     printAssertEquals("193.2", std::to_string(mySong1.getDuration()));
 
+    //test play count
     printAssertEquals(0, mySong1.getPlayCount());
     mySong1.addPlayCount();
     printAssertEquals(1, mySong1.getPlayCount());
@@ -21,6 +29,7 @@ void runSongTests(Song mySong1){
     mySong1.clearPlayCount();
     printAssertEquals(0, mySong1.getPlayCount());
 
+    //copy constructor
     printAssertEquals("King Gizzard and the Lizard Wizard The spider and me", mySong1.toString());
     Song songCopy = mySong1;
     printAssertEquals("King Gizzard and the Lizard Wizard The spider and me", songCopy.toString());
@@ -42,8 +51,10 @@ void enqueuePlaylistTest(){
     testPlaylist.add(mySong4);
     testPlaylist.add(mySong5);
 
+    // 5 songs added
     printAssertEquals(5,testPlaylist.getSongCount());
 
+    //print collection
     std::cout << "\n\n\nTest2\n"
               << "Should be:\n"
               << "King Gizzard and the Lizard Wizard The spider and me\n"
@@ -53,6 +64,8 @@ void enqueuePlaylistTest(){
               << "ASAP Ferg Work\n"
               << "Duration left in playlist: 1234.8\n"  << std::endl;
     testPlaylist.printCollection();
+
+    //play next song
     testPlaylist.played();
     std::cout << "\n\n\nTest3\n"
               << "Should be:\n"
@@ -63,6 +76,7 @@ void enqueuePlaylistTest(){
               << "Duration left in playlist: 1041.6\n"  << std::endl;
     testPlaylist.printCollection();
 
+    //remove a song from playlist
     testPlaylist.remove("The Knocks", "No Requests");
     std::cout << "\n\n\nTest4\n"
               << "Should be:\n"
@@ -71,33 +85,18 @@ void enqueuePlaylistTest(){
               << "ASAP Ferg Work\n"
               << "Duration left in playlist: 850.8\n"  << std::endl;
     testPlaylist.printCollection();
+
+
+    Song* testSong = testPlaylist.findSong("Led zeppelin", "Stairway to Heaven");
+    std::cout << "\n\n\nTest5\n"
+              << "Should be:\n"
+              << "Led Zeppelin Stairway to Heaven\n" << std::endl;
+    testSong->toString();
+
+
+
 }
 
-void nameAndDurationPlaylistTests(Playlist testPlaylist){
-    std::cout << testPlaylist.getName() << std::endl;
-    //iterate through songs then add up
-    for(int i=0; i <= testPlaylist.getSongCount(); i++){
-
-    }
-    std::cout << testPlaylist.getDuration() << std::endl;
-}
-
-
-//copy constructor test
-
-//assignment operator test
-
-//destructor test
-
-//get artist test
-
-//get title test
-
-//get duration test
-
-//add to play count test
-
-//clear play count test
 
 int runSongAndPlaylistTests(){
     Song mySong1 =  Song("King Gizzard and the Lizard Wizard", "The spider and me", 193.2);
