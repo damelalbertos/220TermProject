@@ -49,9 +49,9 @@ int Playlist::getSongCount(){
 }
 
 void Playlist::add(Song  songToAdd){
-    Song* songPtr = &songToAdd;
+    Song* songPtr = new Song(songToAdd);
     songsInPlaylist->insertAtEnd(songPtr);
-    duration += songPtr->getDuration();
+    duration += songToAdd.getDuration();
     songCount++;
 }
 
@@ -59,6 +59,8 @@ std::string Playlist::played(){
     Song* songPlaying = songsInPlaylist->removeValueAtFront();
     songPlaying->addPlayCount();
     std::string songAsString = songPlaying->toString();
+    duration = duration - songPlaying->getDuration();
+    songCount--;
     return songAsString;
 }
 
@@ -67,6 +69,8 @@ void Playlist::remove(std::string artistToRemove, std::string songToRemove){
         Song* songToLookAt = songsInPlaylist->getValueAt(i);
         if(songToLookAt->getArtist() == artistToRemove && songToLookAt->getTitle() == songToRemove){
             songsInPlaylist->removeValueAt(i);
+            songCount--;
+            return;
         }
     }
 

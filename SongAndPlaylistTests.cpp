@@ -44,7 +44,8 @@ void enqueuePlaylistTest(){
 
     printAssertEquals(5,testPlaylist.getSongCount());
 
-    std::cout << "Should be:\n"
+    std::cout << "\n\n\nTest2\n"
+              << "Should be:\n"
               << "King Gizzard and the Lizard Wizard The spider and me\n"
               << "Led Zeppelin Stairway to Heaven\n"
               << "Lorde The Love Club\n"
@@ -52,7 +53,8 @@ void enqueuePlaylistTest(){
               << "ASAP Ferg Work\n"  << std::endl;
     testPlaylist.printCollection();
     testPlaylist.played();
-    std::cout << "Should be:\n"
+    std::cout << "\n\n\nTest3\n"
+              << "Should be:\n"
               << "Led Zeppelin Stairway to Heaven\n"
               << "Lorde The Love Club\n"
               << "The Knocks No Requests\n"
@@ -60,8 +62,8 @@ void enqueuePlaylistTest(){
     testPlaylist.printCollection();
 
     testPlaylist.remove("The Knocks", "No Requests");
-    std::cout << "Should be:\n"
-              << "King Gizzard and the Lizard Wizard The spider and me\n"
+    std::cout << "\n\n\nTest4\n"
+              << "Should be:\n"
               << "Led Zeppelin Stairway to Heaven\n"
               << "Lorde The Love Club\n"
               << "ASAP Ferg Work\n"  << std::endl;
