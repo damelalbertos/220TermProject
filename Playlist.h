@@ -92,6 +92,8 @@ public:
     */
     void loadCollection(std::string filename);
 
+    LinkedList<Song*>* getPlaylist();
+
 };
 
 #endif //PROJECT_PLAYLIST_H

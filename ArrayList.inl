@@ -45,6 +45,7 @@ ArrayList<T>& ArrayList<T>::operator=(const ArrayList<T>& arrayListToCopy){
 //Destructor
 template<class T>
 ArrayList<T>::~ArrayList(){
+    delete array;
     array = nullptr;
 }
 

@@ -64,6 +64,10 @@ std::string Playlist::played(){
     return songAsString;
 }
 
+LinkedList<Song*>* Playlist::getPlaylist(){
+    return songsInPlaylist;
+}
+
 void Playlist::remove(std::string artistToRemove, std::string songToRemove){
     for(int i=0; i <= songCount; i++){
         Song* songToLookAt = songsInPlaylist->getValueAt(i);
