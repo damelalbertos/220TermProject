@@ -20,7 +20,7 @@ public:
      * LOGIC:
      * if <command> call <function>
      */
-    void reactToCommand(std::string command);
+    void reactToCommand(std::string command, Library libIn, PlaylistCollection plIn);
 
     /**
      * Prints out all the commands available to the user
@@ -45,7 +45,7 @@ public:
      * call the getArtist function from the Library Class
      * Alphabetical?
      */
-    void artistSongs(std::string artist);
+    void artistSongs(std::string artist, Library libIn);
 
     /**
      * Print info about a song
@@ -53,7 +53,7 @@ public:
      * LOGIC:
      * call the getSong function from the Library Class
      */
-    void songInfo(std::string artist, std::string songTitle);
+    void songInfo(std::string artist, std::string songTitle, Library lib);
 
     /**
      * Add all songs in the file to the library, print any duplicates
@@ -62,7 +62,7 @@ public:
      * call add function from Library class in a loop, going through file
      * HOW TO KEEP TRACK OF DUPLICATES???
      */
-    static void import(std::string filename);
+    static void import(std::string filename, Library lib);
 
     /**
      * Remove all songs on the file from the library and any playlists its on
@@ -72,7 +72,7 @@ public:
      * LOGIC:
      * call the remove function from Library Class in a loop going through file
      */
-    void discontinue(std::string filename);
+    void discontinue(std::string filename, Library lib, PlaylistCollection pl);
 
     /**
      * Print out the names of all playlists and their duration times
@@ -80,7 +80,7 @@ public:
      * LOGIC:
      * call printCollection from PlaylistCollection Class
      */
-    void allPlaylists();
+    void allPlaylists(PlaylistCollection pl);
 
     /**
      * prints all songs in a playlist and their duration
@@ -88,7 +88,7 @@ public:
      * LOGIC:
      * call printCollection from Playlist Class
      */
-    void playlistInfo(std::string playlistName);
+    void playlistInfo(std::string playlistName, PlaylistCollection pl);
 
     /**
      * create a new empty playlist with the given name
@@ -97,16 +97,16 @@ public:
      * create a new Playlist object (empty no songs, duration=0, songCount=0)
      * call add from PlaylistCollection Class
      */
-    void newPlaylist(std::string playlistName);
+    void newPlaylist(std::string playlistName, PlaylistCollection pl);
 
     /**
-     * Add the given song to the end of the given playlist
+     * Add the given song to the library and to the given playlist
      * Parameters: songName, artistName, duration, playlistName
      * LOGIC:
      * create a new song object with the given parameters
      * call add function from Playlist Class
      */
-    void addSong(std::string songName, std::string artistName, int duration, std::string playlistName);
+    void addSong(std::string songName, std::string artistName, int duration, std::string playlistName, PlaylistCollection pl, Library lib);
 
     /**
      * remove the song from the given playlist
@@ -114,7 +114,7 @@ public:
      * LOGIC:
      * iterate through playlist to find song, call remove from Playlist Class on song
      */
-    void removeSong(std::string songName, std::string artistName, std::string playlistName);
+    void removeSong(std::string songName, std::string artistName, std::string playlistName, PlaylistCollection pl);
 
     /**
      * print all info on next song in playlist, remove from playlist,
@@ -124,7 +124,7 @@ public:
      * iterate through playlist, call getsonginfo,
      * remove function from PlaylistCollection Class
      */
-    void playNext(std::string playlistName);
+    void playNext(std::string playlistName, PlaylistCollection);
 
     /**
      * generate a new playlist with the given name and populate it with random songs
@@ -134,7 +134,7 @@ public:
      * create a new playlist object with given name and duration, call add function from
      * PlaylistCollection Class
      */
-    void newRandom(std::string playlistName, int duration, Library lib);
+    void newRandom(std::string playlistName, int duration, PlaylistCollection pl, Library lib);
 
     /**
      * save the library and all playlists, terminate execution
@@ -143,7 +143,7 @@ public:
      * call saveCollection function from Library Class, call
      * saveCollection function from PlaylistCollection Class
      */
-    void quit(std::string filename);
+    void quit(std::string filename, PlaylistCollection pl, Library lib);
 
 };
 

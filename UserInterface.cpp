@@ -25,7 +25,7 @@ bool caseInSensStringCompare(std::string & str1, std::string &str2) {
             std::equal(str1.begin(), str1.end(), str2.begin(), &compareChar));
 }
 
-void UserInterface::reactToCommand(std::string command){
+void UserInterface::reactToCommand(std::string command, Library libIn, PlaylistCollection plIn){
     std::string help = "help";
     std::string library = "library";
     std::string artist = "artist";
@@ -64,7 +64,7 @@ void UserInterface::reactToCommand(std::string command){
         std::string artistSelection;
         std::cout << "What artist?" << std::endl;
         std::cin >> artistSelection;
-        this->artistSongs(artistSelection);
+        this->artistSongs(artistSelection, libIn);
     } else if (songCheck){
         std::string artistSelection;
         std::string songTitle;
@@ -72,7 +72,7 @@ void UserInterface::reactToCommand(std::string command){
         std::cin >> artistSelection;
         std::cout << "What song?" << std::endl;
         std::cin >> songTitle;
-        this->songInfo(artistSelection, songTitle);
+        this->songInfo(artistSelection, songTitle, libIn);
     } else if (importCheck){
         std::string filename;
         std::cout << "Please type the filename." << std::endl;
@@ -197,31 +197,29 @@ void UserInterface::newPlaylist(std::string playlistName, PlaylistCollection pl)
     pl.add(playlistName);
 }
 
-void UserInterface::addSong(std::string songName, std::string artistName, int duration, std::string playlistName, Playlist pl, Library lib) {
+void UserInterface::addSong(std::string songName, std::string artistName, int duration, std::string playlistName, PlaylistCollection pl, Library lib) {
     Song newSong = Song(artistName, songName, duration);
+    Playlist chosenPl = pl.getPlaylist(playlistName);
     if (lib.getCollection()->find(newSong) != -1) {
-        pl.add(lib.getSong(artistName,songName));
+        chosenPl.add(lib.getSong(artistName,songName));
     }
 }
-//todo
-void UserInterface::removeSong(std::string songName, std::string artistName, std::string playlistName, PlaylistCollection p1) {
-    Playlist playlistToRemoveFrom = p1.;
-    pl.remove(artistName, songName);
+
+void UserInterface::removeSong(std::string songName, std::string artistName, std::string playlistName, PlaylistCollection pl) {
+    Playlist playlistToRemove = pl.getPlaylist(playlistName);
+    playlistToRemove.remove(artistName, songName);
 }
 //todo
-void UserInterface::playNext(std::string playlistName) {
+void UserInterface::playNext(std::string playlistName, PlaylistCollection pl) {
     Playlist pl = Playlist(playlistName);
     pl.played();
 }
 
-void UserInterface::newRandom(std::string playlistName, int duration, Library lib) {
-    PlaylistCollection pl = PlaylistCollection();
+void UserInterface::newRandom(std::string playlistName, int duration, PlaylistCollection pl, Library lib) {
     pl.genRandPlaylist(playlistName, duration, lib);
 }
 
-void UserInterface::quit(std::string filename) {
-    PlaylistCollection pl = PlaylistCollection();
-    Library lib = Library();
+void UserInterface::quit(std::string filename, PlaylistCollection pl, Library lib) {
     pl.saveCollection(filename);
     lib.saveCollection(filename);
 }

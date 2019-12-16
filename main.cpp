@@ -33,24 +33,13 @@ int main(){
     else{
         std::cout << "Welcome to Auto DJ!" << std::endl;
         Library lib = Library();
+        PlaylistCollection pl = PlaylistCollection();
+        while (command != "quit"){
+            std::cout << typeCommand << std::endl;
+            std::cin >> command;
+            user->reactToCommand(command, lib, pl);
+        }
     }
-    while (command != "quit"){
-        std::cout << typeCommand << std::endl;
-        std::cin >> command;
-        user->reactToCommand(command);
-    }
-
-
-    //todo each of the tests run well until memory issues are encountered
-    std::cout << "---------Library Tests---------" << std::endl;
-    runLibraryTests();
-    std::cout << "---------Song and Playlist Tests---------" << std::endl;
-    runSongAndPlaylistTests();
-    std::cout << "---------File Tests---------" << std::endl;
-    runFileTests();
-    std::cout << "---------Playlist Collection Tests---------" << std::endl;
-    runPlaylistCollectionTests();
-
 
     return 0;
 }
