@@ -50,6 +50,16 @@ ArrayList<T>::~ArrayList(){
 }
 
 template<class T>
+void ArrayList<T>::doubleCapacity(int capacity, T* oldArray){
+    T* doubledArr = new T[capacity*2];
+    for(int i =0; i < capacity; i++){
+        doubledArr[i] = oldArray[i];
+    }
+    delete[] oldArray;
+    this->array = doubledArr;
+}
+
+template<class T>
 void ArrayList<T>::insertAtEnd(T itemToAdd){
     if(currCapacity == currItemCount && currItemCount != 0){
         doubleCapacity(currCapacity, array);

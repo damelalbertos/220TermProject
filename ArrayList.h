@@ -18,21 +18,6 @@ private:
     //size of the current array
     int currCapacity;
 
-    /**
-     * replaces the old array with an array twice the size
-     * private method only called within ArrayList when necessary
-     * @post: array points to a new array of twice the size with values copied from the old one,
-     *        the old array is deleted.
-     */
-    void doubleCapacity(int capacity, T* oldArray){
-        T* doubledArr = new T[capacity*2];
-        for(int i =0; i < capacity; i++){
-            doubledArr[i] = oldArray[i];
-        }
-        delete[] oldArray;
-        this->array = doubledArr;
-    }
-
 public:
     /**
      * Constructor
@@ -54,6 +39,14 @@ public:
      * @post the list has an additional value in it, at the end
      */
     void insertAtEnd(T itemToAdd);
+
+    /**
+     * replaces the old array with an array twice the size
+     * private method only called within ArrayList when necessary
+     * @post: array points to a new array of twice the size with values copied from the old one,
+     *        the old array is deleted.
+     */
+    void doubleCapacity(int capacity, T* oldArray);
 
     /**
      * gets a value from the list
