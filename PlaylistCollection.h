@@ -42,6 +42,8 @@ public:
     */
     void add(Playlist itemToAdd);
 
+    Playlist getPlaylist(std::string playlistName);
+    
     /**
     * removes a playlist from the list of playlists and shifts the rest down if necessary
     * @param itemToRemove - the playlist you want to remove

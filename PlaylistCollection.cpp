@@ -98,6 +98,17 @@ void PlaylistCollection::printAPlaylist(std::string playlistName){
 
 }
 
+Playlist PlaylistCollection::getPlaylist(std::string playlistName){
+    for(int i=0; i <= playlistArray->itemCount(); i++) {
+        Playlist playlistToLookAt = playlistArray->getValueAt(i);
+        if(playlistToLookAt.getName() == playlistName){
+            return playlistToLookAt;
+        }
+    }
+
+    std::cout << "Playlist Not Found" << std::endl;
+}
+
 void PlaylistCollection::removeFromAll(Song songToRemove) {
     std::string artist = songToRemove.getArtist();
     std::string name = songToRemove.getTitle();
